@@ -1,150 +1,149 @@
+<?php
+/**
+ * Template Name: Contact Page
+ *
+ * The template for displaying the Contact Page
+ *
+ *
+ * @package Flair Theme
+ */
 
-<?php get_header(); ?>
-    <div class="row">
-      <div class="large-12 columns">
-        <h1>Welcome to Foundation</h1>
-      </div>
-    </div>
+get_header(); ?>
+<!-- Main Page Content and Sidebar -->
 
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="panel">
-          <h3>We&rsquo;re stoked you want to try Foundation! </h3>
-          <p>To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-          <p>Once you've exhausted the fun in this document, you should check out:</p>
-          <div class="row">
-            <div class="large-4 medium-4 columns">
-          <p><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</p>
-        </div>
-            <div class="large-4 medium-4 columns">
-              <p><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</p>
-            </div>
-            <div class="large-4 medium-4 columns">
-              <p><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row">
 
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <h5>Here&rsquo;s your basic grid:</h5>
-        <!-- Grid Example -->
+	<!-- Contact Details -->
+	<div class="large-9 columns">
 
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="callout panel">
-              <p><strong>This is a twelve column section in a row.</strong> Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-        </div>
+		<h3>Get in Touch!</h3>
 
-        <hr />
+		<p>We'd love to hear from you. You can either reach out to us as a whole and one of our awesome team members will get back to you, or if you have a specific question reach out to one of our staff. We love getting email all day
+			<em>all day</em>.</p>
 
-        <h5>We bet you&rsquo;ll need a form somewhere:</h5>
-        <form>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Input Label</label>
-              <input type="text" placeholder="large-12.columns" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-4 medium-4 columns">
-              <label>Input Label</label>
-              <input type="text" placeholder="large-4.columns" />
-            </div>
-            <div class="large-4 medium-4 columns">
-              <label>Input Label</label>
-              <input type="text" placeholder="large-4.columns" />
-            </div>
-            <div class="large-4 medium-4 columns">
-              <div class="row collapse">
-                <label>Input Label</label>
-                <div class="small-9 columns">
-                  <input type="text" placeholder="small-9.columns" />
-                </div>
-                <div class="small-3 columns">
-                  <span class="postfix">.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Select Box</label>
-              <select>
-                <option value="husker">Husker</option>
-                <option value="starbuck">Starbuck</option>
-                <option value="hotdog">Hot Dog</option>
-                <option value="apollo">Apollo</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-6 medium-6 columns">
-              <label>Choose Your Favorite</label>
-              <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-              <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-            </div>
-            <div class="large-6 medium-6 columns">
-              <label>Check these out</label>
-              <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-              <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Textarea Label</label>
-              <textarea placeholder="small-12.columns"></textarea>
-            </div>
-          </div>
-        </form>
-      </div>
+		<div class="section-container tabs" data-section>
+			<section class="section">
+				<h5 class="title"><a href="#panel1">Contact Our Company</a></h5>
 
-      <div class="large-4 medium-4 columns">
-        <h5>Try one of these buttons:</h5>
-        <p><a href="#" class="small button">Simple Button</a><br/>
-        <a href="#" class="small radius button">Radius Button</a><br/>
-        <a href="#" class="small round button">Round Button</a><br/>
-        <a href="#" class="medium success button">Success Btn</a><br/>
-        <a href="#" class="medium alert button">Alert Btn</a><br/>
-        <a href="#" class="medium secondary button">Secondary Btn</a></p>
-        <div class="panel">
-          <h5>So many components, girl!</h5>
-          <p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
-          <a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>
-        </div>
-      </div>
-    </div>
-<?php get_footer();?>
+				<div class="content" data-slug="panel1">
+					<form>
+						<div class="row collapse">
+							<div class="large-2 columns">
+								<label class="inline">Your Name</label>
+							</div>
+							<div class="large-10 columns">
+								<input type="text" id="yourName" placeholder="Jane Smith">
+							</div>
+						</div>
+						<div class="row collapse">
+							<div class="large-2 columns">
+								<label class="inline"> Your Email</label>
+							</div>
+							<div class="large-10 columns">
+								<input type="text" id="yourEmail" placeholder="jane@smithco.com">
+							</div>
+						</div>
+						<label>What's up?</label>
+						<textarea rows="4"></textarea>
+						<button type="submit" class="radius button">Submit</button>
+					</form>
+				</div>
+			</section>
+			<section class="section">
+				<h5 class="title"><a href="#panel2">Specific Person</a></h5>
+
+				<div class="content" data-slug="panel2">
+					<ul class="large-block-grid-5">
+						<li>
+							<a href="mailto:mal@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Mal Reynolds</a>
+						</li>
+						<li>
+							<a href="mailto:zoe@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Zoe Washburne</a>
+						</li>
+						<li>
+							<a href="mailto:jayne@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Jayne Cobb</a>
+						</li>
+						<li>
+							<a href="mailto:doc@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Simon Tam</a>
+						</li>
+						<li>
+							<a href="mailto:killyouwithmymind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">River Tam</a>
+						</li>
+						<li>
+							<a href="mailto:leafonthewind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Hoban Washburne</a>
+						</li>
+						<li>
+							<a href="mailto:book@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Shepherd Book</a>
+						</li>
+						<li>
+							<a href="mailto:klee@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Kaywinnet Lee Fry</a>
+						</li>
+						<li>
+							<a href="mailto:inara@guild.comp.all"><img src="http://placehold.it/200x200&amp;text=[person]">Inarra Serra</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<!-- End Contact Details -->
+
+
+	<!-- Sidebar -->
+
+
+	<div class="large-3 columns">
+		<h5>Map</h5>
+		<!-- Clicking this placeholder fires the mapModal Reveal modal -->
+		<p>
+			<a href="" data-reveal-id="mapModal"><img src="http://placehold.it/400x280"></a><br />
+			<a href="" data-reveal-id="mapModal">View Map</a>
+		</p>
+
+		<p>
+			123 Awesome St.<br />
+			Barsoom, MA 95155
+		</p>
+	</div>
+	<!-- End Sidebar -->
+</div>
+
+<!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+	<div class="large-12 columns">
+		<hr />
+		<div class="row">
+			<div class="large-6 columns">
+				<p>&copy; Copyright no one at all. Go to town.</p>
+			</div>
+			<div class="large-6 columns">
+				<ul class="inline-list right">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!-- End Footer -->
+
+
+<!-- Map Modal -->
+
+<div class="reveal-modal" id="mapModal">
+	<h4>Where We Are</h4>
+
+	<p><img src="http://placehold.it/800x600" /></p>
+
+	<!-- Any anchor with this class will close the modal. This also inherits certain styles, which can be overriden. -->
+	<a href="#" class="close-reveal-modal">&times;</a>
+</div>
+<?php get_footer(); ?>
