@@ -30,7 +30,32 @@ get_header(); ?><!doctype html>
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
-	
+
 	<?php wp_head(); ?>
 </head>
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+           <?php bloginfo( 'name' ); ?>
+          </a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+     <?php wp_nav_menu(
+				array(
+					'theme_location'  => 'primary',
+					'container'       => false,
+					'menu_class' => 'right'
+				)
+			); ?>
+    </section>
+  </nav>
+
+  <!-- End Top Bar -->
 <body <?php body_class(); ?>>
