@@ -21,7 +21,7 @@ add_action( 'init', 'flair_check_theme_support' );
  */
 
 function flair_enqueue_interchange() {
-	wp_enqueue_script( 'interchange', get_template_directory_uri() . '/js/foundation.interchange.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+	wp_enqueue_script( 'interchange', get_template_directory_uri() . '/js/foundation/foundation.interchange.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
 /**
