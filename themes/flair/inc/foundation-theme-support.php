@@ -17,6 +17,10 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-magellan' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_magellan', 11 );
 	}
+
+	if ( current_theme_supports( 'foundation-orbit' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_orbit', 11 );
+	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -43,6 +47,14 @@ function flair_enqueue_top_bar() {
 
 function flair_enqueue_magellan() {
 	wp_enqueue_script( 'magellan', get_template_directory_uri() . '/js/foundation/foundation.magellan.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Orbit
+ */
+
+function flair_enqueue_orbit() {
+	wp_enqueue_script( 'orbit', get_template_directory_uri() . '/js/foundation/foundation.orbit.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
 /**
