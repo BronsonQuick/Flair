@@ -9,17 +9,32 @@ function flair_check_theme_support() {
 		add_action( 'init', 'flair_interchange_sizes', 11 );
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_interchange', 11 );
 	}
+	if ( current_theme_supports( 'foundation-top-bar' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_top_bar', 11 );
+	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
 
 /**
- * Enqueue interchange
+ * Enqueue Foundations Interchange
  */
 
 function flair_enqueue_interchange() {
 	wp_enqueue_script( 'interchange', get_template_directory_uri() . '/js/foundation.interchange.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
+
+/**
+ * Enqueue Foundatio Top Bar
+ */
+
+function flair_enqueue_top_bar() {
+	wp_enqueue_script( 'top-bar', get_template_directory_uri() . '/js/foundation/foundation.topbar.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Add some default image sizes to assist with interchange images
+ */
 
 function flair_interchange_sizes() {
 	add_image_size( 'interchange-small', 480, 99999 );
