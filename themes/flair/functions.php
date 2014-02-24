@@ -54,6 +54,11 @@ function flair_setup() {
 	 */
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
+	/**
+	 * Add our TinyMCE Editor Styles
+	 */
+	add_editor_style();
+
 }
 endif; // flair_setup
 add_action( 'after_setup_theme', 'flair_setup' );

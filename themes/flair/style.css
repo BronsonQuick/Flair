@@ -14,3 +14,5 @@
  */
 
 /* This file is only here so that the theme shows in WordPress's backend. Grunt-Sass doesn't respect Sass's /*! syntax to retain comments :(
+ * All our styles are stored app.scss and generated to css/style.css
+ * /
