@@ -5,8 +5,9 @@
 
 function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-interchange' ) ) {
-		add_filter( 'post_thumbnail_html', 'flair_responsive_img', 5, 5 );
-		add_action( 'wp_enqueue_scripts', 'flair_enqueue_interchange', 11 );
+		add_filter( 'post_thumbnail_html', 'flair_interchange_post_thumbnail_html', 5, 5 );
+		add_action( 'init', 'flair_interchange_sizes', 11 );
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_interchange', 11 );
 	}
 }
 
@@ -18,6 +19,13 @@ add_action( 'init', 'flair_check_theme_support' );
 
 function flair_enqueue_interchange() {
 	wp_enqueue_script( 'interchange', get_template_directory_uri() . '/js/foundation.interchange.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+function flair_interchange_sizes() {
+	add_image_size( 'interchange-small', 480, 99999 );
+	add_image_size( 'interchange-medium', 768, 99999 );
+	add_image_size( 'interchange-large', 1024, 99999 );
+	add_image_size( 'interchange-retina', 1920, 99999 );
 }
 
 /**
@@ -33,17 +41,11 @@ function flair_enqueue_interchange() {
  * @return string
  */
 
-function flair_responsive_img( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	if ( is_front_page() ) {
-		// Generate our image links
-		$default = wp_get_attachment_image_src( $post_thumbnail_id, 'homepage-featured-image' );
-		$large   = wp_get_attachment_image_src( $post_thumbnail_id, 'homepage-featured-image' );
-	} else {
-		$default = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
-		$large   = wp_get_attachment_image_src( $post_thumbnail_id, 'responsive-retina' );
-	}
-	$small   = wp_get_attachment_image_src( $post_thumbnail_id, 'responsive-small' );
-	$medium  = wp_get_attachment_image_src( $post_thumbnail_id, 'responsive-medium' );
+function flair_interchange_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+	$default = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
+	$large   = wp_get_attachment_image_src( $post_thumbnail_id, 'interchange-retina' );
+	$small   = wp_get_attachment_image_src( $post_thumbnail_id, 'interchange-small' );
+	$medium  = wp_get_attachment_image_src( $post_thumbnail_id, 'interchange-medium' );
 	// Create out image tag with our media queries in it
 	$html = '<img data-interchange="['. $default[0]. ', (default)],';
 	$html .= '[' .$small[0] .', (small)],';
