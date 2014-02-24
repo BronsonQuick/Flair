@@ -1,4 +1,15 @@
 <?php
+/**
+ * Check if the theme has support for any of the additional Foundation utilities
+ */
+
+function sz_check_theme_support(){
+	if ( current_theme_supports( 'foundation-interchange' ) ) {
+		add_filter( 'post_thumbnail_html', 'sz_responsive_img', 5, 5 );
+	}
+}
+
+add_action( 'init', 'sz_check_theme_support' );
 
 /**
  * We need to filter our post thumbnails so we can output them in a format that Foundations Interchange needs.
@@ -37,4 +48,3 @@ function sz_responsive_img( $html, $post_id, $post_thumbnail_id, $size, $attr ) 
 
 	return $html;
 }
-add_filter( 'post_thumbnail_html', 'sz_responsive_img', 5, 5 );
