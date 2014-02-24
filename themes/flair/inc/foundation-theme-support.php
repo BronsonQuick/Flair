@@ -37,6 +37,14 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-alert' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_alert', 11 );
 	}
+
+	if ( current_theme_supports( 'foundation-tooltip' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_tooltip', 11 );
+	}
+
+	if ( current_theme_supports( 'foundation-joyride' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_joyride', 11 );
+	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -103,6 +111,22 @@ function flair_enqueue_reveal() {
 
 function flair_enqueue_alert() {
 	wp_enqueue_script( 'alert', get_template_directory_uri() . '/js/foundation/foundation.alert.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Tooltip
+ */
+
+function flair_enqueue_tooltip() {
+	wp_enqueue_script( 'tooltip', get_template_directory_uri() . '/js/foundation/foundation.tooltip.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Joyride
+ */
+
+function flair_enqueue_joyride() {
+	wp_enqueue_script( 'joyride', get_template_directory_uri() . '/js/foundation/foundation.joyride.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
 /**
