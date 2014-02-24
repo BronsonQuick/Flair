@@ -25,6 +25,10 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-clearing' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_clearing', 11 );
 	}
+
+	if ( current_theme_supports( 'foundation-abide' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_abide', 11 );
+	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -67,6 +71,14 @@ function flair_enqueue_orbit() {
 
 function flair_enqueue_clearing() {
 	wp_enqueue_script( 'clearing', get_template_directory_uri() . '/js/foundation/foundation.clearing.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Abide
+ */
+
+function flair_enqueue_abide() {
+	wp_enqueue_script( 'abide', get_template_directory_uri() . '/js/foundation/foundation.abide.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
 /**
