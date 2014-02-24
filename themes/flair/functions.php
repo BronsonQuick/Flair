@@ -59,6 +59,11 @@ function flair_setup() {
 	 */
 	add_editor_style();
 
+	/**
+	 * Optionally add Foundation utilities
+	 */
+	add_theme_support( 'foundation-interchange' );
+
 }
 endif; // flair_setup
 add_action( 'after_setup_theme', 'flair_setup' );

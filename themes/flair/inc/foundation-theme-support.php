@@ -3,13 +3,22 @@
  * Check if the theme has support for any of the additional Foundation utilities
  */
 
-function flair_check_theme_support(){
+function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-interchange' ) ) {
 		add_filter( 'post_thumbnail_html', 'flair_responsive_img', 5, 5 );
+		add_action( 'wp_enqueue_scripts', 'flair_enqueue_interchange', 11 );
 	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
+
+/**
+ * Enqueue interchange
+ */
+
+function flair_enqueue_interchange() {
+	wp_enqueue_script( 'interchange', get_template_directory_uri() . '/js/foundation.interchange.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
 
 /**
  * We need to filter our post thumbnails so we can output them in a format that Foundations Interchange needs.
