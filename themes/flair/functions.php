@@ -67,8 +67,8 @@ function flair_setup() {
 	//add_theme_support( 'foundation-magellan' );
 	//add_theme_support( 'foundation-orbit' );
 	//add_theme_support( 'foundation-clearing' );
-	add_theme_support( 'foundation-abide' );
-
+	//add_theme_support( 'foundation-abide' );
+	add_theme_support( 'foundation-reveal' );
 
 }
 endif; // flair_setup
