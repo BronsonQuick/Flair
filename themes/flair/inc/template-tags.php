@@ -7,13 +7,13 @@
  * @package sz
  */
 
-if ( ! function_exists( 'sz_paging_nav' ) ) :
+if ( ! function_exists( 'flair_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
  * @return void
  */
-function sz_paging_nav() {
+function flair_paging_nav() {
 	// Don't print empty markup if there's only one page.
 	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
 		return;
@@ -40,15 +40,15 @@ function sz_paging_nav() {
 	</nav><!-- .navigation -->
 	<?php
 }
-endif; // sz_paging_nav
+endif; // flair_paging_nav
 
-if ( ! function_exists( 'sz_post_nav' ) ) :
+if ( ! function_exists( 'flair_post_nav' ) ) :
 /**
  * Display navigation to next/previous post when applicable.
  *
  * @return void
  */
-function sz_post_nav() {
+function flair_post_nav() {
 	// Don't print empty markup if there's nowhere to navigate.
 	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
 	$next     = get_adjacent_post( false, '', false );
@@ -70,13 +70,13 @@ function sz_post_nav() {
 	</nav><!-- .navigation -->
 	<?php
 }
-endif; // sz_post_nav
+endif; // flair_post_nav
 
-if ( ! function_exists( 'sz_posted_on' ) ) :
+if ( ! function_exists( 'flair_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function sz_posted_on() {
+function flair_posted_on() {
 
 	if ( ! post_password_required() && ( '0' != get_comments_number() ) ) {
 		if ( get_comments_number() > '10' ) {
@@ -111,7 +111,7 @@ endif;
 /**
  * Returns true if a blog has more than 1 category
  */
-function sz_categorized_blog() {
+function flair_categorized_blog() {
 	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
 		// Create an array of all the categories that are attached to posts
 		$all_the_cool_cats = get_categories( array(
@@ -134,11 +134,11 @@ function sz_categorized_blog() {
 }
 
 /**
- * Flush out the transients used in sz_categorized_blog
+ * Flush out the transients used in flair_categorized_blog
  */
-function sz_category_transient_flusher() {
+function flair_category_transient_flusher() {
 	// Like, beat it. Dig?
 	delete_transient( 'all_the_cool_cats' );
 }
-add_action( 'edit_category', 'sz_category_transient_flusher' );
-add_action( 'save_post',     'sz_category_transient_flusher' );
+add_action( 'edit_category', 'flair_category_transient_flusher' );
+add_action( 'save_post',     'flair_category_transient_flusher' );

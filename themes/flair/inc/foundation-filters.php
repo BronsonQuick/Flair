@@ -1,7 +1,7 @@
 <?php
 
 // Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
-function sz_nav_menu_item_parent_classing( $classes, $item ) {
+function flair_nav_menu_item_parent_classing( $classes, $item ) {
 	global $wpdb;
 
 	$has_children = $wpdb->get_var( "SELECT COUNT(meta_id) FROM {$wpdb->prefix}postmeta WHERE meta_key='_menu_item_menu_item_parent' AND meta_value='" . $item->ID . "'" );
@@ -13,20 +13,20 @@ function sz_nav_menu_item_parent_classing( $classes, $item ) {
 	return $classes;
 }
 
-add_filter( 'nav_menu_css_class', 'sz_nav_menu_item_parent_classing', 10, 2 );
+add_filter( 'nav_menu_css_class', 'flair_nav_menu_item_parent_classing', 10, 2 );
 
 // Deletes empty classes and changes the sub menu class name
-function sz_change_submenu_class( $menu ) {
+function flair_change_submenu_class( $menu ) {
 	$menu = preg_replace( '/ class="sub-menu"/', ' class="dropdown"', $menu );
 
 	return $menu;
 }
 
-add_filter( 'wp_nav_menu', 'sz_change_submenu_class' );
+add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 
 // Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
-function sz_required_active_nav_class( $classes, $item ) {
+function flair_required_active_nav_class( $classes, $item ) {
 	if ( in_array(  'current_page_item', $classes) === true ) {
 		$classes[] = 'active';
 	}
@@ -34,13 +34,13 @@ function sz_required_active_nav_class( $classes, $item ) {
 	return $classes;
 }
 
-add_filter( 'nav_menu_css_class', 'sz_required_active_nav_class', 10, 2 );
+add_filter( 'nav_menu_css_class', 'flair_required_active_nav_class', 10, 2 );
 
 /**
  * Don't let the users enable Gravity Forms CSS as we have the correct CSS loaded in our theme
  */
 
-function sz_dequeue_gravity_forms_css() {
+function flair_dequeue_gravity_forms_css() {
 	if	( ! get_option ( 'rg_gforms_disable_css' ) ) {
 		update_option( 'rg_gforms_disable_css', TRUE );
 	}
@@ -51,9 +51,9 @@ function sz_dequeue_gravity_forms_css() {
  */
 
 if ( class_exists( 'GFForms' ) ) {
-	add_action( 'init', 'sz_dequeue_gravity_forms_css' );
-	add_filter( 'gform_validation_message', 'sz_gform_form_validation_message', 10, 2 );
-	add_filter( 'gform_field_choices', 'sz_gform_field_choices', 10, 2);
+	add_action( 'init', 'flair_dequeue_gravity_forms_css' );
+	add_filter( 'gform_validation_message', 'flair_gform_form_validation_message', 10, 2 );
+	add_filter( 'gform_field_choices', 'flair_gform_field_choices', 10, 2);
 }
 /**
  * Adds the Zurb Foundation alert classes to the Gravity Forms errors
@@ -63,7 +63,7 @@ if ( class_exists( 'GFForms' ) ) {
  *
  * @return mixed
  */
-function sz_gform_form_validation_message( $validation_message, $form ) {
+function flair_gform_form_validation_message( $validation_message, $form ) {
 
 	$form_validation_msg_classes = 'alert-box alert';
 
@@ -78,10 +78,10 @@ function sz_gform_form_validation_message( $validation_message, $form ) {
 	return $validation_message;
 }
 
-add_filter( 'gform_field_content', 'sz_gform_field_content', 10, 5 );
+add_filter( 'gform_field_content', 'flair_gform_field_content', 10, 5 );
 
 
-function sz_gform_field_content( $content, $field, $value, $lead_id, $form_id ) {
+function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id ) {
 
 	$force_frontend_label = false;
 
@@ -140,17 +140,17 @@ function sz_gform_field_content( $content, $field, $value, $lead_id, $form_id ) 
 			//Detect if field type is text or address and call the required function to get field content
 			if ( $field['type'] === 'address' ) {
 
-				$content = str_replace( "{FIELD}", sz_gform_get_address_field( $field, $value, 0, $form_id ), $field_content );
+				$content = str_replace( "{FIELD}", flair_gform_get_address_field( $field, $value, 0, $form_id ), $field_content );
 
 			}
 			elseif ( $field['type'] === 'name' ) {
 
-				$content = str_replace( "{FIELD}", sz_gform_get_name_field( $field, $value, 0, $form_id ), $field_content );
+				$content = str_replace( "{FIELD}", flair_gform_get_name_field( $field, $value, 0, $form_id ), $field_content );
 
 			}
 			elseif ( $field['type'] === 'website' ) {
 
-				$content = str_replace( "{FIELD}", sz_gform_get_website_field( $field, $value, 0, $form_id ), $field_content );
+				$content = str_replace( "{FIELD}", flair_gform_get_website_field( $field, $value, 0, $form_id ), $field_content );
 
 			}
 			else {
@@ -164,7 +164,7 @@ function sz_gform_field_content( $content, $field, $value, $lead_id, $form_id ) 
 	return $content;
 }
 
-function sz_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
+function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 	//Init vars
 	$output = null;
@@ -174,12 +174,12 @@ function sz_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 	ob_start();
 	?>
-	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'sz_gforms_website_class', 'row collapse', $field, $form_id ); ?>">
+	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_website_class', 'row collapse', $field, $form_id ); ?>">
 		<div class="small-3 large-2 columns">
 			<span class="prefix">http://</span>
 		</div>
 		<div class="small-9 large-10 columns">
-			<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" placeholder="<?php echo apply_filters( 'sz_gforms_website_placeholder', 'Enter your URL...', $field, $form_id ); ?>" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>" class="<?php echo apply_filters( 'sz_gforms_website_field_class', 'placeholder', $field, $form_id ); ?>">
+			<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" placeholder="<?php echo apply_filters( 'flair_gforms_website_placeholder', 'Enter your URL...', $field, $form_id ); ?>" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>" class="<?php echo apply_filters( 'flair_gforms_website_field_class', 'placeholder', $field, $form_id ); ?>">
 		</div>
 	</div>
 	<?php
@@ -190,7 +190,7 @@ function sz_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 }
 
-function sz_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
+function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 
 	//Init vars
 	$output = null;
@@ -202,14 +202,14 @@ function sz_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			//Cache css id
 			$input_id = str_replace( '.', '_', $input['id'] );
 			?>
-			<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'sz_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
+			<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
 				<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>"
 					   <?php echo $input['label']; ?>
 			<?php if ( $input['label'] == "First" ) { ?>
-		placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'sz_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
+		placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 			<?php }
 			else { ?>
-			placeholder="<?php echo apply_filters( 'gform_name_last',__( 'Last', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'sz_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
+			placeholder="<?php echo apply_filters( 'gform_name_last',__( 'Last', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 			<?php
 			} ?>
 			</div>
@@ -221,7 +221,7 @@ function sz_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 	return $output;
 }
 
-function sz_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
+function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	//Cache foudantion div to start a row
 	$div_row = "<div class='row'>";
@@ -329,7 +329,7 @@ function sz_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		//state field
 		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : "";
 		if ( IS_ADMIN || ! rgget( "hideState", $field ) ) {
-			$state_field = sz_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
+			$state_field = flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
 
 			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field</span>", $field_id );
 		}
@@ -353,13 +353,13 @@ function sz_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	}
 
 	//Wrap city in foundation divs
-	$city = "<div class='" . apply_filters( 'sz_gforms_address_city_class', 'large-5 columns', $field, $form_id ) . "'>{$city}</div>";
+	$city = "<div class='" . apply_filters( 'flair_gforms_address_city_class', 'large-5 columns', $field, $form_id ) . "'>{$city}</div>";
 
 	//Wrap state in foundation divs
-	$state = "<div class='" . apply_filters( 'sz_gforms_address_state_class', 'large-4 columns', $field, $form_id ) . "'>{$state}</div>";
+	$state = "<div class='" . apply_filters( 'flair_gforms_address_state_class', 'large-4 columns', $field, $form_id ) . "'>{$state}</div>";
 
 	//Wrap ZIP in foundation divs
-	$zip = "<div class='" . apply_filters( 'sz_gforms_address_zip_class', 'large-3 columns', $field, $form_id ) . "'>{$zip}</div>";
+	$zip = "<div class='" . apply_filters( 'flair_gforms_address_zip_class', 'large-3 columns', $field, $form_id ) . "'>{$zip}</div>";
 
 	$inputs = $address_display_format == "zip_before_city" ? $street_address . $street_address2 . $div_row . $zip . $city . $state . "</div>" . $country : $street_address . $street_address2 . $div_row . $city . $state . $zip . "</div>" . $country;
 
@@ -367,7 +367,7 @@ function sz_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 }
 
-function sz_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label ) {
+function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label ) {
 
 	$state_dropdown_class = $state_text_class = $state_style = $text_style = $state_field_id = "";
 
@@ -417,7 +417,7 @@ function sz_gform_get_state_field( $field, $id, $field_id, $state_value, $disabl
 
 }
 
-function sz_gform_field_choices( $choices, $field ) {
+function flair_gform_field_choices( $choices, $field ) {
 
 	//Init vars
 	$type    = 'radio';
@@ -515,9 +515,9 @@ function sz_gform_field_choices( $choices, $field ) {
 	return $choices;
 }
 
-add_action( 'gform_field_css_class', 'sz_foundation_custom_class', 10, 3);
+add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3);
 
-function sz_foundation_custom_class( $classes, $field, $form ){
+function flair_foundation_custom_class( $classes, $field, $form ){
 
     if ( $field["type"] == "text" || $field["type"] == "email" || $field["type"] == "select" ){
         $classes .= " large-6 columns";
@@ -531,14 +531,14 @@ function sz_foundation_custom_class( $classes, $field, $form ){
     return $classes;
 }
 
-function sz_change_first_name( $label, $form_id ){
+function flair_change_first_name( $label, $form_id ){
     return "First Name";
 }
-add_filter( 'gform_name_first', 'sz_change_first_name', 10, 2 );
+add_filter( 'gform_name_first', 'flair_change_first_name', 10, 2 );
 
-function sz_change_last_name( $label, $form_id ){
+function flair_change_last_name( $label, $form_id ){
     return "Last Name";
 }
-add_filter( 'gform_name_last', 'sz_change_last_name', 10, 2 );
+add_filter( 'gform_name_last', 'flair_change_last_name', 10, 2 );
 
 add_filter( 'gform_confirmation_anchor', create_function( '', 'return true;' ) );

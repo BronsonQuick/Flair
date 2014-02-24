@@ -3,13 +3,13 @@
  * Check if the theme has support for any of the additional Foundation utilities
  */
 
-function sz_check_theme_support(){
+function flair_check_theme_support(){
 	if ( current_theme_supports( 'foundation-interchange' ) ) {
-		add_filter( 'post_thumbnail_html', 'sz_responsive_img', 5, 5 );
+		add_filter( 'post_thumbnail_html', 'flair_responsive_img', 5, 5 );
 	}
 }
 
-add_action( 'init', 'sz_check_theme_support' );
+add_action( 'init', 'flair_check_theme_support' );
 
 /**
  * We need to filter our post thumbnails so we can output them in a format that Foundations Interchange needs.
@@ -24,7 +24,7 @@ add_action( 'init', 'sz_check_theme_support' );
  * @return string
  */
 
-function sz_responsive_img( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+function flair_responsive_img( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	if ( is_front_page() ) {
 		// Generate our image links
 		$default = wp_get_attachment_image_src( $post_thumbnail_id, 'homepage-featured-image' );
