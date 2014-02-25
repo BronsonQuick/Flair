@@ -45,6 +45,10 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-joyride' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_joyride', 11 );
 	}
+
+	if ( current_theme_supports( 'foundation-equalizer' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_equalizer', 11 );
+	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -147,6 +151,16 @@ function flair_enqueue_tooltip() {
 
 function flair_enqueue_joyride() {
 	wp_enqueue_script( 'joyride', get_template_directory_uri() . '/js/foundation/foundation.joyride.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Equalizer
+ *
+ * http://foundation.zurb.com/docs/components/equalizer.html
+ */
+
+function flair_enqueue_equalizer() {
+	wp_enqueue_script( 'equalizer', get_template_directory_uri() . '/js/foundation/foundation.equalizer.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
 /**
