@@ -1,8 +1,11 @@
 <?php
 /**
- * Template Name: Sidebar Left Template
+ * The template for displaying all pages.
  *
- * The template for displaying the Sidebar on the left hand side of the page
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
  *
  * @package Flair Theme
  */
@@ -12,7 +15,7 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-9 push-3 columns" role="content">
+		<div class="large-9 columns" role="content">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
