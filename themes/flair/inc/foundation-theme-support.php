@@ -51,6 +51,8 @@ add_action( 'init', 'flair_check_theme_support' );
 
 /**
  * Enqueue Foundations Interchange
+ *
+ * http://foundation.zurb.com/docs/components/interchange.html
  */
 
 function flair_enqueue_interchange() {
@@ -59,6 +61,8 @@ function flair_enqueue_interchange() {
 
 /**
  * Enqueue Foundations Top Bar
+ *
+ * http://foundation.zurb.com/docs/components/topbar.html
  */
 
 function flair_enqueue_top_bar() {
@@ -67,6 +71,8 @@ function flair_enqueue_top_bar() {
 
 /**
  * Enqueue Foundations Magellan
+ *
+ * http://foundation.zurb.com/docs/components/magellan.html
  */
 
 function flair_enqueue_magellan() {
@@ -75,6 +81,8 @@ function flair_enqueue_magellan() {
 
 /**
  * Enqueue Foundations Orbit
+ *
+ * http://foundation.zurb.com/docs/components/orbit.html
  */
 
 function flair_enqueue_orbit() {
@@ -83,6 +91,8 @@ function flair_enqueue_orbit() {
 
 /**
  * Enqueue Foundations Clearing
+ *
+ * http://foundation.zurb.com/docs/components/clearing.html
  */
 
 function flair_enqueue_clearing() {
@@ -91,6 +101,8 @@ function flair_enqueue_clearing() {
 
 /**
  * Enqueue Foundations Abide
+ *
+ * http://foundation.zurb.com/docs/components/abide.html
  */
 
 function flair_enqueue_abide() {
@@ -99,6 +111,8 @@ function flair_enqueue_abide() {
 
 /**
  * Enqueue Foundations Reveal
+ *
+ * http://foundation.zurb.com/docs/components/reveal.html
  */
 
 function flair_enqueue_reveal() {
@@ -107,6 +121,8 @@ function flair_enqueue_reveal() {
 
 /**
  * Enqueue Foundations Alert
+ *
+ * http://foundation.zurb.com/docs/components/alert_boxes.html
  */
 
 function flair_enqueue_alert() {
@@ -115,6 +131,8 @@ function flair_enqueue_alert() {
 
 /**
  * Enqueue Foundations Tooltip
+ *
+ * http://foundation.zurb.com/docs/components/tooltips.html
  */
 
 function flair_enqueue_tooltip() {
@@ -123,6 +141,8 @@ function flair_enqueue_tooltip() {
 
 /**
  * Enqueue Foundations Joyride
+ *
+ * http://foundation.zurb.com/docs/components/joyride.html
  */
 
 function flair_enqueue_joyride() {
