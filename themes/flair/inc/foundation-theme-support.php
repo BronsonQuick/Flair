@@ -49,6 +49,10 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-equalizer' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_equalizer', 11 );
 	}
+
+	if ( current_theme_supports( 'foundation-accordion' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_accordion', 11 );
+	}
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -161,6 +165,16 @@ function flair_enqueue_joyride() {
 
 function flair_enqueue_equalizer() {
 	wp_enqueue_script( 'equalizer', get_template_directory_uri() . '/js/foundation/foundation.equalizer.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Accordion
+ *
+ * http://foundation.zurb.com/docs/components/accordion.html
+ */
+
+function flair_enqueue_accordion() {
+	wp_enqueue_script( 'accordion', get_template_directory_uri() . '/js/foundation/foundation.accordion.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
 /**

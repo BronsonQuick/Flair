@@ -72,7 +72,8 @@ function flair_setup() {
 	//add_theme_support( 'foundation-alert' );
 	//add_theme_support( 'foundation-tooltip' );
 	//add_theme_support( 'foundation-joyride' );
-	add_theme_support( 'foundation-equalizer' );
+	//add_theme_support( 'foundation-equalizer' );
+	add_theme_support( 'foundation-accordion' );
 
 }
 endif; // flair_setup
