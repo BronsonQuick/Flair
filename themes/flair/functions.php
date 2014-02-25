@@ -73,7 +73,8 @@ function flair_setup() {
 	//add_theme_support( 'foundation-tooltip' );
 	//add_theme_support( 'foundation-joyride' );
 	//add_theme_support( 'foundation-equalizer' );
-	add_theme_support( 'foundation-accordion' );
+	//add_theme_support( 'foundation-accordion' );
+	//add_theme_support( 'foundation-tabs' );
 
 }
 endif; // flair_setup
