@@ -542,3 +542,56 @@ function flair_change_last_name( $label, $form_id ){
 add_filter( 'gform_name_last', 'flair_change_last_name', 10, 2 );
 
 add_filter( 'gform_confirmation_anchor', create_function( '', 'return true;' ) );
+
+function sz_flex_video( $html, $url, $attr ) {
+
+	// Only run this process for embeds that don't required fixed dimensions
+	$resize             = false;
+	/* The list of providers is in wp-includes/class-oembed.php */
+	$accepted_providers = array(
+		'youtube.com',
+		'blip.tv',
+		'vimeo.com',
+		'dailymotion.com',
+		'flickr.com',
+		'smugmug.com',
+		'hulu.com',
+		'viddler.com',
+		'qik.com',
+		'revision3.com',
+		'photobucket.com',
+		'scribd.com',
+		'wordpress.tv',
+		'polldaddy.com',
+		'funnyordie.com',
+		'twitter.com',
+		'soundcloud.com',
+		'slideshare.net',
+		'instagram.com'
+	);
+
+	// Check each provider
+	foreach ( $accepted_providers as $provider ) {
+		if ( strstr( $url, $provider ) ) {
+			$resize = true;
+			break;
+		}
+	}
+
+	// Remove width and height attributes
+	$attr_pattern       = '/(width|height)="[0-9]*"/i';
+	$whitespace_pattern = '/\s+/';
+	$embed              = preg_replace( $attr_pattern, "", $html );
+	$embed              = preg_replace( $whitespace_pattern, ' ', $embed ); // Clean-up whitespace
+	$embed              = trim( $embed );
+	$inline_styles      = ( isset( $attr['width'] ) ) ? ' style="max-width:' . absint( $attr['width'] ) . 'px;"' : '';
+
+	// Add container around the video
+	$html = '<div class="flex-video">';
+	$html .= $embed;
+	$html .= '</div>';
+
+	return $html;
+}
+
+add_filter( 'embed_oembed_html', 'sz_flex_video', 99, 3 );
