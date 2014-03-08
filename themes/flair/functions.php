@@ -59,6 +59,14 @@ function flair_setup() {
 	 */
 	add_editor_style();
 
+	// Enable support for HTML5 markup.
+	add_theme_support( 'html5', array(
+		'comment-list',
+		'search-form',
+		'comment-form',
+		'gallery',
+	) );
+
 	/**
 	 * Optionally add Foundation utilities
 	 */
