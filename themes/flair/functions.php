@@ -100,6 +100,15 @@ function flair_widgets_init() {
 		'before_title'  => '<h5 class="widget-title">',
 		'after_title'   => '</h5>',
 	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget Area', 'flair' ),
+		'id'            => 'footer-widget-area',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s side-nav">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );
 }
 add_action( 'widgets_init', 'flair_widgets_init' );
 
