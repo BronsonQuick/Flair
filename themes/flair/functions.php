@@ -93,8 +93,8 @@ add_action( 'after_setup_theme', 'flair_setup' );
  */
 function flair_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'flair' ),
-		'id'            => 'sidebar-1',
+		'name'          => __( 'Main Widget Area', 'flair' ),
+		'id'            => 'main-widget-area',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s side-nav">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h5 class="widget-title">',
