@@ -34,6 +34,7 @@ get_header(); ?><!doctype html>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<div class="contain-to-grid">
 	<nav class="top-bar" data-topbar>
 		<ul class="title-area">
 			<!-- Title Area -->
@@ -51,5 +52,6 @@ get_header(); ?><!doctype html>
 		); ?>
 		</section>
 	</nav>
+</div>
 
 	<!-- End Top Bar -->
