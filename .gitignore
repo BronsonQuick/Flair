@@ -1,7 +1,4 @@
-.sass-cache
-node_modules
-uploads
-/.idea
-themes/underscores-wp-theme
-themes/reverie
-themes/jointswp
+*.DS_Store
+/css/*
+/bower_components/*
+/node_modules/*
