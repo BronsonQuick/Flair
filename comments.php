@@ -41,15 +41,7 @@ if ( post_password_required() ) {
 		<?php endif; // check for comment navigation ?>
 
 		<ol class="comment-list">
-			<?php
-				/* Loop through and list the comments. Tell wp_list_comments()
-				 * to use flair__comment() to format the comments.
-				 * If you want to override this in a child theme, then you can
-				 * define flair__comment() and that will be used instead.
-				 * See flair__comment() in inc/template-tags.php for more.
-				 */
-				wp_list_comments( array( 'callback' => 'flair__comment' ) );
-			?>
+			<?php wp_list_comments(); ?>
 		</ol><!-- .comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
