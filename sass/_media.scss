@@ -6,6 +6,12 @@ img.wp-smiley {
 	margin-top: 0;
 	padding: 0;
 }
+.wp-post-image {
+	&.alignleft,
+	&.alignright {
+		margin-bottom: 1.5em;
+	}
+}
 .wp-caption {
 	margin-bottom: 1.5em;
 	max-width: 100%;
