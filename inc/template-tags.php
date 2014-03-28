@@ -142,3 +142,39 @@ function flair_category_transient_flusher() {
 }
 add_action( 'edit_category', 'flair_category_transient_flusher' );
 add_action( 'save_post',     'flair_category_transient_flusher' );
+
+/**
+ * Echo out our custom classes if there are any
+ *
+ * @param string $class
+ */
+function flair_top_bar( $class = '' ) {
+	// Separates classes with a single space, collates classes for body element
+	echo 'class="' . join( ' ', get_flair_top_bar( $class ) ) . '"';
+}
+
+/**
+ * Flair Top Bar Options
+ *
+ */
+function get_flair_top_bar( $class = '' ) {
+
+	$classes = array();
+
+	if ( current_theme_supports( 'foundation-sticky-top-bar' ) ){
+		$classes[] = 'sticky';
+	}
+
+	if ( ! empty( $class ) ) {
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	} else {
+		// Ensure that we always coerce class to being an array.
+		$class = array();
+	}
+
+	$classes = array_map( 'esc_attr', $classes );
+
+	return apply_filters( 'flair_top_bar', $classes, $class );
+}
