@@ -95,6 +95,7 @@ function flair_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Main Widget Area', 'flair' ),
 		'id'            => 'main-widget-area',
+		'description'   => __( 'The main widget area which is located on the left or right hand side of the pages', 'flair' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s side-nav">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h5 class="widget-title">',
@@ -104,6 +105,7 @@ function flair_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Footer Widget Area', 'flair' ),
 		'id'            => 'footer-widget-area',
+		'description'   => __( 'The footer widget area which is located at the bottom of the site', 'flair' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s side-nav">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h5 class="widget-title">',
