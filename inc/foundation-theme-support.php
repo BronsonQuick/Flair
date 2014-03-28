@@ -14,6 +14,11 @@ function flair_check_theme_support() {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_top_bar', 11 );
 	}
 
+	if ( current_theme_supports( 'foundation-sticky-top-bar' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_enqueue_sticky_top_bar', 11 );
+		add_filter( 'post_class', 'flair_rename_sticky_post_class' );
+	}
+
 	if ( current_theme_supports( 'foundation-magellan' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_magellan', 11 );
 	}
@@ -57,6 +62,7 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-tabs' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_tabs', 11 );
 	}
+
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -78,6 +84,16 @@ function flair_enqueue_interchange() {
  */
 
 function flair_enqueue_top_bar() {
+	wp_enqueue_script( 'top-bar', get_template_directory_uri() . '/js/foundation/foundation.topbar.js', array( 'jquery', 'foundation' ), '5.1.1', true );
+}
+
+/**
+ * Enqueue Foundations Top Bar as Sticky Bar need it too
+ *
+ * http://foundation.zurb.com/docs/components/topbar.html
+ */
+
+function flair_enqueue_sticky_top_bar() {
 	wp_enqueue_script( 'top-bar', get_template_directory_uri() . '/js/foundation/foundation.topbar.js', array( 'jquery', 'foundation' ), '5.1.1', true );
 }
 
