@@ -34,7 +34,7 @@ get_header(); ?><!doctype html>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<div class="contain-to-grid">
+<div class="contain-to-grid sticky">
 	<nav class="top-bar" data-topbar>
 		<ul class="title-area">
 			<!-- Title Area -->
@@ -45,10 +45,10 @@ get_header(); ?><!doctype html>
 		<section class="top-bar-section">
 		<?php wp_nav_menu(
 			array(
-				'theme_location'  => 'primary',
-				'container'       => false,
-				'menu_class' => 'right',
-				'fallback_cb' => 'flair_page_menu',
+				'theme_location' => 'primary',
+				'container'      => false,
+				'menu_class'     => 'right',
+				'fallback_cb'    => 'flair_page_menu',
 			)
 		); ?>
 		</section>
