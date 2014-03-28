@@ -47,7 +47,8 @@ get_header(); ?><!doctype html>
 			array(
 				'theme_location'  => 'primary',
 				'container'       => false,
-				'menu_class' => 'right'
+				'menu_class' => 'right',
+				'fallback_cb' => 'flair_page_menu',
 			)
 		); ?>
 		</section>
