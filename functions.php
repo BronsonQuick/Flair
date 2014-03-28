@@ -72,6 +72,7 @@ function flair_setup() {
 	 */
 	//add_theme_support( 'foundation-interchange' );
 	//add_theme_support( 'foundation-top-bar' );
+	//add_theme_support( 'foundation-sticky-top-bar' );
 	//add_theme_support( 'foundation-magellan' );
 	//add_theme_support( 'foundation-orbit' );
 	//add_theme_support( 'foundation-clearing' );

@@ -41,6 +41,7 @@ In functions.php there are some commented out `add_theme_support` lines which wh
 
   * [Interchange](http://foundation.zurb.com/docs/components/interchange.html)
   * [Top Bar](http://foundation.zurb.com/docs/components/topbar.html)
+  * [Sticky Top Bar](http://foundation.zurb.com/docs/components/topbar.html)
   * [Magellan](http://foundation.zurb.com/docs/components/magellan.html)
   * [Orbit](http://foundation.zurb.com/docs/components/orbit.html)
   * [Clearing](http://foundation.zurb.com/docs/components/clearing.html)
