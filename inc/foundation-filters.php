@@ -1,4 +1,14 @@
 <?php
+/**
+ * By default WordPress adds the CSS class .sticky to sticky posts. Foundation 5 uses that class name for a Sticky Top Bar so let's rename it
+ */
+
+function flair_rename_sticky_post_class( $classes ){
+
+	$classes = preg_replace( '/^sticky$/', 'sticky-post', $classes );
+
+	return $classes;
+}
 
 // Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
 function flair_nav_menu_item_parent_classing( $classes, $item ) {
