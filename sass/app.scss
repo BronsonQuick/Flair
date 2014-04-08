@@ -1,5 +1,6 @@
-@import "settings";
-@import "foundation";
+@import "variables",
+	"settings",
+	"foundation";
 
 // Or selectively include components
 // @import
@@ -39,8 +40,7 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
-@import "variables",
-	"accessibility",
+@import "accessibility",
 	"clearing",
 	"typography",
 	"alignment",
