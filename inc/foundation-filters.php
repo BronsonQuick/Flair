@@ -687,3 +687,32 @@ function flair_flex_video( $html, $url, $attr ) {
 }
 
 add_filter( 'embed_oembed_html', 'flair_flex_video', 99, 3 );
+
+
+/**
+ * Filter the Category links that WordPress generate so that the post counter is inside the link
+ *
+ * @param $links
+ *
+ * @return mixed
+ */
+function flair_cat_count_span( $links ) {
+  $links = str_replace( '</a> (', ' (', $links );
+  $links = str_replace( ')', ')</a>', $links );
+  return $links;
+}
+add_filter( 'wp_list_categories', 'flair_cat_count_span' );
+
+/**
+ * Filter the Archive links that WordPress generate so that the post counter is inside the link
+ *
+ * @param $links
+ *
+ * @return mixed
+ */
+function flair_archive_count_span( $links ) {
+  $links = str_replace( '</a>&nbsp;(', ' (', $links );
+  $links = str_replace( ')', ')</a>', $links );
+  return $links;
+}
+add_filter( 'get_archives_link', 'flair_archive_count_span' );
