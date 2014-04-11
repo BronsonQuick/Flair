@@ -50,10 +50,16 @@ add_filter( 'nav_menu_css_class', 'flair_required_active_nav_class', 10, 2 );
  * We need to write a custom function and a custom walker to add the dropdown class to the default <ul class='children'> created in WordPress's wp_page_menu function
  */
 
-function flair_page_menu() {
-	wp_list_pages( array(
-	    'walker'   => new Flair_Page_Walker,
-	));
+function flair_page_menu() { ?>
+	<ul>
+	<?php
+		wp_list_pages( array(
+		    'walker'   => new Flair_Page_Walker,
+			'title_li' => ''
+		));
+	?>
+	</ul>
+<?php
 }
 
 class Flair_Page_Walker extends Walker_Page {
