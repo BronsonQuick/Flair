@@ -722,3 +722,35 @@ function flair_archive_count_span( $links ) {
   return $links;
 }
 add_filter( 'get_archives_link', 'flair_archive_count_span' );
+
+/**
+ * If WP-PageNavi http://wordpress.org/plugins/wp-pagenavi/ is installed to handle pagination then let's turn it into Foundation 5 pagination http://foundation.zurb.com/docs/components/pagination.html
+ *
+ * @param $wp_pagenavi_output
+ *
+ * @return mixed
+ */
+function flair_pagination( $wp_pagenavi_output ) {
+
+	// Change the wrapping div to a ul
+	$wp_pagenavi_output = str_replace( "<div class='wp-pagenavi'>", "<ul class='pagination'>", $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( "</div>", "</ul>", $wp_pagenavi_output );
+
+	// Change the spans to li's
+	$wp_pagenavi_output = str_replace( "<span", "<li", $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( "</span>", "</li>", $wp_pagenavi_output );
+
+	// Wrap a's in li's
+	$wp_pagenavi_output = str_replace( "<a", "<li><a", $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( "</a>", "</a></li>", $wp_pagenavi_output );
+
+	// Wrap the current li in an a
+	$wp_pagenavi_output = preg_replace( "#<li class='current'>(.+)<\/li>#", "<li class='current'><a href=''>$1</a></li>", $wp_pagenavi_output );
+
+	// Add a filter in case we want to wrap the pagination in a <div class="pagination-centered"> wrapper
+	$wp_pagenavi_output = apply_filters( 'flair_pagination', $wp_pagenavi_output );
+
+	return $wp_pagenavi_output;
+}
+
+add_filter( 'wp_pagenavi', 'flair_pagination' );
