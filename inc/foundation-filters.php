@@ -752,5 +752,4 @@ function flair_pagination( $wp_pagenavi_output ) {
 
 	return $wp_pagenavi_output;
 }
-
 add_filter( 'wp_pagenavi', 'flair_pagination' );
