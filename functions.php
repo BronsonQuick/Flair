@@ -65,6 +65,7 @@ function flair_setup() {
 		'search-form',
 		'comment-form',
 		'gallery',
+		'caption',
 	) );
 
 	/**
