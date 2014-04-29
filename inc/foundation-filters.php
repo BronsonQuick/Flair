@@ -10,6 +10,8 @@ function flair_rename_sticky_post_class( $classes ){
 	return $classes;
 }
 
+add_filter( 'post_class', 'flair_rename_sticky_post_class' );
+
 // Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
 function flair_nav_menu_item_parent_classing( $classes ) {
 
