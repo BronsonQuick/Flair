@@ -11,14 +11,8 @@ function flair_rename_sticky_post_class( $classes ){
 }
 
 // Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
-function flair_nav_menu_item_parent_classing( $classes, $item ) {
-	global $wpdb;
-
-	$has_children = $wpdb->get_var( "SELECT COUNT(meta_id) FROM {$wpdb->prefix}postmeta WHERE meta_key='_menu_item_menu_item_parent' AND meta_value='" . $item->ID . "'" );
-
-	if ( $has_children > 0 ) {
-		array_push( $classes, 'has-dropdown' );
-	}
+function flair_nav_menu_item_parent_classing( $classes ) {
+	$classes = preg_replace( '/^page_item_has_children$/', 'page_item_has_children has-dropdown', $classes );
 
 	return $classes;
 }
