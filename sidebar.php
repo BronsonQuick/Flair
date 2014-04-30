@@ -13,7 +13,7 @@
 	<aside class="large-3 pull-9 columns">
 <?php endif; ?>
 
-<?php if ( ! dynamic_sidebar( 'main-widget-area' ) ) : ?>
+<?php if ( ! dynamic_sidebar( 'blog-widget-area' ) ) : ?>
 
 <?php endif; // end sidebar widget area ?>
 

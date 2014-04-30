@@ -95,9 +95,9 @@ add_action( 'after_setup_theme', 'flair_setup' );
  */
 function flair_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Main Widget Area', 'flair' ),
-		'id'            => 'main-widget-area',
-		'description'   => __( 'The main widget area which is located on the left or right hand side of the pages', 'flair' ),
+		'name'          => __( 'Blog Widget Area', 'flair' ),
+		'id'            => 'blog-widget-area',
+		'description'   => __( 'The blog widget area which is located on the left or right hand side of the blog posts and archives', 'flair' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s side-nav">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h5 class="widget-title">',
