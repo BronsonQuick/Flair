@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 				outputStyle: 'compressed'
 			},
 			files: {
-				'css/style.css':    'sass/app.scss',
-				'editor-style.css': 'sass/editor-style.scss'
+				'assets/css/style.css':    'assets/scss/app.scss',
+				'editor-style.css': 'assets/scss/editor-style.scss'
 			}
 		}
 	},
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 	  grunt: { files: ['Gruntfile.js'] },
 
 	  sass: {
-		files: 'sass/**/*.scss',
+		files: 'assets/scss/**/*.scss',
 		tasks: ['sass']
 	  }
 	}
