@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 			},
 			files: {
 				'assets/css/style.css':    'assets/scss/app.scss',
-				'editor-style.css': 'assets/scss/editor-style.scss'
+				'assets/css/editor-style.css': 'assets/scss/editor-style.scss'
 			}
 		}
 	},
