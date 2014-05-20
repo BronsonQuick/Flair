@@ -57,7 +57,7 @@ function flair_setup() {
 	/**
 	 * Add our TinyMCE Editor Styles
 	 */
-	add_editor_style( get_stylesheet_directory_url() . '/assets/css/editor-style.css' );
+	add_editor_style( 'assets/css/editor-style.css' );
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
