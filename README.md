@@ -28,9 +28,9 @@ While you're working on your project, run:
 And you're set!
 
 ## Directory Strucutre
-
-  * `sass/_settings.scss`: Foundation configuration settings go in here
-  * `sass/app.scss`: Application styles go here
+  * `assets/`: Any media (SCSS, JS, Images) should be contained in this folder.
+  * `assets/scss/_settings.scss`: Foundation configuration settings go in here
+  * `assets/scss/app.scss`: Application styles go here
   * `parts`: All `get_template_parts` are stored in here
   * `templates`: All Page Templates are stored in here
   * `inc`: Any complex filters and actions should go in here to reduce the bloat of `functions.php`. Note: Any files in the root will be automagically included in your theme.
