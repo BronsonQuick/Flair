@@ -24,7 +24,7 @@ get_header(); ?>
 			</div><!-- .page-content -->
 
 		</div>
-        <!-- End Main Content -->
+		<!-- End Main Content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

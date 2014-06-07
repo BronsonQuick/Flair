@@ -51,7 +51,7 @@ get_header(); ?>
 				endif;
 			?>
 		</div>
-        <!-- End Main Content -->
+		<!-- End Main Content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
