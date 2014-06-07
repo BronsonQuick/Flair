@@ -516,6 +516,7 @@ function flair_gform_field_choices( $choices, $field ) {
 	//Init vars
 	$type    = 'radio';
 	$choices = null;
+	$disabled_text = ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) ? "disabled='disabled'" : "";
 
 	if ( ! is_admin() ) {
 
@@ -546,6 +547,7 @@ function flair_gform_field_choices( $choices, $field ) {
 					$id = $field["id"] . '_' . $choice_id ++;
 
 					$field_value = ! empty( $choice["value"] ) || rgar( $field, "enableChoiceValue" ) ? $choice["value"] : $choice["text"];
+					$value = $field_value;
 
 					if ( rgget( "enablePrice", $field ) ) {
 						$field_value .= "|" . GFCommon::to_number( rgar( $choice, "price" ) );
