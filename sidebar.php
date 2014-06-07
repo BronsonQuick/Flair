@@ -8,9 +8,9 @@
 <!-- Sidebar -->
 
 <?php if ( ! is_page_template( 'templates/sidebar-left.php' ) ): ?>
-	<aside class="large-3 columns">
+	<aside class="large-3 columns sidebar">
 <?php else: ?>
-	<aside class="large-3 pull-9 columns">
+	<aside class="large-3 pull-9 columns sidebar">
 <?php endif; ?>
 
 <?php if ( ! dynamic_sidebar( 'blog-widget-area' ) ) : ?>

@@ -10,14 +10,14 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-9 columns" role="content">
+		<div class="large-9 columns content" role="content">
 
 			<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
 				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'flair' ), get_search_query() ); ?></h1>
 			</header><!-- .page-header -->
-			
+
 			<?php // Let's give a result count for the search. NB: This might course performance issues on heavy content sites ?>
 				<?php $args = array(
 					's'              => $s,
@@ -26,7 +26,7 @@ get_header(); ?>
 				<?php $all_results = new WP_Query( $args ); ?>
 				<?php $search_results = $all_results->post_count; ?>
 				<?php wp_reset_postdata();?>
-			
+
 				<p><?php echo 'Your search for "' . get_search_query() . '" returned <strong>' . $search_results . '</strong> results.'; ?></p>
 
 				<?php
@@ -51,7 +51,7 @@ get_header(); ?>
 				endif;
 			?>
 		</div>
-        <!-- End Main Content -->
+		<!-- End Main Content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

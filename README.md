@@ -53,3 +53,13 @@ In functions.php there are some commented out `add_theme_support` lines which wh
   * [Equalizer](http://foundation.zurb.com/docs/components/equalizer.html)
   * [Accordion](http://foundation.zurb.com/docs/components/accordion.html)
   * [Tabs](http://foundation.zurb.com/docs/components/tabs.html)
+
+## Package as Zip
+
+If you'd like to package your theme for installing from the [WordPress Administration Panel](http://codex.wordpress.org/Using_Themes) run:
+
+```bash
+grunt archive
+```
+
+The grunt task creates a file named 'flair-theme.zip' in the root of the theme directory.

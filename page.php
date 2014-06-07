@@ -15,7 +15,7 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-9 columns" role="content">
+		<div class="large-9 columns content" role="content">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -31,7 +31,7 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 
 	</div>
-    <!-- End Main Content -->
+	<!-- End Main Content -->
 
 <?php get_sidebar( 'page' ); ?>
 <?php get_footer(); ?>

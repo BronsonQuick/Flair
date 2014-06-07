@@ -11,7 +11,7 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-9 columns" role="content">
+		<div class="large-9 columns content" role="content">
 
 			<header class="page-header">
 				<h1 class="page-title"><?php _e( 'Not Found', 'flair' ); ?></h1>
@@ -24,7 +24,7 @@ get_header(); ?>
 			</div><!-- .page-content -->
 
 		</div>
-        <!-- End Main Content -->
+		<!-- End Main Content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -516,6 +516,7 @@ function flair_gform_field_choices( $choices, $field ) {
 	//Init vars
 	$type    = 'radio';
 	$choices = null;
+	$disabled_text = ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) ? "disabled='disabled'" : "";
 
 	if ( ! is_admin() ) {
 
@@ -532,11 +533,6 @@ function flair_gform_field_choices( $choices, $field ) {
 				// add "other" choice to choices if enabled
 				if ( rgar( $field, 'enableOtherChoice' ) ) {
 					$other_default_value = GFCommon::get_other_choice_value();
-					$field["choices"][]  = array( 'text'          => $other_default_value,
-												  'value'         => 'gf_other_choice',
-												  'isSelected'    => false,
-												  'isOtherChoice' => true
-					);
 				}
 
 				//$logic_event = GFCommon::get_logic_event($field, "click");
@@ -546,6 +542,7 @@ function flair_gform_field_choices( $choices, $field ) {
 					$id = $field["id"] . '_' . $choice_id ++;
 
 					$field_value = ! empty( $choice["value"] ) || rgar( $field, "enableChoiceValue" ) ? $choice["value"] : $choice["text"];
+					$value = $field_value;
 
 					if ( rgget( "enablePrice", $field ) ) {
 						$field_value .= "|" . GFCommon::to_number( rgar( $choice, "price" ) );

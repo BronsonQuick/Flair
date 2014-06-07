@@ -16,6 +16,10 @@
 if ( post_password_required() ) {
 	return;
 }
+
+if ( current_theme_supports( 'remove-comments' ) ) {
+	return;
+}
 ?>
 
 <div id="comments" class="comments-area">
