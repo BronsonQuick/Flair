@@ -17,7 +17,7 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-9 columns" role="content">
+		<div class="large-9 columns content" role="content">
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
