@@ -533,11 +533,6 @@ function flair_gform_field_choices( $choices, $field ) {
 				// add "other" choice to choices if enabled
 				if ( rgar( $field, 'enableOtherChoice' ) ) {
 					$other_default_value = GFCommon::get_other_choice_value();
-					$field["choices"][]  = array( 'text'          => $other_default_value,
-												  'value'         => 'gf_other_choice',
-												  'isSelected'    => false,
-												  'isOtherChoice' => true
-					);
 				}
 
 				//$logic_event = GFCommon::get_logic_event($field, "click");
