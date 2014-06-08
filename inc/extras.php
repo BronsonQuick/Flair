@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package Sennza Version 3
+ * @package Flair Theme
  */
 
 /**
