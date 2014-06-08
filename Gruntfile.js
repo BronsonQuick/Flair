@@ -26,19 +26,37 @@ module.exports = function(grunt) {
 	  }
 	},
 
+	copy: {
+		// Copy the theme to a versioned release directory
+			main: {
+				src:  [
+					'**',
+					'!node_modules/**',
+					'!bower_components/**',
+					'!.git/**',
+					'!.sass-cache/**',
+					'!sass/**',
+					'!releases/**',
+					'!Gruntfile.js',
+					'!package.json',
+					'!bower.json',
+					'!.gitignore',
+					'!.gitmodules',
+					'!.bowerrc',
+					'!README.md'
+				],
+				dest: 'releases/<%= pkg.version %>/files/'
+			}
+	},
 	compress: {
-		options: {
-			mode: 'zip',
-			archive: "flair-theme.zip"
-		},
-		files: {
-			expand: true,
-			src: [
-				'**',
-				'!flair-theme.zip',
-				'!bower_components/**',
-				'!node_modules/**'
-			],
+		main: {
+				options: {
+					mode: 'zip',
+					archive: './releases/<%= pkg.version %>/<%= pkg.name %>.zip'
+				},
+				expand: true,
+				cwd: 'releases/<%= pkg.version %>/files/',
+				src: ['**/*']
 		}
 	}
 
@@ -46,9 +64,9 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-compress');
 
-	grunt.registerTask('build', ['sass']);
-	grunt.registerTask('default', ['build','watch']);
-	grunt.registerTask('archive', ['compress']);
+	grunt.registerTask('default', ['sass','watch']);
+	grunt.registerTask('build', ['sass', 'copy', 'compress']);
 }
