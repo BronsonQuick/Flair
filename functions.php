@@ -1,6 +1,6 @@
 <?php
 /**
- * _s functions and definitions
+ * Flair functions and definitions
  *
  * @package Flair Theme
  */

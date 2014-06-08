@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				outputStyle: 'compressed'
 			},
 			files: {
-				'assets/css/style.css':    'assets/scss/app.scss',
+				'assets/css/style.css':        'assets/scss/app.scss',
 				'assets/css/editor-style.css': 'assets/scss/editor-style.scss'
 			}
 		}
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 					'!bower_components/**',
 					'!.git/**',
 					'!.sass-cache/**',
-					'!sass/**',
+					'!assets/scss/**',
 					'!releases/**',
 					'!Gruntfile.js',
 					'!package.json',
