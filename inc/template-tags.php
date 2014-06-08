@@ -112,19 +112,19 @@ endif;
  * Returns true if a blog has more than 1 category
  */
 function flair_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
+	if ( false === ( $all_flair_categories = get_transient( 'flair_cats' ) ) ) {
 		// Create an array of all the categories that are attached to posts
-		$all_the_cool_cats = get_categories( array(
+		$all_flair_categories = get_categories( array(
 			'hide_empty' => 1,
 		) );
 
 		// Count the number of categories that are attached to the posts
-		$all_the_cool_cats = count( $all_the_cool_cats );
+		$all_flair_categories = count( $all_flair_categories );
 
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats );
+		set_transient( 'flair_cats', $all_flair_categories );
 	}
 
-	if ( '1' != $all_the_cool_cats ) {
+	if ( '1' != $all_flair_categories ) {
 		// This blog has more than 1 category so _s_categorized_blog should return true
 		return true;
 	} else {
@@ -138,7 +138,7 @@ function flair_categorized_blog() {
  */
 function flair_category_transient_flusher() {
 	// Like, beat it. Dig?
-	delete_transient( 'all_the_cool_cats' );
+	delete_transient( 'flair_cats' );
 }
 add_action( 'edit_category', 'flair_category_transient_flusher' );
 add_action( 'save_post',     'flair_category_transient_flusher' );
