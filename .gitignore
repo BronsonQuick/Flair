@@ -5,4 +5,5 @@
 /releases/*
 /assets/js/foundation/*
 /assets/js/foundation.min.js
-editor-style.css
+/assets/css/editor-style.css
+/assets/css/style.css
