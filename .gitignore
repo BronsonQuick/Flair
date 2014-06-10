@@ -3,4 +3,6 @@
 /bower_components/*
 /node_modules/*
 /releases/*
+/assets/js/foundation/*
+/assets/js/foundation.min.js
 editor-style.css
