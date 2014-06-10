@@ -58,6 +58,18 @@ module.exports = function(grunt) {
 				cwd: 'releases/<%= pkg.version %>/files/',
 				src: ['**/*']
 		}
+	},
+	bowercopy: {
+		foundation: {
+			options: {
+            	destPrefix: 'assets',
+				srcPrefix: 'bower_components'
+        	},
+			files: {
+				'js/foundation': 'foundation/js/foundation',
+				'js/foundation.min.js': 'foundation/js/foundation.min.js'
+			}
+		}
 	}
 
 });
@@ -66,7 +78,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-compress');
+	grunt.loadNpmTasks('grunt-bowercopy');
 
-	grunt.registerTask('default', ['sass','watch']);
+	grunt.registerTask('default', ['sass','bowercopy','watch']);
 	grunt.registerTask('build', ['sass', 'copy', 'compress']);
 }
