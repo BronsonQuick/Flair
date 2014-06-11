@@ -67,19 +67,19 @@ module.exports = function(grunt) {
         	},
 			files: {
 				'js/foundation': 'foundation/js/foundation',
-				'js/foundation.min.js': 'foundation/js/foundation.min.js'
+				'js/foundation.min.js': 'foundation/js/foundation.min.js',
+				'scss/_settings.scss': 'foundation/scss/foundation/_settings.scss'
 			}
 		}
 	}
 
 });
-
+    grunt.loadNpmTasks('grunt-bowercopy');
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-compress');
-	grunt.loadNpmTasks('grunt-bowercopy');
 
-	grunt.registerTask('default', ['sass','bowercopy','watch']);
+	grunt.registerTask('default', ['bowercopy','sass','watch']);
 	grunt.registerTask('build', ['sass', 'copy', 'compress']);
 }
