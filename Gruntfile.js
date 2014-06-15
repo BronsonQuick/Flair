@@ -68,6 +68,7 @@ module.exports = function(grunt) {
 			files: {
 				'js/foundation': 'foundation/js/foundation',
 				'js/foundation.min.js': 'foundation/js/foundation.min.js',
+				'js/modernizr.js': 'modernizr/modernizr.js',
 				'scss/_settings.scss': 'foundation/scss/foundation/_settings.scss'
 			}
 		}
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-compress');
 
-	grunt.registerTask('setup', ['sass','bowercopy','watch']);
+	grunt.registerTask('setup', ['bowercopy','sass','watch']);
 	grunt.registerTask('default', ['sass','watch']);
 	grunt.registerTask('build', ['sass', 'copy', 'compress']);
 }
