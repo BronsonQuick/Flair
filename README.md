@@ -19,6 +19,7 @@ You'll need to have the following items installed before continuing.
 ```bash
 git clone git@github.com:sennza/Flair.git yourtheme
 npm install && bower install
+grunt setup
 ```
 
 While you're working on your project, run:

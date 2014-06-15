@@ -80,6 +80,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-compress');
 
-	grunt.registerTask('default', ['bowercopy','sass','watch']);
+	grunt.registerTask('setup', ['sass','bowercopy','watch']);
+	grunt.registerTask('default', ['sass','watch']);
 	grunt.registerTask('build', ['sass', 'copy', 'compress']);
 }
