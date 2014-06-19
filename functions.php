@@ -52,7 +52,7 @@ function flair_setup() {
 	/**
 	 * Enable support for Post Formats
 	 */
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
 	/**
 	 * Add our TinyMCE Editor Styles
