@@ -38,7 +38,15 @@ get_header(); ?><!doctype html>
 	<nav class="top-bar" data-topbar>
 		<ul class="title-area">
 			<!-- Title Area -->
-			<li class="name"><h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1></li>
+			<li class="name">
+				<?php if ( get_header_image() ) : ?>
+						<h1>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+								<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php bloginfo('name'); ?>">
+							</a>
+						</h1>
+					<?php endif; ?>
+			</li>
 			<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 		</ul>
 
