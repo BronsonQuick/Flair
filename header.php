@@ -42,7 +42,7 @@ get_header(); ?><!doctype html>
 			<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 		</ul>
 
-		<section class="top-bar-section">
+		<section class="top-bar-section right">
 		<?php wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
