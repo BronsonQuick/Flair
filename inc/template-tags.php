@@ -108,6 +108,50 @@ function flair_posted_on() {
 }
 endif;
 
+if ( ! function_exists( 'flair_read_more_link' ) ) :
+/**
+ * Return a "Read More" link for excerpts.
+ *
+ * @return string "Read More" link.
+ */
+function flair_read_more_link() {
+	return '<p><a href="'. get_permalink() . '" class="button small" title="' . esc_attr( get_the_title() ) . '">' . __( 'Read More', 'ebisprint' ) . '</a></p>';
+}
+endif;
+
+/**
+ * Replace "[...]" with an ellipsis and flair_continue_reading_link().
+ *
+ * "[...]" is appended to automatically generated excerpts.
+ *
+ * To override this in a child theme, remove the filter and add your own
+ * function tied to the excerpt_more filter hook.
+ *
+ * @param string $more The Read More text.
+ * @return string An ellipsis.
+ */
+function flair_auto_excerpt_more( $more ) {
+	return ' &hellip;' . flair_read_more_link();
+}
+add_filter( 'excerpt_more', 'flair_auto_excerpt_more' );
+
+/**
+ * Add a pretty "Read More" link to custom post excerpts.
+ *
+ * To override this link in a child theme, remove the filter and add your own
+ * function tied to the get_the_excerpt filter hook.
+ *
+ * @param string $output The "Read More" link.
+ * @return string Excerpt with a pretty "Read More" link.
+ */
+function flair_custom_excerpt_more( $output ) {
+	if ( has_excerpt() && ! is_attachment() ) {
+		$output .= ebisprint_read_more_link();
+	}
+	return $output;
+}
+add_filter( 'get_the_excerpt', 'flair_custom_excerpt_more' );
+
 /**
  * Returns true if a blog has more than 1 category
  */
