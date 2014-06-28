@@ -15,7 +15,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+	<?php if ( is_search() || is_archive() || is_home() ) : // Only display Excerpts on Search, Archives and Blog ?>
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
