@@ -5,6 +5,8 @@
  * @package Flair Theme
  */
 
+define( 'FOUNDATION_VERSION', '5.3.0' );
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -141,7 +143,7 @@ function flair_scripts() {
 
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', array(), '2.7.1' );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'foundation', get_template_directory_uri() . '/assets/js/foundation.min.js', array( 'jquery' ), '5.1.1', true );
+	wp_enqueue_script( 'foundation', get_template_directory_uri() . '/assets/js/foundation.min.js', array( 'jquery' ), FOUNDATION_VERSION, true );
 	wp_enqueue_script( 'app', get_template_directory_uri() . '/assets/js/app.js', array( 'foundation' ), '1.0', true );
 
 }
