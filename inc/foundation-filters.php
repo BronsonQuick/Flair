@@ -421,7 +421,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		//state field
 		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : "";
 		if ( IS_ADMIN || ! rgget( "hideState", $field ) ) {
-			$state_field = ebisprint_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
+			$state_field = flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
 
 			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field</span>", $field_id );
 		}
@@ -445,13 +445,13 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	}
 
 	//Wrap city in foundation divs
-	$city = "<div class='" . apply_filters( 'ebisprint_gforms_address_city_class', 'large-6 columns', $field, $form_id ) . "'>{$city}</div>";
+	$city = "<div class='" . apply_filters( 'flair_gforms_address_city_class', 'large-6 columns', $field, $form_id ) . "'>{$city}</div>";
 
 	//Wrap state in foundation divs
-	$state = "<div class='" . apply_filters( 'ebisprint_gforms_address_state_class', 'large-6 columns', $field, $form_id ) . "'>{$state}</div>";
+	$state = "<div class='" . apply_filters( 'flair_gforms_address_state_class', 'large-6 columns', $field, $form_id ) . "'>{$state}</div>";
 
 	//Wrap ZIP in foundation divs
-	$zip = "<div class='" . apply_filters( 'ebisprint_gforms_address_zip_class', 'large-6 columns', $field, $form_id ) . "'>{$zip}</div>";
+	$zip = "<div class='" . apply_filters( 'flair_gforms_address_zip_class', 'large-6 columns', $field, $form_id ) . "'>{$zip}</div>";
 
 	$inputs = $address_display_format == "zip_before_city" ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
 
