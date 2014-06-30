@@ -337,6 +337,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$currency = $lead["currency"];
 	}
 
+	$street_value = "";
 	$street_value  = "";
 	$street2_value = "";
 	$city_value    = "";
