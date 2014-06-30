@@ -315,6 +315,27 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 	return $output;
 }
 
+function flair_name_label ( $classes, $field, $form, $input ) {
+
+	// We need to get the form info to see how the labels are aligned
+	$form_info = GFFormsModel::get_form_meta( $form );
+
+	if ( $form_info['labelPlacement'] === 'left_label' ||  $form_info['labelPlacement'] === 'right_label' ) {
+		$classes = str_replace( 'large-6 columns', '', $classes );
+	}
+
+	if ( strpos ( $input['id'], '.3' ) !== false ) {
+			$classes .= " ginput_left";
+	}
+	if ( strpos ( $input['id'], '.6' ) !== false ) {
+		$classes .= " ginput_right";
+	}
+
+	return $classes;
+}
+
+add_filter( 'flair_gforms_name_class', 'flair_name_label', 10, 4 );
+
 function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	$id       = $field["id"];
