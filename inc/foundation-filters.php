@@ -608,6 +608,10 @@ add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3);
 
 function flair_foundation_custom_class( $classes, $field, $form ){
 
+	if ( $form['labelPlacement'] === 'left_label' ||  $form['labelPlacement'] === 'right_label' ) {
+		return $classes;
+	}
+
     if ( $field["type"] == "text" || $field["type"] == "email" || $field["type"] == "select" ){
         $classes .= " large-6 columns";
     }
