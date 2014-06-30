@@ -268,7 +268,7 @@ function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 	ob_start();
 	?>
-	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_website_class', 'row collapse', $field, $form_id ); ?>">
+	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_website_class', 'row collapse url', $field, $form_id ); ?>">
 		<div class="small-3 large-2 columns">
 			<span class="prefix">http://</span>
 		</div>
