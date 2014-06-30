@@ -291,6 +291,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 
 	ob_start();
 	?>
+	<div class="ginput_complex ginput_container">
 		<?php foreach ( $field['inputs'] as $key => $input ):
 
 			//Cache css id
@@ -298,7 +299,6 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			?>
 			<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
 				<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>"
-					   <?php echo $input['label']; ?>
 			<?php if ( $input['label'] == "First" ) { ?>
 		placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 			<?php }
@@ -306,8 +306,10 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			placeholder="<?php echo apply_filters( 'gform_name_last',__( 'Last', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 			<?php
 			} ?>
+			<label for="input_<?php esc_attr_e( $input_id ); ?>"><?php echo $input['label']; ?></label>
 			</div>
 		<?php endforeach; ?>
+	</div>
 	<?php
 	$output = ob_get_contents();
 	ob_end_clean();
