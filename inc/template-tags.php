@@ -115,7 +115,7 @@ if ( ! function_exists( 'flair_read_more_link' ) ) :
  * @return string "Read More" link.
  */
 function flair_read_more_link() {
-	return '<p><a href="'. get_permalink() . '" class="button small" title="' . esc_attr( get_the_title() ) . '">' . __( 'Read More', 'ebisprint' ) . '</a></p>';
+	return '<p><a href="'. get_permalink() . '" class="button small" title="' . esc_attr( get_the_title() ) . '">' . __( 'Read More', 'flair' ) . '</a></p>';
 }
 endif;
 
@@ -146,7 +146,7 @@ add_filter( 'excerpt_more', 'flair_auto_excerpt_more' );
  */
 function flair_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= ebisprint_read_more_link();
+		$output .= flair_read_more_link();
 	}
 	return $output;
 }
