@@ -1,1 +1,2531 @@
 /* Gravity Form Styling */
+/* Gravity Form Styling */
+.gform_validation_container {
+	display: none;
+}
+.gfield.name,
+.gfield {
+	clear:both;
+}
+
+.gfield.name > label {
+	width: 100%;
+}
+.prefix {
+	height: rem-calc(50);
+	line-height: rem-calc(50);
+}
+.gform_wrapper .no-border input[type=text] {
+	@include radius(0);
+	width: 98%;
+}
+.url [class*="column"]+[class*="column"]:last-child {
+	width: 52%;
+	float: left;
+}
+/*
+ Quick change to firefox select
+*/
+
+@-moz-document url-prefix() {
+	select {
+		padding-top: 15px;
+		background-image: none;
+	}
+}
+
+.ginput_complex {
+	input,
+	select {
+		margin-bottom: 0 !important;
+	}
+	input + label {
+		margin-bottom: 18px !important;
+	}
+}
+
+
+// Radio styling
+.gfield_radio {
+	input[type="radio"] {
+		// min-width: 10%;
+	}
+}
+
+// Choices label styling
+.label-text {
+	padding-left: 10px;
+
+	input[type="text"] {
+		float: left;
+		width: 90%;
+	}
+}
+/*!
+----------------------------------------------------------------
+
+Gravity Forms Front End Form Styles
+Version 1.0
+http: //www.gravityforms.com
+Based on the original forms.css that ships with Gravity Forms
+
+----------------------------------------------------------------
+*/
+/* Start editing here! */
+
+@mixin form-buttons {
+	background-color: $primary-color;
+	color: #fff;
+	font-weight: bold;
+	margin: 0 10px 10px 0;
+	cursor: pointer;
+	border: 0;
+	padding: 5px 15px;
+}
+/* Some variables for the warning colours */
+$description: #afafaf;
+$warning: #d99a9a;
+$warning-bg: #fcf3f3;
+/* Stop editing here! */
+
+.gform_wrapper {
+	overflow: inherit;
+	margin: 10px 0;
+	max-width: 98%;
+	.columns {
+		padding-left: 0;
+	}
+	.ginput_right,
+	.ginput_left {
+		select {
+			width: 100%;
+		}
+	}
+	ul {
+		padding-left: 0;
+		width: 100%;
+	}
+
+	ul li {
+
+		&:before {
+			display: none;
+		}
+	}
+
+	input {
+		padding: 15px !important;
+		height: 50px;
+	}
+	h1,
+	h2,
+	h3 {
+		font-weight: normal;
+		border: none;
+		outline: none;
+		background: none;
+	}
+	:focus {
+		outline: 0;
+	}
+	form {
+		text-align: left;
+	}
+	input[type=text],
+	input[type=url],
+	input[type=email],
+	input[type=tel],
+	input[type=number],
+	input[type=password] {
+		outline-style: none;
+		font-family: inherit;
+		letter-spacing: normal;
+		@include radius($input-border-radius);
+	}
+	input[type=image] {
+		border: none !important;
+		padding: 0 !important;
+		width: auto !important;
+	}
+	input[type="submit"]{
+		@include form-buttons;
+	}
+	textarea {
+		outline-style: none;
+		font-family: inherit;
+		letter-spacing: normal;
+		resize: none;
+		@include radius($input-border-radius);
+	}
+	ul {
+		margin: 0;
+		list-style-type: none;
+		text-indent: 0;
+	}
+	li,
+	form li {
+		list-style-type: none !important;
+		list-style-image: none !important;
+		list-style: none !important;
+		overflow: visible;
+		background: none;
+		padding-left: 0 !important;
+	}
+	ul li.gfield {
+		clear: both
+	}
+	ul.gfield_radio li,
+	ul.gfield_checkbox li {
+		overflow: hidden;
+	}
+	ul.right_label li,
+	form ul.right_label li,
+	ul.left_label li,
+	form ul.left_label li {
+		margin-bottom: 14px;
+	}
+	ul.right_label li ul.gfield_radio li,
+	form ul.right_label li ul.gfield_radio li,
+	ul.left_label li ul.gfield_radio li,
+	form ul.left_label li ul.gfield_radio li,
+	ul.right_label li ul.gfield_checkbox li,
+	form ul.right_label li ul.gfield_checkbox li,
+	ul.left_label li ul.gfield_checkbox li,
+	form ul.left_label li ul.gfield_checkbox li {
+		margin-bottom: 10px;
+	}
+	ul li:before,
+	ul li:after,
+	ul.gform_fields {
+		padding: 0;
+		margin: 0;
+		overflow: visible;
+	}
+	select {
+		font-family: inherit;
+		letter-spacing: normal;
+		height: auto;
+		border: 1px solid #cccccc;
+		box-shadow: none;
+		background-color: #f5f5f5;
+		margin: rem-calc(0 0 10 0);
+		padding: rem-calc(15 5);
+	}
+	select[multiple] {
+		padding: 0;
+	}
+	.inline {
+		display: inline !important;
+	}
+	.gform_heading {
+		width: 98%;
+		margin-bottom: 18px;
+	}
+	.gfield_time_hour,
+	.gfield_time_minute,
+	.gfield_date_month,
+	.gfield_date_day,
+	.gfield_date_year,
+	.gfield_time_ampm {
+		width: 70px;
+		vertical-align: 1em;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.gfield_date_month,
+	.gfield_date_day,
+	.gfield_date_year {
+		margin-right: 12px;
+	}
+	.gfield_date_dropdown_month,
+	.gfield_date_dropdown_day,
+	.gfield_date_dropdown_year {
+		vertical-align: top;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.gfield_date_dropdown_month,
+	.gfield_date_dropdown_day,
+	.gfield_date_dropdown_year {
+		margin-right: 6px;
+	}
+	.gform_wrapper .gfield_time_ampm {
+		vertical-align: top;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.gfield_time_ampm select {
+		width: 70px !important;
+		top: -37px;
+		position: relative;
+	}
+	.gfield_time_hour input,
+	.gfield_time_minute input,
+	.gfield_date_month input,
+	.gfield_date_day input,
+	.gfield_date_year input {
+		width: 70% !important;
+		float: left;
+		margin-right: 8px;
+		margin-bottom: 4px;
+	}
+	.gfield_date_month,
+	.gfield_date_day,
+	.gfield_date_year {
+		width: 50px;
+		float: left;
+	}
+	.gfield_date_month input,
+	.gfield_date_day input,
+	.gfield_date_year input {
+		width: 85% !important;
+	}
+	.field_hover {
+		border: 1px dashed #2175A9;
+		cursor: pointer;
+	}
+	.field_selected {
+		background-color: #DFEFFF;
+		border: 1px solid #C2D7EF;
+	}
+	.field_name_first,
+	.field_name_last {
+		width: 50%;
+		float: left;
+	}
+	.field_name_first input,
+	.ginput_complex .ginput_left input {
+		width: 100% !important;
+	}
+	.field_name_last input {
+		width: 93% !important;
+	}
+	.datepicker {
+		width: 105px !important;
+	}
+	.ginput_complex {
+		overflow: hidden;
+	}
+	.ginput_complex .ginput_left  {
+		width: 100%;
+		float: left;
+		margin-left: 2px;
+	}
+	.ginput_complex .ginput_left {
+		width: 50%;
+		float: left;
+	}
+	.ginput_complex .ginput_right {
+		width: 49%;
+		float: right;
+	}
+	.ginput_complex .large-6 .ginput_left,
+	.ginput_complex .large-6 .ginput_right
+	{
+		width: 100%;
+	}
+	.gfield_error .ginput_complex .ginput_left,
+	.gfield_error .ginput_complex .ginput_right {
+		width: 50%;
+	}
+	.gfield_error .ginput_complex .ginput_left input {
+		width: 90% !important;
+	}
+	.gfield_error .ginput_complex .ginput_right input {
+		width: 100% !important;
+	}
+	.ginput_complex input,
+	.ginput_complex select {
+		width: 100% !important;
+	}
+	.ginput_complex .ginput_right input,
+	.ginput_complex .ginput_right select {
+		width: 100% !important;
+	}
+	.ginput_complex label,
+	.gfield_time_hour label,
+	.gfield_time_minute label,
+	.gfield_date_month label,
+	.gfield_date_day label,
+	.gfield_date_year label,
+	.instruction {
+		display: block;
+		margin: 3px 0;
+		letter-spacing: 0.5pt;
+	}
+	.ginput_complex .name_prefix {
+		float: left;
+		width: 30px !important;
+		margin-right: 14px;
+	}
+	.ginput_complex .name_suffix {
+		float: left;
+		width: 30px !important;
+	}
+	.ginput_complex .name_first,
+	.ginput_complex .name_last {
+		float: left;
+		width: 100px;
+		margin-right: 8px;
+	}
+	.top_label .gfield_label {
+		margin: 10px 0 4px 0;
+		display: -moz-inline-stack;
+		line-height: 1.3em;
+		clear: both;
+		font-weight: bold;
+	}
+	.left_label .gfield_label {
+		float: left;
+		margin: 0 15px 0 0;
+		width: 29%;
+	}
+	.right_label .gfield_label {
+		float: left;
+		margin: 0 15px 0 0;
+		width: 29%;
+		text-align: right;
+	}
+	.left_label ul.gfield_checkbox,
+	.right_label ul.gfield_checkbox,
+	.left_label ul.gfield_radio,
+	.right_label ul.gfield_radio {
+		margin-left: 32%;
+		overflow: hidden;
+	}
+	.top_label input.small,
+	.top_label select.small {
+		width: 25%;
+	}
+	.top_label input.medium,
+	.top_label select.medium {
+		width: 47%;
+	}
+	.top_label input.medium {
+		padding-right: 2px;
+	}
+	.top_label input.large,
+	.top_label select.large,
+	.top_label textarea.textarea {
+		width: 100%;
+	}
+	.right_label input.small,
+	.right_label select.small,
+	.left_label input.small,
+	.left_label select.small {
+		width: 15%;
+	}
+	.right_label input.medium,
+	.right_label select.medium,
+	.left_label input.medium,
+	.left_label select.medium {
+		width: 35%;
+	}
+	.right_label input.large,
+	.right_label select.large,
+	.left_label input.large,
+	.left_label select.large,
+	textarea.textarea {
+		width: 63%;
+	}
+	.right_label div.ginput_complex,
+	.left_label div.ginput_complex {
+		width: 64%;
+	}
+	h2.gsection_title {
+		margin: 0 !important;
+		padding: 0 !important;
+		letter-spacing: normal !important;
+	}
+	.gsection .gfield_label,
+	h2.gsection_title,
+	h3.gform_title {
+		font-weight: bold;
+		font-size: 1.3em;
+	}
+	h3.gform_title {
+		letter-spacing: normal !important;
+		margin: 10px 0 6px 0;
+	}
+	span.gform_description {
+		font-weight: normal;
+	}
+	h2.gsection_title,
+	.gsection_description,
+	h3.gform_title {
+		width: 98%;
+	}
+	.gsection {
+		border-bottom: 1px dotted #CCC;
+		padding: 0 0 8px 0;
+		margin: 16px 0;
+		clear: both;
+	}
+	ul.gfield_checkbox li input[type=checkbox],
+	ul.gfield_radio li input[type=radio] {
+		width: auto !important;
+	}
+
+	/* radio and checkbox styling - justifies lenghty labels ------------------------------------------------------*/
+
+	.gfield_checkbox li,
+	.gfield_radio li {
+		position: relative;
+	}
+	ul.gfield_checkbox,
+	ul.gfield_radio {
+		margin: 6px 0;
+		padding: 0;
+	}
+	.gfield_checkbox li label,
+	.gfield_radio li label {
+		display: block;
+		margin: 0;
+		padding: 0;
+		width: auto;
+		line-height: 1.5;
+		vertical-align: top;
+	}
+	.gfield_checkbox li input[type=checkbox],
+	.gfield_radio li input[type=radio],
+	.gfield_checkbox li input {
+		float: left;
+		margin-top: 2px;
+		height: auto;
+	}
+	.description,
+	.gfield_description,
+	.gsection_description,
+	.instruction {
+		font-size: 0.85em;
+		line-height: 1.5em;
+		clear: both;
+		font-family: sans-serif;
+		letter-spacing: normal;
+		color: $description;
+	}
+	.description,
+	.gfield_description,
+	.gsection_description {
+		padding: 4px 0 8px 0;
+	}
+	.gfield_description {
+		padding: 10px 0 0 0;
+		width: 99.8%;
+	}
+	.left_label .gfield_description,
+	.right_label .gfield_description {
+		width:63%;
+	}
+	.description_above .gfield_description {
+		padding: 0 0 10px 0;
+	}
+	.gfield_date_year+.gfield_description {
+		padding: 0;
+	}
+	.right_label .gfield_description,
+	.left_label .gfield_description,
+	.left_label .instruction,
+	.right_label .instruction {
+		margin-left: 31%;
+	}
+	.left_label .gsection .gsection_description,
+	.right_label .gsection .gsection_description {
+		margin-left: 0;
+		padding-top: 4px;
+		padding-left: 0;
+		line-height: 1.5em;
+	}
+	.gfield_required {
+		color: $warning;
+		margin-left: 4px;
+	}
+	textarea.small {
+		height: 80px;
+	}
+	textarea.medium {
+		height: 150px;
+	}
+	textarea.large {
+		height: 250px;
+	}
+	li.gfield.gfield_error input,
+	li.gfield.gfield_error textarea,
+	li.gfield.gfield_error select,
+	li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+		margin-bottom: 6px !important;
+		padding: 6px 6px 4px 6px !important;
+		border: 1px solid #C89797;
+	}
+	li.gfield.gfield_creditcard_warning {
+		margin-bottom: 6px !important;
+		padding: 6px 6px 4px 6px !important;
+		border: 1px dashed #C89797;
+	}
+	li.gfield.gfield_creditcard_warning div.gfield_creditcard_warning_message {
+		font-size:1em;
+		font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+		padding: 10px 20px 10px 45px;
+		min-height: 25px;
+		background-image: url(images/stopbanner.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-color: #790000;
+		border-bottom: 1px solid #620101;
+		color: #FFF;
+		text-shadow: 0 1px 1px rgba(0,0,0,0.50);
+		line-height: 1.3em;
+		letter-spacing: 0.2pt;
+	}
+	.ginput_complex .ginput_left,
+	.ginput_complex .ginput_right,
+	.ginput_complex .ginput_full {
+		min-height: 43px;
+		display: block;
+	}
+	.ginput_complex .ginput_full input {
+		width: 98% !important;
+	}
+	.gfield_checkbox li,
+	.gfield_radio li {
+		margin: 0 0 8px 0;
+		line-height: 1.3em;
+	}
+	ul.gfield_radio li input[type="radio"]:checked+label,
+	ul.gfield_checkbox li input[type="checkbox"]:checked+label {
+			font-weight: bold;
+	}
+	.top_label .gfield_error .ginput_container {
+		max-width: 99%;
+	}
+	.top_label .gfield_error {
+		width: 97%;
+	}
+	.top_label .gfield_error input.large,
+	.top_label .gfield_error select.large,
+	.top_label .gfield_error textarea.textarea {
+		width: 100%;
+	}
+	.right_label .gfield_error input.large,
+	.right_label .gfield_error select.large,
+	.right_label .gfield_error textarea.textarea,
+	.left_label .gfield_error input.large,
+	.left_label .gfield_error select.large,
+	.left_label .gfield_error textarea.textarea {
+		width: 66%;
+	}
+	.gfield_error .gfield_label {
+		color: $warning;
+	}
+	li.gfield.gfield_error.gfield_contains_required {
+		margin-top: 12px;
+		margin-bottom: 12px !important;
+	}
+	li.gfield.gfield_error.gfield_contains_required label.gfield_label,
+	li.gfield.gfield_error.gfield_contains_required div.ginput_container  {
+		margin-top: 12px;
+	}
+	.validation_error {
+		color: $warning;
+		background-color: $warning-bg;
+		border: 1px solid $warning;
+		line-height: 1.5em;
+		margin-bottom: 16px;
+		padding: 1em;
+	}
+	.validation_message {
+		color: $warning;
+		letter-spacing: normal;
+	}
+	.gform_footer {
+		padding: 16px 0 10px 0;
+		margin: 16px 0 0 0;
+		clear: both;
+	}
+	.gform_footer.right_label,
+	.gform_footer.left_label {
+		padding: 16px 0 10px 31%;
+	}
+	.gform_footer input.button,
+	.gform_footer input[type=submit] {
+		font-size: 1em;
+	}
+	.gform_footer input[type=image] {
+		padding: 0;
+		width: auto !important;
+		background: none !important;
+		border: none !important;
+	}
+	input.datepicker.datepicker_with_icon {
+		margin-right: 4px !important;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+
+	/* tame those pesky hidden fields ------------------------------------------------------*/
+
+	input[type=hidden],
+	input.gform_hidden,
+	.gform_hidden,
+	.gf_hidden {
+		display: none !important;
+		max-height: 1px !important;
+		overflow: hidden;
+	}
+	.ginput_full br,
+	.ginput_left br,
+	.ginput_right br {
+		display: none !important;
+	}
+
+	/* additional spacing and padding tweaks ------------------------------------------------------*/
+
+	ul.gfield_checkbox li,
+	ul.gfield_radio li {
+		padding: 0 !important;
+	}
+	ul.gfield_radio li input+input {
+		margin-left: 4px;
+		max-width: 96%;
+	}
+	ul.gfield_radio li input[value=gf_other_choice] {
+		margin-right: 6px;
+		margin-top: 4px;
+	}
+	.top_label .gfield_description {
+		padding: 10px 0 0 0;
+	}
+	.top_label .gfield_description.validation_message,
+	.gfield_description.validation_message {
+		padding: 10px 0 10px 0 !important;
+	}
+	.ginput_container + .gfield_description.validation_message {
+		margin-top: 6px;
+	}
+	.ginput_container.ginput_list {
+		margin-top: 6px;
+	}
+	.ginput_container.ginput_list + .gfield_description.validation_message {
+		margin-top: 0;
+	}
+
+	/* HTML field default margins -----------------------------------------------------*/
+
+	.left_label li.gfield_html_formatted,
+	.right_label li.gfield_html_formatted {
+		margin-left: 32%;
+	}
+	.gfield_html.gfield_no_follows_desc {
+		margin-top: 10px;
+	}
+
+	/* ajax forms ------------------------------------------------------*/
+
+	.gform_ajax_spinner {
+		padding-left: 10px;
+	}
+	/* Really Simple Captcha ------------------------------------------------------*/
+
+	.gfield_captcha_input_container {
+		padding-top: 3px;
+	}
+	.simple_captcha_small input {
+		width: 100px;
+	}
+	.simple_captcha_medium input {
+		width: 150px;
+	}
+	.simple_captcha_large input {
+		width: 200px;
+	}
+	.left_label .simple_captcha_small,
+	.right_label .simple_captcha_small,
+	.left_label .simple_captcha_medium,
+	.right_label .simple_captcha_medium,
+	.left_label .simple_captcha_large,
+	.right_label .simple_captcha_large {
+		margin-left: 32%;
+	}
+	.gfield_captcha_container img.gfield_captcha {
+		border: none !important;
+		background: none !important;
+		float: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	/* math challenge ------------------------------------------------------*/
+
+	.math_small input {
+		width: 69px;
+	}
+	.math_medium input {
+		width: 90px;
+	}
+	.math_large input {
+		width: 108px;
+	}
+	.left_label .math_small,
+	.right_label .math_small,
+	.left_label .math_medium,
+	.right_label .math_medium,
+	.left_label .math_large,
+	.right_label .math_large {
+		margin-left: 32%;
+	}
+
+	/* textarea character counter ------------------------------------------------------*/
+
+	div.charleft {
+		font-size: 11px;
+		margin-top: 4px;
+		color: #B7B7B7;
+		width: 92% !important;
+		white-space: nowrap !important;
+	}
+	div.charleft[style] {
+		width: 92% !important;
+	}
+	.left_label div.charleft,
+	.right_label div.charleft {
+		margin-left: 32%;
+	}
+	div.charleft.warningTextareaInfo {
+		color: #A1A1A1;
+	}
+	li.gf_hide_charleft div.charleft  {
+		display: none !important;
+	}
+
+	/* pricing fields ------------------------------------------------------*/
+
+	.ginput_price {
+		//@include opacity(0.7);
+	}
+	span.ginput_total {
+		color: #060;
+		font-size: 1.2em;
+	}
+	.top_label span.ginput_total {
+		margin: 8px 0;
+	}
+	span.ginput_product_price_label {
+		margin-right: 2px;
+	}
+	span.ginput_product_price {
+		color: #900;
+	}
+	span.ginput_quantity_label {
+		margin-left: 10px;
+		margin-right: 2px;
+	}
+	input.ginput_quantity {
+		width: 40px;
+	}
+
+	/* multi-page form paging ------------------------------------------------------*/
+
+	.gform_page_footer {
+		margin: 20px 0;
+		width: 99%;
+		border-top: 1px dotted #CCC;
+		padding: 16px 0 0 0;
+	}
+	.gform_page_footer .button.gform_button  {
+		margin-right: 10px;
+	}
+
+	/* multi-page progress bar  ------------------------------------------------------*/
+
+	.gf_progressbar_wrapper {
+		clear: both;
+		width: 99%;
+		margin: 0 0 8px 0;
+		padding: 0 0 16px 0;
+		border-bottom: 1px dotted #CCC;
+	}
+	.gf_progressbar_wrapper h3.gf_progressbar_title {
+		font-size: 13px;
+		line-height: 1em !important;
+		margin: 0 0 6px 0 !important;
+		padding: 0 !important;
+		clear: both;
+		//@include opacity(0.6);
+	}
+	.gf_progressbar {
+		width: 99%;
+		height: 20px;
+		overflow: hidden;
+		line-height: 20px !important;
+		border: 1px solid #ACACAC;
+		border-right: 1px solid #959595;
+		border-bottom: 1px solid #959595;
+		background-image: url(images/percentbar_bg.png);
+		background-repeat: repeat-x;
+		background-position: bottom;
+		background-color: #FFF;
+	}
+	.gf_progressbar_percentage {
+		height: 20px;
+		text-align: right;
+		font-family: helvetica,arial,sans-serif;
+		font-size: 13px !important;
+		text-shadow: 0 1px 1px rgba(0,0,0,0.50);
+	}
+	.gf_progressbar_percentage span {
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+	.gf_progressbar_percentage.percentbar_0 span {
+		color: #959595;
+		text-shadow: none;
+	}
+	.percentbar_blue {
+		background-image: url(images/percentbar_blue.png);
+		background-repeat: repeat-x;
+		background-color: #0072BC;
+		color: #FFF;
+	}
+	.percentbar_gray {
+		background-image: url(images/percentbar_gray.png);
+		background-repeat: repeat-x;
+		background-color: #666;
+		color: #FFF;
+	}
+	.percentbar_green {
+		background-image: url(images/percentbar_green.png);
+		background-repeat: repeat-x;
+		background-color: #94DC21;
+		color: #FFF;
+	}
+	.percentbar_orange {
+		background-image: url(images/percentbar_orange.png);
+		background-repeat: repeat-x;
+		background-color: #DC7021;
+		color: #FFF;
+	}
+	.percentbar_red {
+		background-image: url(images/percentbar_red.png);
+		background-repeat: repeat-x;
+		background-color: #DC2521;
+		color: #FFF;
+	}
+	.percentbar_custom {
+		background-image: url(images/percentbar_custom.png);
+		background-repeat: repeat-x;
+	}
+
+	/* multi-page steps ------------------------------------------------------*/
+
+	.gf_page_steps {
+		width: 99%;
+		margin: 0 0 8px 0;
+		padding: 0 0 4px 0;
+		border-bottom: 1px dotted #CCC;
+	}
+	.gf_step {
+		width: auto !important;
+		margin: 0 10px 10px 0;
+		font-size: 14px;
+		height: 20px;
+		line-height: 20px !important;
+		//@include opacity(0.4);
+		font-family: arial,sans-serif;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.gf_step span.gf_step_number {
+		font-size: 20px;
+		float: left;
+		font-family: arial,sans-serif;
+	}
+	.gf_step.gf_step_active {
+		//@include opacity(1.0);
+	}
+	.gf_step_clear {
+		display: block;
+		clear: both;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	/* password strength indicator -----------------------------------------------------------------*/
+
+	.gfield_password_strength {
+		border: 1px solid #DDD;
+		margin: 0;
+		padding: 3px 5px;
+		text-align: center;
+		width: 200px;
+		background-color: #EEE;
+	}
+	.gfield_password_strength.bad {
+		background-color: #FFB78C;
+		border-color: #FF853C;
+	}
+	.gfield_password_strength.good {
+		background-color: #FFEC8b;
+		border-color: #FC0;
+	}
+	.gfield_password_strength.short,
+	.gfield_password_strength.mismatch {
+		background-color: #FFA0A0;
+		border-color: #f04040;
+	}
+	.gfield_password_strength.strong {
+		background-color: #C3FF88;
+		border-color: #8DFF1C;
+	}
+	/* list fields added in v.1.6 -----------------------------------------------------------------*/
+
+	table.gfield_list {
+		border-spacing: 0;
+		border-collapse:collapse;
+		border: 0;
+	}
+	table.gfield_list td,
+	table.gfield_list th {
+		border: 0;
+		padding: 8px;
+	}
+	table.gfield_list thead th {
+		font-weight: bold;
+		text-align: left;
+	}
+	table.gfield_list tr:hover {
+		background: none;
+	}
+	li.gfield.gfield_error table.gfield_list thead th {
+		color: $warning;
+	}
+	.left_label .gfield_list, .right_label .gfield_list {
+		width: 64%;
+	}
+	.top_label .gfield_list {
+		width: 100%;
+	}
+	.left_label .gf_list_one_column, .right_label .gf_list_one_column {
+		width: 50%;
+	}
+	.top_label .gf_list_one_column {
+		width: 50%;
+	}
+	.gfield_list input{
+		width: 100%;
+	}
+	table.gfield_list td.gfield_list_icons {
+		min-width: 45px !important;
+		padding: 0;
+	}
+
+	/* enhanced UI/select styles added in v.1.6 -----------------------------------------------------------------*/
+
+	select.chzn-select {
+		visibility: hidden;
+		height: 28px !important;
+		min-height: 28px !important;
+	}
+	.chzn-container {
+		font-size: 13px;
+		position: relative;
+		margin-bottom: 4px;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.chzn-container .chzn-drop {
+		background-color: #FFF;
+		border: 1px solid #AAA;
+		border-top: 0;
+		position: absolute;
+		top: 29px;
+		left: 0;
+		//@include box-shadow(0 4px 5px rgba(0,0,0,.15));
+		z-index: 999;
+	}
+	.chzn-container-single .chzn-single {
+		background-color: #FFF;
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #EEE), color-stop(0.5, white));
+		background-image: -webkit-linear-gradient(center bottom, #EEE 0%, white 50%);
+		background-image: -moz-linear-gradient(center bottom, #EEE 0%, white 50%);
+		background-image: -o-linear-gradient(top, #EEE 0%,#FFF 50%);
+		background-image: -ms-linear-gradient(top, #EEE 0%,#FFF 50%);
+		background-image: linear-gradient(top, #EEE 0%,#FFF 50%);
+		border: 1px solid #AAA;
+		display: block; overflow: hidden;
+		white-space: nowrap;
+		position: relative;
+		height: 26px;
+		line-height: 26px;
+		padding: 0 0 0 8px;
+		color: #444;
+		text-decoration: none;
+	}
+	.chzn-container-single .chzn-single span {
+		margin-right: 26px;
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		-o-text-overflow: ellipsis;
+		-ms-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+	}
+	.chzn-container-single .chzn-single div {
+		background-color: #CCC;
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #CCC), color-stop(0.6, #EEE));
+		background-image: -webkit-linear-gradient(center bottom, #CCC 0%, #EEE 60%);
+		background-image: -moz-linear-gradient(center bottom, #CCC 0%, #EEE 60%);
+		background-image: -o-linear-gradient(bottom, #CCC 0%, #EEE 60%);
+		background-image: -ms-linear-gradient(top, #CCC 0%,#EEE 60%);
+		background-image: linear-gradient(top, #CCC 0%,#EEE 60%);
+		border-left: 1px solid #AAA;
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: block;
+		height: 100%;
+		width: 18px;
+	}
+	.chzn-container-single .chzn-single div b {
+		background-image: url(images/chosen-sprite.png);
+		background-position:  0 1px;
+		background-repeat: no-repeat;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.chzn-container-single .chzn-search {
+		padding: 3px 4px;
+		margin: 0;
+		white-space: nowrap;
+	}
+	.chzn-container-single .chzn-search input {
+		background: #FFF url(images/chosen-sprite.png) 100% -20px no-repeat;
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #EEE));
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, -webkit-linear-gradient(center bottom, white 85%, #EEE 99%);
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, -moz-linear-gradient(center bottom, white 85%, #EEE 99%);
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, -o-linear-gradient(bottom, white 85%, #EEE 99%);
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, -ms-linear-gradient(top, #FFF 85%,#EEE 99%);
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, -ms-linear-gradient(top, #FFF 85%,#EEE 99%);
+		background: url(images/chosen-sprite.png) 100% -20px no-repeat, linear-gradient(top, #FFF 85%,#EEE 99%);
+		margin: 1px 0;
+		padding: 4px 20px 4px 5px;
+		outline: 0;
+		border: 1px solid #AAA;
+		font-family: sans-serif;
+		font-size: 1em;
+	}
+	.chzn-container-single .chzn-drop {
+
+	}
+	.chzn-container-multi .chzn-choices {
+		background-color: #FFF;
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #EEE));
+		background-image: -webkit-linear-gradient(center bottom, white 85%, #EEE 99%);
+		background-image: -moz-linear-gradient(center bottom, white 85%, #EEE 99%);
+		background-image: -o-linear-gradient(bottom, white 85%, #EEE 99%);
+		background-image: -ms-linear-gradient(top, #FFF 85%,#EEE 99%);
+		background-image: linear-gradient(top, #FFF 85%,#EEE 99%);
+		border: 1px solid #AAA;
+		margin: 0;
+		padding: 0;
+		cursor: text;
+		overflow: hidden;
+		height: auto !important;
+		height: 1%;
+		position: relative;
+	}
+	.chzn-container-multi .chzn-choices li {
+		float: left;
+		list-style: none;
+	}
+	.chzn-container-multi .chzn-choices .search-field {
+		white-space: nowrap;
+		margin: 0;
+		padding: 0;
+	}
+	.chzn-container-multi .chzn-choices .search-field input {
+		color: #666;
+		background: transparent !important;
+		border: 0 !important;
+		padding: 5px;
+		margin: 1px 0;
+		outline: 0;
+	}
+	.chzn-container-multi .chzn-choices .search-field .default {
+		color: #999;
+	}
+	.chzn-container-multi .chzn-choices .search-choice {
+		background-color: #E4E4E4;
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #E4E4E4), color-stop(0.7, #EEE));
+		background-image: -webkit-linear-gradient(center bottom, #E4E4E4 0%, #EEE 70%);
+		background-image: -moz-linear-gradient(center bottom, #E4E4E4 0%, #EEE 70%);
+		background-image: -o-linear-gradient(bottom, #E4E4E4 0%, #EEE 70%);
+		background-image: -ms-linear-gradient(top, #E4E4E4 0%,#EEE 70%);
+		background-image: linear-gradient(top, #E4E4E4 0%,#EEE 70%);
+		color: #333;
+		border: 1px solid #B4B4B4;
+		line-height: 13px;
+		padding: 3px 19px 3px 6px;
+		margin: 3px 0 3px 5px;
+		position: relative;
+	}
+	.chzn-container-multi .chzn-choices .search-choice span {
+		cursor: default;
+	}
+	.chzn-container-multi .chzn-choices .search-choice-focus {
+		background-color: #D4D4D4;
+	}
+	.chzn-container-multi .chzn-choices .search-choice .search-choice-close {
+		display: block;
+		position: absolute;
+		right: 5px;
+		top: 6px;
+		width: 8px;
+		height: 9px;
+		font-size: 1px;
+		background-image: url(images/chosen-sprite.png);
+		background-position: right top;
+		background-repeat: no-repeat;
+	}
+	.chzn-container-multi .chzn-choices .search-choice .search-choice-close:hover {
+		background-position: right -9px;
+	}
+	.chzn-container-multi .chzn-choices .search-choice-focus .search-choice-close {
+		background-position: right -9px;
+	}
+	.chzn-container .chzn-results {
+		margin: 0 4px 4px 0;
+		max-height: 190px;
+		padding: 0 0 0 4px;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.chzn-container-multi .chzn-results {
+		margin: -1px 0 0;
+		padding: 0;
+	}
+	.chzn-container .chzn-results li {
+		line-height: 80%;
+		padding: 7px 7px 8px;
+		margin: 0;
+		list-style: none;
+	}
+	.chzn-container .chzn-results .active-result {
+		cursor: pointer;
+	}
+	.chzn-container .chzn-results .highlighted {
+		background-color: #F0F0F0;
+	}
+	.chzn-container .chzn-results li em {
+		background-color: #FEFFDE;
+		font-style: normal;
+	}
+	.chzn-container .chzn-results .highlighted em {
+		background: transparent;
+	}
+	.chzn-container .chzn-results .no-results {
+		background-color: #F4F4F4;
+	}
+	.chzn-container .chzn-results .group-result {
+		cursor: default;
+		color: #999;
+		font-weight: bold;
+	}
+	.chzn-container .chzn-results .group-option {
+		padding-left: 20px;
+	}
+	.chzn-container-multi .chzn-drop .result-selected {
+		display: none;
+	}
+	.chzn-container-active .chzn-single {
+
+	}
+	.chzn-container-active .chzn-single-with-drop {
+		border: 1px solid #AAA;
+		background-color: #EEE;
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, white), color-stop(0.5, #EEE));
+		background-image: -webkit-linear-gradient(center bottom, white 0%, #EEE 50%);
+		background-image: -moz-linear-gradient(center bottom, white 0%, #EEE 50%);
+		background-image: -o-linear-gradient(bottom, white 0%, #EEE 50%);
+		background-image: -ms-linear-gradient(top, #FFF 0%,#EEE 50%);
+		background-image: linear-gradient(top, #FFF 0%,#EEE 50%);
+		-webkit-border-bottom-left-radius : 0;
+		-webkit-border-bottom-right-radius: 0;
+		-moz-border-radius-bottomleft : 0;
+		-moz-border-radius-bottomright: 0;
+		border-bottom-left-radius : 0;
+		border-bottom-right-radius: 0;
+	}
+	.chzn-container-active .chzn-single-with-drop div {
+		background: transparent;
+		border-left: none;
+	}
+	.chzn-container-active .chzn-single-with-drop div b {
+		background-position: -18px 1px;
+	}
+	.chzn-container-active .chzn-choices {
+
+	}
+	.chzn-container-active .chzn-choices .search-field input {
+		color: #111 !important;
+	}
+	.chzn-rtl {
+		direction: rtl;
+		text-align: right;
+	}
+	.chzn-rtl .chzn-single {
+		padding-left: 0;
+		padding-right: 8px;
+	}
+	.chzn-rtl .chzn-single span {
+		margin-left: 26px;
+		margin-right: 0;
+	}
+	.chzn-rtl .chzn-single div {
+		left: 0;
+		right: auto;
+		border-left: none;
+		border-right: 1px solid #AAA;
+	}
+	.chzn-rtl .chzn-choices li {
+		float: right;
+	}
+	.chzn-rtl .chzn-choices .search-choice {
+		padding: 3px 6px 3px 19px;
+		margin: 3px 5px 3px 0;
+	}
+	.chzn-rtl .chzn-choices .search-choice .search-choice-close {
+		left: 5px;
+		right: auto;
+		background-position: right top;
+	}
+	.chzn-rtl.chzn-container-single .chzn-results {
+		margin-left: 4px;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 4px;
+	}
+	.chzn-rtl .chzn-results .group-option {
+		padding-left: 0;
+		padding-right: 20px;
+	}
+	.chzn-rtl.chzn-container-active .chzn-single-with-drop div {
+		border-right: none;
+	}
+	.chzn-rtl .chzn-search input {
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, #FFF;
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #EEE));
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, -webkit-linear-gradient(center bottom, white 85%, #EEE 99%);
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, -moz-linear-gradient(center bottom, white 85%, #EEE 99%);
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, -o-linear-gradient(bottom, white 85%, #EEE 99%);
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, -ms-linear-gradient(top, #FFF 85%,#EEE 99%);
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, -ms-linear-gradient(top, #FFF 85%,#EEE 99%);
+		background: url(images/chosen-sprite.png) -38px -20px no-repeat, linear-gradient(top, #FFF 85%,#EEE 99%);
+		padding: 4px 5px 4px 20px;
+	}
+
+	/* ============================================================================ */
+	/* ! CSS Ready Classes ------------------------------------------------------   */
+	/* ============================================================================ */
+
+	/* inline fields ready class ------------------------------------------------------*/
+
+	.top_label li.gfield.gf_inline {
+		vertical-align: top;
+		width: auto !important;
+		margin-right: 14px;
+		float: none !important;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.top_label li.gfield.gf_inline input[type=text].large,
+	.top_label li.gfield.gf_inline input[type=url].large,
+	.top_label li.gfield.gf_inline input[type=email].large,
+	.top_label li.gfield.gf_inline input[type=tel].large,
+	.top_label li.gfield.gf_inline input[type=number].large,
+	.top_label li.gfield.gf_inline input[type=password].large {
+		width: 25.4em !important;
+	}
+	.top_label li.gfield.gf_inline input[type=text].medium,
+	.top_label li.gfield.gf_inline input[type=url].medium,
+	.top_label li.gfield.gf_inline input[type=email].medium,
+	.top_label li.gfield.gf_inline input[type=tel].medium,
+	.top_label li.gfield.gf_inline input[type=number].medium,
+	.top_label li.gfield.gf_inline input[type=password].medium {
+		width: 18.7em !important;
+	}
+	.top_label li.gfield.gf_inline input[type=text].datepicker.medium {
+		width: 6em !important;
+	}
+	.top_label li.gfield.gf_inline input[type=text].small,
+	.top_label li.gfield.gf_inline input[type=url].small,
+	.top_label li.gfield.gf_inline input[type=email].small,
+	.top_label li.gfield.gf_inline input[type=tel].small,
+	.top_label li.gfield.gf_inline input[type=number].small,
+	.top_label li.gfield.gf_inline input[type=password].small {
+		width: 5em !important;
+	}
+	.top_label li.gfield.gf_inline select  {
+		width: auto !important;
+	}
+	.top_label li.gfield.gf_inline textarea {
+		width: 95% !important;
+	}
+	.top_label li.gfield.gf_inline div.gfield_time_hour input[type=text],
+	.top_label li.gfield.gf_inline div.gfield_time_minute input[type=text] {
+		width: 70% !important;
+	}
+	.top_label li.gfield.gf_inline div.gfield_time_hour,
+	.top_label li.gfield.gf_inline div.gfield_time_minute,
+	.top_label li.gfield.gf_inline div.gfield_date_month,
+	.top_label li.gfield.gf_inline div.gfield_date_day,
+	.top_label li.gfield.gf_inline div.gfield_date_year {
+		width: 50px;
+	}
+	.top_label li.gfield.gf_inline div.gfield_time_ampm {
+		width: auto;
+	}
+	li.gf_inline div.ginput_container {
+		white-space: nowrap !important;
+	}
+
+	/* 2 column ready class ------------------------------------------------------*/
+
+	.top_label li.gfield.gf_left_half {
+		margin: 0 0 8px 0;
+		width: 50%;
+	}
+	.top_label li.gfield.gf_right_half {
+		margin: 0 0 8px 0;
+		width: 49%;
+	}
+	.top_label li.gfield.gfield_error.gf_left_half,
+	.top_label li.gfield.gfield_error.gf_right_half {
+		width: 46%;
+	}
+	.top_label li.gfield.gfield_error.gf_right_half {
+		margin-right: 1%;
+	}
+	.top_label li.gfield.gf_left_half {
+		float: left;
+		clear: left !important;
+		@extend .large-6;
+		@extend .columns;
+	}
+	.top_label li.gfield.gf_right_half {
+		float: right;
+		clear: right !important;
+		@extend .large-6;
+		@extend .columns;
+	}
+	.top_label li.gfield.gf_left_half input.medium,
+	.top_label li.gfield.gf_left_half input.large,
+	.top_label li.gfield.gf_left_half select.medium,
+	.top_label li.gfield.gf_left_half select.large,
+	.top_label li.gfield.gf_right_half input.medium,
+	.top_label li.gfield.gf_right_half input.large,
+	.top_label li.gfield.gf_right_half select.medium,
+	.top_label li.gfield.gf_right_half select.large {
+		width: 100%;
+	}
+	.top_label li.gfield.gf_left_half textarea,
+	.top_label li.gfield.gf_right_half textarea {
+		width: 100%;
+	}
+	.top_label li.gfield.gf_left_half input.small,
+	.top_label li.gfield.gf_right_half input.small {
+		width: 35%;
+	}
+	.top_label li.gfield.gf_left_half+li.gsection,
+	.top_label li.gfield.gf_right_half+li.gsection {
+		padding: 16px 0 8px 0;
+	}
+	.top_label li.gfield.gf_left_half+li.gfield.gsection.gf_left_half,
+	.top_label li.gfield.gf_right_half+li.gfield.gsection.gf_left_half,
+	.top_label li.gfield.gf_left_half+li.gfield.gsection.gf_right_half,
+	.top_label li.gfield.gf_right_half+li.gfield.gsection.gf_right_half,
+	.top_label li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_left_half,
+	.top_label li.gfield.gsection.gf_right_half+li.gfield.gsection.gf_left_half,
+	.top_label li.gfield.gsection.gf_right_half+li.gfield.gsection.gf_right_half {
+		padding: 16px 0 8px 0;
+	}
+	.top_label li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_right_half {
+		padding: 0 0 8px 0;
+	}
+	.top_label li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_right_half+li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_right_half {
+		padding: 16px 0 8px 0;
+	}
+	.top_label li.gfield.gf_left_half+li.gfield,
+	.top_label li.gfield.gf_right_half+li.gfield,
+	.top_label li.gfield.gf_left_half+.gform_footer,
+	.top_label li.gfield.gf_right_half+.gform_footer {
+		clear: both;
+	}
+
+	/* 3 column ready class ------------------------------------------------------*/
+
+	.top_label li.gfield.gf_left_third,
+	.top_label li.gfield.gf_middle_third,
+	.top_label li.gfield.gf_right_third {
+		margin: 0 0 8px 0;
+		width: 32%;
+	}
+	.top_label li.gfield.gfield_error.gf_left_third,
+	.top_label li.gfield.gfield_error.gf_middle_third,
+	.top_label li.gfield.gfield_error.gf_right_third {
+		width: 29%;
+	}
+	.top_label li.gfield.gfield_error.gf_right_third {
+		margin-right: 1%;
+	}
+	.top_label li.gfield.gf_left_third {
+		float: left;
+		clear: left !important;
+	}
+	.top_label li.gfield.gf_middle_third {
+		float: left;
+		margin-left: 2%;
+		clear: none !important;
+	}
+	.top_label li.gfield.gfield_error.gf_middle_third {
+		margin-left: 3%;
+	}
+	.top_label li.gfield.gf_right_third {
+		float: right;
+		clear: right !important;
+	}
+	.top_label li.gfield.gf_left_third input.medium,
+	.top_label li.gfield.gf_left_third input.large,
+	.top_label li.gfield.gf_left_third select.medium,
+	.top_label li.gfield.gf_left_third select.large,
+	.top_label li.gfield.gf_middle_third input.medium,
+	.top_label li.gfield.gf_middle_third input.large,
+	.top_label li.gfield.gf_middle_third select.medium,
+	.top_label li.gfield.gf_middle_third select.large,
+	.top_label li.gfield.gf_right_third input.medium,
+	.top_label li.gfield.gf_right_third input.large,
+	.top_label li.gfield.gf_right_third select.medium,
+	.top_label li.gfield.gf_right_third select.large {
+		width: 95%;
+	}
+	.top_label li.gfield.gf_left_third+li.gsection,
+	.top_label li.gfield.gf_right_third+li.gsection {
+		padding: 16px 0 8px 0;
+	}
+	.top_label li.gfield.gf_left_third+li.gfield,
+	.top_label li.gfield.gf_middle_third+li.gfield,
+	.top_label li.gfield.gf_right_third+li.gfield,
+	.top_label li.gfield.gf_left_third+.gform_footer,
+	.top_label li.gfield.gf_middle_third+.gform_footer,
+	.top_label li.gfield.gf_right_third+.gform_footer {
+		clear: both;
+	}
+
+	/* radio/checkbox sub-column ready classes ------------------------------------------------------*/
+
+	li.gfield.gf_list_2col ul.gfield_checkbox li,
+	li.gfield.gf_list_2col ul.gfield_radio li,
+	li.gfield.gf_2col ul.gfield_checkbox li,
+	li.gfield.gf_2col ul.gfield_radio li {
+		width: 50%;
+		float: left;
+		margin: 0 0 8px 0;
+		min-height: 1.8em;
+	}
+	li.gfield.gf_list_3col ul.gfield_checkbox li,
+	li.gfield.gf_list_3col ul.gfield_radio li,
+	li.gfield.gf_3col ul.gfield_checkbox li,
+	li.gfield.gf_3col ul.gfield_radio li {
+		width: 33%;
+		float: left;
+		margin: 0 0 8px 0;
+		min-height: 1.8em;
+	}
+	li.gfield.gf_list_4col ul.gfield_checkbox li,
+	li.gfield.gf_list_4col ul.gfield_radio li {
+		width: 25%;
+		float: left;
+		margin: 0;
+		min-height: 1.8em;
+	}
+	li.gfield.gf_list_5col ul.gfield_checkbox li,
+	li.gfield.gf_list_5col ul.gfield_radio li {
+		width: 20%;
+		float: left;
+		margin: 0;
+		min-height: 1.8em;
+	}
+	li.gfield.gf_list_2col ul.gfield_checkbox,
+	li.gfield.gf_list_2col ul.gfield_radio,
+	li.gfield.gf_list_3col ul.gfield_checkbox,
+	li.gfield.gf_list_3col ul.gfield_radio,
+	li.gfield.gf_list_4col ul.gfield_checkbox,
+	li.gfield.gf_list_4col ul.gfield_radio,
+	li.gfield.gf_list_5col ul.gfield_checkbox,
+	li.gfield.gf_list_5col ul.gfield_radio,
+	li.gfield.gf_2col ul.gfield_checkbox,
+	li.gfield.gf_2col ul.gfield_radio,
+	li.gfield.gf_3col ul.gfield_checkbox,
+	li.gfield.gf_3col ul.gfield_radio {
+		overflow: hidden;
+	}
+
+	/* optional height settings for the radio/checkbox columns */
+
+	li.gfield.gf_list_height_25 ul.gfield_checkbox li,
+	li.gfield.gf_list_height_25 ul.gfield_radio li {
+		height: 25px;
+	}
+	li.gfield.gf_list_height_50 ul.gfield_checkbox li,
+	li.gfield.gf_list_height_50 ul.gfield_radio li {
+		height: 50px;
+	}
+	li.gfield.gf_list_height_75 ul.gfield_checkbox li,
+	li.gfield.gf_list_height_75 ul.gfield_radio li {
+		height: 75px;
+	}
+	li.gfield.gf_list_height_100 ul.gfield_checkbox li,
+	li.gfield.gf_list_height_100 ul.gfield_radio li {
+		height: 100px;
+	}
+	li.gfield.gf_list_height_125 ul.gfield_checkbox li,
+	li.gfield.gf_list_height_125 ul.gfield_radio li {
+		height: 125px;
+	}
+
+	li.gfield.gf_list_height_150 ul.gfield_checkbox li,
+	li.gfield.gf_list_height_150 ul.gfield_radio li {
+		height: 150px;
+	}
+
+	/* radio/checkbox inline list ready classes ------------------------------------------------------*/
+
+	li.gf_list_inline ul.gfield_checkbox li,
+	li.gf_list_inline ul.gfield_radio li {
+		width: auto !important;
+		float: none !important;
+		margin: 0 10px 10px 0;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+
+	/* hide am/pm field ready class ------------------------------------------------------*/
+
+	li.gf_hide_ampm div.gfield_time_ampm {
+		display: none !important;
+	}
+
+	/* scrolling text section break ready class ------------------------------------------------------*/
+
+	li.gsection.gf_scroll_text {
+		height: 180px;
+		width: 96%;
+		overflow: auto;
+		border: 1px solid #CCC;
+		border-bottom: 1px solid #CCC !important;
+	}
+	li.gsection.gf_scroll_text h2.gsection_title {
+		margin: 10px 10px 0 10px !important;
+	}
+	li.gsection.gf_scroll_text .gsection_description {
+		margin: 10px;
+		font-size: 0.8em;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ul li,
+	form div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ul li {
+		list-style-type: disc !important;
+		margin: 0 0 0.5em;
+		overflow: visible;
+		padding-left: 0;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ul,
+	form div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ul {
+		list-style-type: disc !important;
+		margin: 1em 0 1em 1.5em;
+		padding-left: 0;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol li,
+	form div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol li {
+		list-style-type: decimal!important;
+		overflow:visible;
+		margin: 0 0 0.5em;
+		padding-left: 0;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol,
+	form div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol {
+		list-style-type: decimal!important;
+		margin: 1em 0 1.5em 2.0em;
+		padding-left: 0;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul,
+	form div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul li {
+			list-style-type: disc !important;
+			padding-left: 0;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul {
+		margin: 1em 0 1em 1.5em;
+	}
+	form div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul li {
+		margin: 0 0 0.5em;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description dl {
+		margin: 0 0 1.5em 0;
+		padding-left: 0;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description dl dt {
+		font-weight: bold;
+	}
+	div.gform_ul.gform_fields li.gfield.gsection.gf_scroll_text div.gsection_description dl dd {
+		margin: 0 0 1em 1.5em;
+	}
+
+	/* HTML field alert style ready classes  ------------------------------------------------------*/
+
+	li.gfield.gfield_html.gf_alert_green,
+	li.gfield.gfield_html.gf_alert_red,
+	li.gfield.gfield_html.gf_alert_yellow,
+	li.gfield.gfield_html.gf_alert_gray,
+	li.gfield.gfield_html.gf_alert_blue {
+		margin: 20px 0 !important;
+		padding: 20px !important;
+	}
+	li.gfield.gfield_html.gf_alert_green {
+		border: 1px solid #97B48A;
+		background-color: #CBECA0;
+		text-shadow: #DFB 1px 1px;
+		color: #030;
+	}
+	li.gfield.gfield_html.gf_alert_red {
+		border: 1px solid #CFADB3;
+		background-color: #FAF2F5;
+		text-shadow: #FFF 1px 1px;
+		color: #832525;
+	}
+	li.gfield.gfield_html.gf_alert_yellow {
+		border: 1px solid #E6DB55;
+		background-color: #FFFBCC;
+		text-shadow: #FCFAEA 1px 1px;
+		color: #222;
+	}
+	li.gfield.gfield_html.gf_alert_gray {
+		border: 1px solid #CCC;
+		background-color: #EEE;
+		text-shadow: #FFF 1px 1px;
+		color: #424242;
+	}
+	li.gfield.gfield_html.gf_alert_blue {
+		border: 1px solid #a7c2e7;
+		background-color: #D1E4F3;
+		text-shadow: #E0F1FF 1px 1px;
+		color: #314475;
+	}
+
+	/* credit card icons ------------------------------------------------------*/
+
+	.gform_card_icon_container {
+		margin: 8px 0 6px 0;
+		height: 32px;
+	}
+	div.gform_card_icon {
+		margin-right: 4px;
+		text-indent: -9000px;
+		background-image: url(images/gf_creditcard_icons.png);
+		background-repeat: no-repeat;
+		width: 36px;
+		height: 32px;
+		float:left;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_visa {
+		background-position: 0 0;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_visa {
+		background-position: 0 -32px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_visa {
+		background-position: 0 -64px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_mastercard {
+		background-position: -36px 0;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_mastercard {
+		background-position: -36px -32px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_mastercard {
+		background-position: -36px -64px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_amex {
+		background-position: -72px 0;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_amex {
+		background-position: -72px -32px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_amex {
+		background-position: -72px -64px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_discover {
+		background-position: -108px 0;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_discover {
+		background-position: -108px -32px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_discover {
+		background-position: -108px -64px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_maestro {
+		background-position: -144px 0;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_maestro {
+		background-position: -144px -32px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_maestro {
+		background-position: -144px -64px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_jcb {
+		background-position: -180px 0;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_jcb {
+		background-position: -180px -32px;
+	}
+	.gform_card_icon_container.gform_card_icon_style1 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_jcb {
+		background-position: -180px -64px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_visa {
+		background-position: 0 -192px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_visa {
+		background-position: 0 -224px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_visa {
+		background-position: 0 -256px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_mastercard {
+		background-position: -36px -192px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_mastercard {
+		background-position: -36px -224px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_mastercard {
+		background-position: -36px -256px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_amex {
+		background-position: -72px -192px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_amex {
+		background-position: -72px -224px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_amex {
+		background-position: -72px -256px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_discover {
+		background-position: -108px -192px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_discover {
+		background-position: -108px -224px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_discover {
+		background-position: -108px -256px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_maestro {
+		background-position: -144px -192px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_maestro {
+		background-position: -144px -224px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_maestro {
+		background-position: -144px -256px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_jcb {
+		background-position: -180px -192px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_selected.gform_card_icon_jcb {
+		background-position: -180px -224px;
+	}
+	.gform_card_icon_container.gform_card_icon_style2 div.gform_card_icon.gform_card_icon_inactive.gform_card_icon_jcb {
+		background-position: -180px -256px;
+	}
+
+	/* credit card fields ------------------------------------------------------*/
+
+	.ginput_complex .ginput_cardinfo_left,
+	.ginput_complex .ginput_cardinfo_right {
+		min-height: 43px;
+		position: relative;
+		float: left;
+	}
+	.ginput_complex .ginput_cardinfo_left {
+		width: 50%;
+		margin-right: 1%;
+	}
+	.ginput_complex .ginput_cardinfo_right {
+		min-width: 85px !important;
+	}
+	.ginput_complex .ginput_cardinfo_left label,
+	.ginput_complex .ginput_cardinfo_right label {
+		white-space: nowrap !important;
+	}
+	.ginput_complex span.ginput_cardextras {
+		display: block;
+		overflow: hidden;
+	}
+	.ginput_complex .ginput_cardinfo_left span.ginput_card_expiration_container {
+		position: relative;
+		display: block;
+		min-width: 160px !important;
+	}
+	.ginput_complex select.ginput_card_expiration.ginput_card_expiration_month,
+	.ginput_complex select.ginput_card_expiration.ginput_card_expiration_year {
+		width: 48% !important;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	.ginput_complex .ginput_cardinfo_left select.ginput_card_expiration.ginput_card_expiration_month {
+		margin-right: 4px;
+	}
+	.ginput_complex .ginput_cardinfo_right input.ginput_card_security_code {
+		max-width: 50% !important;
+	}
+	.ginput_complex .ginput_cardinfo_right span.ginput_card_security_code_icon {
+		width: 32px;
+		height: 23px;
+		background-image: url(images/gf_creditcard_icons.png);
+		background-repeat: no-repeat;
+		background-position: 0 -128px;
+		position: relative;
+		top: -1px;
+		left: 6px;
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+	/* ================================================================================= */
+	/* ! Browser Specific Rules ------------------------------------------------------   */
+	/* ================================================================================= */
+	&.gf_browser_safari .gform_body ul.gform_fields li.gfield .ginput_container #recaptcha_widget_div #recaptcha_area {
+		width: 99% !important;
+	}
+	&.gf_browser_safari .left_label #recaptcha_area #recaptcha_table,
+	&.gf_browser_safari .right_label #recaptcha_area #recaptcha_table {
+		margin-left: 32%;
+	}
+	&.gf_browser_safari .gfield_checkbox li input[type=checkbox],
+	&.gf_browser_safari .gfield_radio li input[type=radio],
+	&.gf_browser_safari .gfield_checkbox li input {
+		margin-top: 4px;
+	}
+	&.gf_browser_chrome .gform_body ul.gform_fields li.gfield .ginput_container #recaptcha_widget_div #recaptcha_area {
+		width: 99% !important;
+	}
+	&.gf_browser_chrome .left_label #recaptcha_area #recaptcha_table,
+	&.gf_browser_chrome .right_label #recaptcha_area #recaptcha_table {
+		margin-left: 32%;
+	}
+	&.gf_browser_chrome .gfield_checkbox li input[type=checkbox],
+	&.gf_browser_chrome .gfield_radio li input[type=radio],
+	&.gf_browser_chrome .gfield_checkbox li input {
+		margin-top: 4px;
+	}
+	&.gf_browser_gecko ul.gform_fields li.gfield div.ginput_complex span.ginput_left select,
+	&.gf_browser_gecko ul.gform_fields li.gfield div.ginput_complex span.ginput_right select,
+	&.gf_browser_gecko ul.gform_fields li.gfield select {
+		margin-left: 2px;
+	}
+	&.gf_browser_gecko .ginput_complex .ginput_cardinfo_left select.ginput_card_expiration.ginput_card_expiration_month {
+		margin-right: 2px;
+	}
+	&.gf_browser_opera .ginput_complex .ginput_right select {
+		padding: 5px 0 5px;
+		margin-bottom: 5px;
+	}
+	&.gf_browser_opera .gform_body ul.gform_fields li.gfield .ginput_container #recaptcha_widget_div #recaptcha_area {
+		width: 99% !important;
+	}
+	&.gf_browser_opera .left_label #recaptcha_area #recaptcha_table,
+	&.gf_browser_opera .right_label #recaptcha_area #recaptcha_table {
+		margin-left: 32%;
+	}
+	&.gf_browser_ie .gfield_time_hour {
+		width: 80px;
+	}
+	&.gf_browser_ie .gfield_time_minute {
+		width: 70px;
+	}
+	&.gf_browser_ie .gfield_time_ampm {
+		padding-top: 2px;
+	}
+	&.gf_browser_ie .gfield_time_hour input,
+	&.gf_browser_ie .gfield_time_minute input {
+		margin-left: 0;
+	}
+	&.gf_browser_ie .ginput_complex .ginput_left label,
+	&.gf_browser_ie .ginput_complex .ginput_right label {
+		margin: 3px 0 5px 0;
+	}
+	&.gf_browser_ie .gform_footer input.button {
+		padding: 3px;
+	}
+	&.gf_browser_ie ul.top_label .clear-multi {
+		overflow: hidden;
+		clear: both;
+	}
+	&.gf_browser_ie .gfield_radio li {
+		line-height: 1.3em !important;
+	}
+	&.gf_browser_ie .gfield_checkbox li input[type=checkbox],
+	&.gf_browser_ie .gfield_radio li input[type=radio],
+	&.gf_browser_ie .gfield_checkbox li input {
+		margin-top: 0;
+	}
+	&.gf_browser_ie .ginput_complex .ginput_left select,
+	&.gf_browser_ie .ginput_complex .ginput_right select {
+		padding: 2px 0 2px 0;
+	}
+	&.gf_browser_ie .gform_body ul.gform_fields li.gfield .ginput_container #recaptcha_widget_div #recaptcha_area {width: 99%!important}
+	&.gf_browser_ie .left_label #recaptcha_area #recaptcha_table,
+	&.gf_browser_ie .right_label #recaptcha_area #recaptcha_table {
+		margin-left: 32%;
+	}
+	&.gf_browser_ie .ginput_complex .ginput_cardinfo_right span.ginput_card_security_code_icon {
+		position: relative;
+		top: -1px;
+		left: 4px;
+	}
+}
+
+html>body .entry ul {
+	text-indent: 0;
+}
+
+li.gfield + li.gfield.gfield_creditcard_warning {
+	margin-top: 14px !important;
+}
+
+#gforms_confirmation_message {
+	margin: 30px 0;
+	max-width: 99%;
+}
+
+/*
+----------------------------------------------------------------
+
+Gravity Forms Date Picker Styles
+http: //www.gravityforms.com
+updated: January 31, 2014 3:32 PM
+
+Customized styles for the jQuery UI Datepicker 1.9.2
+copyright 2012 jQuery Foundation and other contributors
+Released under the MIT license.
+http://jquery.org/license
+some styles courtesty of http://www.hongkiat.com/
+
+Gravity Forms is a Rocketgenius project
+copyright 2008 - 2014 Rocketgenius Inc.
+http: //www.rocketgenius.com
+
+NOTE: DO NOT EDIT THIS FILE! MAKE ANY MODIFICATIONS IN YOUR
+THEME STYLESHEET. THIS FILE IS REPLACED DURING AUTO-UPDATES
+AND ANY CHANGES MADE HERE WILL BE OVERWRITTEN.
+
+If you need to make extensive customizations,
+copy the contents of this file to your theme
+style sheet for editing. Then, go to the form
+settings page & set the 'output CSS' option
+to no.
+
+----------------------------------------------------------------
+*/
+
+.ui-datepicker {
+	width: 216px;
+	height: auto;
+	margin: 5px auto 0;
+	font: 9pt Arial, sans-serif;
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+
+.ui-datepicker a {
+	text-decoration: none;
+}
+
+.ui-datepicker table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.ui-datepicker-header {
+	background-color: #666; /* set the header background color */
+	color: #e0e0e0;
+	font-weight: bold;
+	-webkit-box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+	-moz-box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+	box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+	text-shadow: 1px -1px 0px #000;
+	line-height: 30px;
+	min-height: 30px !important;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #666;
+}
+
+.ui-datepicker-title {
+	text-align: center;
+}
+
+.ui-datepicker-title select {
+	margin: 2.5% 0 2.5% 2.5%;
+	width: auto;
+	height: auto;
+	padding: rem-calc(0 20 0 10);
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	cursor: pointer;
+	background-image: url('../images/datepicker/arrow.png');
+	background-repeat: no-repeat;
+	line-height: 600%;
+	overflow: hidden;
+}
+
+.ui-datepicker-prev {
+	float: left;
+	background-position: center -30px;
+}
+
+.ui-datepicker-next {
+	float: right;
+	background-position: center 0px;
+}
+
+.ui-datepicker thead {
+	background: #f7f7f7;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMWYxZjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
+	background: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+	background: -o-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+	background: -ms-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+	background: linear-gradient(to bottom,  #f7f7f7 0%,#f1f1f1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f1f1f1',GradientType=0 );
+	border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker th {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 6pt;
+	padding: 5px 0;
+	color: #666666;
+	text-shadow: 1px 0px 0px #fff;
+}
+
+.ui-datepicker tbody td {
+	padding: 0;
+	border-top: 1px solid #bbb;
+	border-right: 1px solid #bbb;
+}
+
+.ui-datepicker tbody td:last-child {
+	border-right: 0px;
+}
+
+.ui-datepicker tbody tr {
+	border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker tbody tr:last-child {
+	border-bottom: 0px;
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: inline-block;
+	font-weight: bold;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	color: #666666;
+	text-shadow: 1px 1px 0px #fff;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+	background: #ededed;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZWRlZGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #ededed 0%, #dedede 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dedede));
+	background: -webkit-linear-gradient(top,  #ededed 0%,#dedede 100%);
+	background: -o-linear-gradient(top,  #ededed 0%,#dedede 100%);
+	background: -ms-linear-gradient(top,  #ededed 0%,#dedede 100%);
+	background: linear-gradient(to bottom,  #ededed 0%,#dedede 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dedede',GradientType=0 );
+	-webkit-box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+	-moz-box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+	box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+	background: #f7f7f7;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+	background: #FFF2AA; /* set the active date background color */
+	border: 1px solid #c19163; /* set the active date border color */
+	color: #666; /* set the active date font color */
+	-webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+	-moz-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+	box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+	text-shadow: 0px 1px 0px #FFF;
+	position: relative;
+}
+
+.ui-datepicker-unselectable .ui-state-default {
+	background: #f4f4f4;
+	color: #b4b3b3;
+}
+
+.ui-datepicker-calendar td:first-child .ui-state-active {
+	width: 29px;
+	margin-left: 0;
+}
+
+.ui-datepicker-calendar td:last-child .ui-state-active {
+	width: 29px;
+	margin-right: 0;
+}
+
+.ui-datepicker-calendar tr:last-child .ui-state-active {
+	height: 29px;
+	margin-bottom: 0;
+}
+
+td.ui-datepicker-unselectable.ui-state-disabled {
+	background-color: #d7d7d7;
+}
+
+table.ui-datepicker-calendar {
+	margin: 0 0 0 0 !important;
+}
+
+body div#ui-datepicker-div[style] {
+	z-index: 9999 !important;
+}
+
+/* hide the honeypot field  ------------------------------------------------------*/
+
+.gform_validation_container,
+.gform_wrapper .gform_validation_container,
+body .gform_wrapper li.gform_validation_container,
+body .gform_wrapper .gform_body ul.gform_fields li.gfield.gform_validation_container,
+body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
+	display: none !important;
+	position: absolute !important;
+	left: -9000px;
+}
+
+/* reset the default list styles for the HTML blocks -----------------------------------------------------------------*/
+
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ul li,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ul li {
+	list-style-type: disc !important;
+	margin: 0 0 0.5em;
+	overflow: visible;
+	padding-left: 0;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ul,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ul {
+	list-style-type: disc !important;
+	margin: 1em 0 1em 1.5em;
+	padding-left: 0;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ol li,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ol li {
+	list-style-type: decimal!important;
+	overflow:visible;
+	margin: 0 0 0.5em;
+	padding-left: 0;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ol,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ol {
+	list-style-type: decimal!important;
+	margin: 1em 0 1.5em 2.0em;
+	padding-left: 0;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ol li ul,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ol li ul li {
+    list-style-type: disc !important;
+    padding-left: 0;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ol li ul {
+	margin: 1em 0 1em 1.5em;
+}
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ol li ul li {
+	margin: 0 0 0.5em;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl {
+	margin: 0 0 1.5em 0;
+	padding-left: 0;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dt {
+	font-weight: bold;
+}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html dl dd {
+	margin: 0 0 1em 1.5em;
+}
+
+.gfield_icon_disabled {
+	cursor: default !important;
+	//@include opacity(0.6);
+}
+
+/* Safari specific rules ------------------------------------------------------*/
+
+.entry .gform_wrapper.gf_browser_safari ul li:before,
+.entry .gform_wrapper.gf_browser_safari ul li:after {
+	content: "";
+}
+
+/* Chrome specific rules ------------------------------------------------------*/
+
+.gform_wrapper.gf_browser_chrome ul li:before,
+.gform_wrapper.gf_browser_chrome ul li:after,
+.entry .gform_wrapper.gf_browser_chrome ul li:before,
+.entry .gform_wrapper.gf_browser_chrome ul li:after {
+	content: none;
+}
+
+/* Firefox specific rules ------------------------------------------------------*/
+
+.gform_wrapper.gf_browser_gecko ul li:before,
+.gform_wrapper.gf_browser_gecko ul li:after,
+.entry .gform_wrapper.gf_browser_gecko ul li:before,
+.entry .gform_wrapper.gf_browser_gecko ul li:after {
+	content: none;
+}
+
+/* Opera specific rules ------------------------------------------------------*/
+
+.gform_wrapper.gf_browser_opera ul li:before,
+.gform_wrapper.gf_browser_opera ul li:after,
+.entry .gform_wrapper.gf_browser_opera ul li:before,
+.entry .gform_wrapper.gf_browser_opera ul li:after {
+	content: none;
+}
+
+/* IE specific rules ------------------------------------------------------*/
+
+.gform_wrapper.gf_browser_ie ul li:before,
+.gform_wrapper.gf_browser_ie ul li:after,
+.entry .gform_wrapper.gf_browser_ie ul li:before,
+.entry .gform_wrapper.gf_browser_ie ul li:after {
+	content: none;
+}
+
+/* iPhone specific rules ------------------------------------------------------*/
+
+.gform_wrapper.gf_browser_iphone ul li:before,
+.gform_wrapper.gf_browser_iphone ul li:after,
+.entry .gform_wrapper.gf_browser_iphone ul li:before,
+.entry .gform_wrapper.gf_browser_iphone ul li:after {
+	content: none;
+}
+
+/* rules for other unknown browsers ------------------------------------------------------*/
+
+.gform_wrapper.gf_browser_unknown ul li:before,
+.gform_wrapper.gf_browser_unknown ul li:after,
+.entry .gform_wrapper.gf_browser_unknown ul li:before,
+.entry .gform_wrapper.gf_browser_unknown ul li:after {
+	content: none;
+}
+
+/* rtl language support ------------------------------------------------------*/
+
+body.rtl .gform_wrapper ul li,
+body.rtl .gform_wrapper ul li.gfield,
+body.rtl .gform_wrapper ul li.gfield.gfield_html,
+body.rtl .gform_wrapper ul li.gfield input,
+body.rtl .gform_wrapper ul li.gfield textarea,
+body.rtl .gform_wrapper textarea,
+body.rtl .gform_wrapper ul li.gfield select,
+body.rtl .gform_wrapper select,
+body.rtl .gform_wrapper input[type="text"],
+body.rtl .gform_wrapper input[type="email"],
+body.rtl .gform_wrapper input[type="password"],
+body.rtl .gform_wrapper input[type="url"],
+body.rtl .gform_wrapper input[type="tel"],
+body.rtl .gform_wrapper input[type="submit"],
+body.rtl .gform_wrapper input[type="button"],
+body.rtl .gform_wrapper button,
+body.rtl .gform_wrapper table tr td.gfield_list_icons,
+body.rtl .gform_wrapper div.validation_error,
+body.rtl .gform_wrapper h3.gform_title,
+body.rtl .gform_wrapper span.gform_description,
+body.rtl .gform_wrapper .gform_footer,
+body .gform_wrapper.gf_rtl_wrapper ul li,
+body .gform_wrapper.gf_rtl_wrapper ul li.gfield,
+body .gform_wrapper.gf_rtl_wrapper ul li.gfield.gfield_html,
+body .gform_wrapper.gf_rtl_wrapper ul li.gfield input,
+body .gform_wrapper.gf_rtl_wrapper ul li.gfield textarea,
+body .gform_wrapper.gf_rtl_wrapper textarea,
+body .gform_wrapper.gf_rtl_wrapper ul li.gfield select,
+body .gform_wrapper.gf_rtl_wrapper select,
+body .gform_wrapper.gf_rtl_wrapper input[type="text"],
+body .gform_wrapper.gf_rtl_wrapper input[type="email"],
+body .gform_wrapper.gf_rtl_wrapper input[type="password"],
+body .gform_wrapper.gf_rtl_wrapper input[type="url"],
+body .gform_wrapper.gf_rtl_wrapper input[type="tel"],
+body .gform_wrapper.gf_rtl_wrapper input[type="submit"],
+body .gform_wrapper.gf_rtl_wrapper input[type="button"],
+body .gform_wrapper.gf_rtl_wrapper button,
+body .gform_wrapper.gf_rtl_wrapper table tr td.gfield_list_icons,
+body .gform_wrapper.gf_rtl_wrapper div.validation_error,
+body .gform_wrapper.gf_rtl_wrapper h3.gform_title,
+body .gform_wrapper.gf_rtl_wrapper span.gform_description,
+body .gform_wrapper.gf_rtl_wrapper .gform_footer {
+	text-align: right !important;
+	direction: rtl !important;
+}
+body.rtl .gform_wrapper .gfield_checkbox li input[type="checkbox"],
+body.rtl .gform_wrapper .gfield_radio li input[type="radio"],
+body.rtl .gform_wrapper .gfield_checkbox li input,
+body .gform_wrapper.gf_rtl_wrapper .gfield_checkbox li input[type="checkbox"],
+body .gform_wrapper.gf_rtl_wrapper .gfield_radio li input[type="radio"],
+body .gform_wrapper.gf_rtl_wrapper .gfield_checkbox li input {
+    float: right !important;
+}
+body.rtl .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ol li,
+body.rtl .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ol li,
+body.rtl .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ul li,
+body.rtl .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ul li,
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ol li,
+body .gform_wrapper.gf_rtl_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ol li,
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ul li,
+body .gform_wrapper.gf_rtl_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ul li {
+    margin: 0 1.5em 0 0 !important;
+    direction: rtl !important;
+}
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html table {
+	direction: rtl !important;
+}
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html table th,
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html table td,
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html p,
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html span,
+body .gform_wrapper.gf_rtl_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html blockquote {
+	text-align: right !important;
+	direction: rtl !important;
+}
+body.rtl .gform_wrapper table.gfield_list th,
+body.rtl .gform_wrapper table.gfield_list td,
+body .gform_wrapper.gf_rtl_wrapper table.gfield_list th,
+body .gform_wrapper.gf_rtl_wrapper table.gfield_list td {
+    padding: 0 !important;
+}
+body .gform_wrapper.gf_rtl_wrapper table.gfield_list {
+	direction: rtl !important;
+}
+body .gform_wrapper.gf_rtl_wrapper table.gfield_list thead th {
+	text-align: right !important;
+}
+body.rtl .gform_wrapper table input,
+body .gform_wrapper.gf_rtl_wrapper table input {
+    float: right !important;
+}
+body.rtl .gform_wrapper.gf_browser_gecko .top_label input[type="file"],
+body.rtl .gform_wrapper.gf_browser_gecko .left_label input[type="file"],
+body.rtl .gform_wrapper.gf_browser_gecko .right_label input[type="file"],
+body .gform_wrapper.gf_rtl_wrapper.gf_browser_gecko .top_label input[type="file"],
+body .gform_wrapper.gf_rtl_wrapper.gf_browser_gecko .left_label input[type="file"],
+body .gform_wrapper.gf_rtl_wrapper.gf_browser_gecko .right_label input[type="file"] {
+    width: 55% !important;
+    direction: rtl !important;
+}
+body.rtl .gform_wrapper.recaptchatable #recaptcha_response_field,
+body .gform_wrapper.gf_rtl_wrapper .recaptchatable #recaptcha_response_field {
+    position: static !important;
+}
+body.rtl .gform_wrapper .chzn-container-multi ul.chzn-choices li.search-choice,
+body .gform_wrapper.gf_rtl_wrapper .chzn-container-multi ul.chzn-choices li.search-choice {
+	float: right !important;
+	margin: 3px 5px 3px 0 !important;
+}
+body.rtl .gform_wrapper .chzn-container ul.chzn-choices li.search-field,
+body .gform_wrapper.gf_rtl_wrapper .chzn-container ul.chzn-choices li.search-field {
+	float: right !important;
+}
+body.rtl .gform_wrapper .left_label .gfield_label,
+body.rtl .gform_wrapper .right_label .gfield_label,
+body .gform_wrapper.gf_rtl_wrapper .left_label .gfield_label,
+body .gform_wrapper.gf_rtl_wrapper .right_label .gfield_label {
+    	float: right !important;
+    	margin: 0 0 0 15px !important;
+}
+body.rtl .gform_wrapper .right_label .gfield_label,
+body .gform_wrapper.gf_rtl_wrapper .right_label .gfield_label {
+	text-align: left !important;
+}
+body.rtl .gform_wrapper .right_label .gfield_description,
+body.rtl .gform_wrapper .left_label .gfield_description,
+body.rtl .gform_wrapper .left_label .instruction,
+body.rtl .gform_wrapper .right_label .instruction,
+body .gform_wrapper.gf_rtl_wrapper .right_label .gfield_description,
+body .gform_wrapper.gf_rtl_wrapper .left_label .gfield_description,
+body .gform_wrapper.gf_rtl_wrapper .left_label .instruction,
+body .gform_wrapper.gf_rtl_wrapper .right_label .instruction {
+    margin-right: 31% !important;
+    margin-left: 0 !important;
+}
+body.rtl .gform_wrapper .right_label div.ginput_complex,
+body.rtl .gform_wrapper .left_label div.ginput_complex,
+body .gform_wrapper.gf_rtl_wrapper .right_label div.ginput_complex,
+body .gform_wrapper.gf_rtl_wrapper .left_label div.ginput_complex {
+    margin-right: 31% !important;
+    margin-left: 0 !important;
+}
+body.rtl .gform_wrapper .left_label .gfield_description,
+body.rtl .gform_wrapper .right_label .gfield_description,
+body .gform_wrapper.gf_rtl_wrapper .left_label .gfield_description,
+body .gform_wrapper.gf_rtl_wrapper .right_label .gfield_description {
+    padding: 10px 0 10px 0 !important;
+}
+body.rtl .gform_wrapper .left_label li.gfield_html_formatted,
+body.rtl .gform_wrapper .right_label li.gfield_html_formatted,
+body .gform_wrapper.gf_rtl_wrapper .left_label li.gfield_html_formatted,
+body .gform_wrapper.gf_rtl_wrapper .right_label li.gfield_html_formatted {
+    margin-left: 0 !important;
+    margin-right: 32% !important;
+}
+body.rtl .gform_wrapper .gform_footer.right_label,
+body.rtl .gform_wrapper .gform_footer.left_label,
+body .gform_wrapper.gf_rtl_wrapper .gform_footer.right_label,
+body .gform_wrapper.gf_rtl_wrapper .gform_footer.left_label {
+    padding: 16px 31% 10px 0 !important;
+}
+body .gform_wrapper input .large {
+	width: 100% !important;
+}
