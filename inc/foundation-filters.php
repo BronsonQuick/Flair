@@ -452,7 +452,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	//Wrap ZIP in foundation divs
 	$zip = "<div class='" . apply_filters( 'ebisprint_gforms_address_zip_class', 'large-6 columns', $field, $form_id ) . "'>{$zip}</div>";
 
-	$inputs = $address_display_format == "zip_before_city" ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . "</div>" . $country;
+	$inputs = $address_display_format == "zip_before_city" ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
 
 	return "<div class='ginput_complex$class_suffix ginput_container' id='$field_id'>" . $inputs . "</div>";
 
