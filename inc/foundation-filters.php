@@ -615,7 +615,7 @@ function flair_foundation_custom_class( $classes, $field, $form ){
         $classes .= " name";
     }
 	if ( $field["type"] == "textarea" ){
-        $classes .= " large-12 columns";
+        $classes .= " medium-12 columns";
     }
     return $classes;
 }

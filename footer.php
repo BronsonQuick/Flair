@@ -10,7 +10,7 @@
 <!-- Footer -->
 
 <footer class="row">
-	<div class="large-12 columns">
+	<div class="medium-12 columns">
 
 		<?php if ( ! dynamic_sidebar( 'footer-widget-area' ) ) : ?>
 

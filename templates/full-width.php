@@ -12,7 +12,7 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-12 columns content" role="content">
+		<div class="medium-12 columns content" role="content">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 

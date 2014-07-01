@@ -21,7 +21,7 @@ function flair_paging_nav() {
 	?>
 	<nav class="navigation paging-navigation row" role="navigation">
 		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'sennzaversion3' ); ?></h1>
-		<div class="nav-links large-12 columns">
+		<div class="nav-links medium-12 columns">
 
 			<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
 				<?php wp_pagenavi(); ?>
@@ -59,7 +59,7 @@ function flair_post_nav() {
 	?>
 	<nav class="navigation post-navigation row" role="navigation">
 		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'sennzaversion3' ); ?></h1>
-		<div class="nav-links large-12 columns">
+		<div class="nav-links medium-12 columns">
 			<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
 				<?php wp_pagenavi(); ?>
 			<?php } else { ?>

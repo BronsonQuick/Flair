@@ -10,7 +10,7 @@ get_header(); ?>
 	<div class="row">
 
 		<!-- Main Blog Content -->
-		<div class="large-9 columns content" role="content">
+		<div class="medium-9 columns content" role="content">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
