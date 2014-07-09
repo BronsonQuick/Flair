@@ -11,7 +11,7 @@
  * @package Flair Theme
  */
 
-get_header(); ?><!doctype html>
+?><!doctype html>
 <!--[if IE 7]>
 <html class="ie ie7 no-js" <?php language_attributes(); ?>>
 <![endif]-->
