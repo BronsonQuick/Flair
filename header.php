@@ -35,7 +35,7 @@
 </head>
 <body <?php body_class(); ?>>
 <div <?php flair_top_bar( 'contain-to-grid' );?>>
-	<nav class="top-bar" data-topbar>
+	<nav class="top-bar" data-topbar data-options="mobile_show_parent_link: true">
 		<ul class="title-area">
 			<!-- Title Area -->
 			<li class="name">
