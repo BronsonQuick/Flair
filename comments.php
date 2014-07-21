@@ -63,6 +63,6 @@ if ( current_theme_supports( 'remove-comments' ) ) {
 		<p class="no-comments"><?php _e( 'Comments are closed.', 'flair' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php comment_form( array( 'comment_notes_after' => ' ' ) ); ?>
 
 </div><!-- #comments -->
