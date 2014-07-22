@@ -2530,3 +2530,10 @@ body .gform_wrapper.gf_rtl_wrapper .gform_footer.left_label {
 body .gform_wrapper input .large {
 	width: 100% !important;
 }
+
+body .gform_wrapper .top_label {
+	input.medium,
+	select.medium {
+	width: 100% !important;
+	}
+}
