@@ -268,7 +268,7 @@ function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 	ob_start();
 	?>
-	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_website_class', 'row collapse', $field, $form_id ); ?>">
+	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_website_class', 'row collapse url', $field, $form_id ); ?>">
 		<div class="small-3 large-2 columns">
 			<span class="prefix">http://</span>
 		</div>
@@ -291,6 +291,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 
 	ob_start();
 	?>
+	<div class="ginput_complex ginput_container">
 		<?php foreach ( $field['inputs'] as $key => $input ):
 
 			//Cache css id
@@ -298,7 +299,6 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			?>
 			<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
 				<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>"
-					   <?php echo $input['label']; ?>
 			<?php if ( $input['label'] == "First" ) { ?>
 		placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 			<?php }
@@ -306,14 +306,37 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			placeholder="<?php echo apply_filters( 'gform_name_last',__( 'Last', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 			<?php
 			} ?>
+			<label for="input_<?php esc_attr_e( $input_id ); ?>"><?php echo $input['label']; ?></label>
 			</div>
 		<?php endforeach; ?>
+	</div>
 	<?php
 	$output = ob_get_contents();
 	ob_end_clean();
 
 	return $output;
 }
+
+function flair_name_label ( $classes, $field, $form, $input ) {
+
+	// We need to get the form info to see how the labels are aligned
+	$form_info = GFFormsModel::get_form_meta( $form );
+
+	if ( $form_info['labelPlacement'] === 'left_label' ||  $form_info['labelPlacement'] === 'right_label' ) {
+		$classes = str_replace( 'large-6 columns', '', $classes );
+	}
+
+	if ( strpos ( $input['id'], '.3' ) !== false ) {
+			$classes .= " ginput_left";
+	}
+	if ( strpos ( $input['id'], '.6' ) !== false ) {
+		$classes .= " ginput_right";
+	}
+
+	return $classes;
+}
+
+add_filter( 'flair_gforms_name_class', 'flair_name_label', 10, 4 );
 
 function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
@@ -493,7 +516,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	$state_dropdown = sprintf( "<select name='input_%d.4' %s $tabindex %s $state_dropdown_class $state_style>%s</select>", $id, $state_field_id, $disabled_text, GFCommon::get_state_dropdown( $states, $state_value ) );
 
 	$tabindex   = GFCommon::get_tabindex();
-	$state_text = sprintf( "<input type='text' name='input_%d.4' %s value='%s' $tabindex %s $state_text_class $text_style placeholder='" . apply_filters( "gform_address_state_{$form_id}", apply_filters( "gform_address_state", $state_label, $form_id ), $form_id ) . "'/>", $id, $state_field_id, $state_value, $disabled_text );
+	$state_text = sprintf( "<input type='text' name='input_%d.4' %s value='%s' $tabindex %s $state_text_class $text_style placeholder='" . apply_filters( "gform_address_state_{$form_id}", apply_filters( "gform_address_state", $state_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_4' id='input_" . $id . "_4_label'>State / Province / Region</label>", $id, $state_field_id, $state_value, $disabled_text );
 
 	if ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) {
 		return $state_dropdown . $state_text;
@@ -607,6 +630,10 @@ function flair_gform_field_choices( $choices, $field ) {
 add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3);
 
 function flair_foundation_custom_class( $classes, $field, $form ){
+
+	if ( $form['labelPlacement'] === 'left_label' ||  $form['labelPlacement'] === 'right_label' ) {
+		return $classes;
+	}
 
     if ( $field["type"] == "text" || $field["type"] == "email" || $field["type"] == "select" ){
         $classes .= " large-6 columns";
