@@ -697,9 +697,13 @@ $warning-bg: #fcf3f3;
 		margin-left: 4px;
 		max-width: 96%;
 	}
+	ul.gfield_radio li input {
+		margin-left: 2px;
+	}
 	ul.gfield_radio li input[value=gf_other_choice] {
 		margin-right: 6px;
 		margin-top: 4px;
+		margin-left: 2px;
 	}
 	.top_label .gfield_description {
 		padding: 10px 0 0 0;
