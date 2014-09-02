@@ -195,21 +195,21 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 			$validation_message = ( rgget( 'failed_validation', $field ) && ! empty( $field['validation_message'] ) ) ? sprintf( $validation_message, $field['validation_message'] ) : '';
 
 
-			$field_label = $force_frontend_label ? $field["label"] : GFCommon::get_label( $field );
-			if ( rgar( $field, "inputType" ) == "singleproduct" && ! rgempty( $field["id"] . ".1", $value ) ) {
-				$field_label = rgar( $value, $field["id"] . ".1" );
+			$field_label = $force_frontend_label ? $field['label'] : GFCommon::get_label( $field );
+			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . '.1', $value ) ) {
+				$field_label = rgar( $value, $field['id'] . ''.1'' );
 			}
 
-			$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : "input_" . $form_id . "_$id";
+			$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
 
-			$target_input_id = "";
+			$target_input_id = '';
 
-			$required_div = IS_ADMIN || rgar( $field, "isRequired" ) ? sprintf( "<span class='gfield_required'>%s</span>", $field["isRequired"] ? "*" : "" ) : "";
+			$required_div = IS_ADMIN || rgar( $field, 'isRequired' ) ? sprintf( "<span class='gfield_required'>%s</span>", $field['isRequired'] ? "*" : '' ) : '';
 
-			$is_description_above = rgar( $field, "descriptionPlacement" ) == "above";
+			$is_description_above = rgar( $field, 'descriptionPlacement' ) == 'above';
 
 
-			$admin_buttons = IS_ADMIN ? "<div class='gfield_admin_icons'><div class='gfield_admin_header_title'>{$field_type_title} : " . __( "Field ID", "gravityforms" ) . " {$field["id"]}</div>" . $delete_field_link . $duplicate_field_link . "<a class='field_edit_icon edit_icon_collapsed' title='" . __( "click to edit this field", "gravityforms" ) . "'>" . __( "Edit", "gravityforms" ) . "</a></div>" : "";
+			$admin_buttons = IS_ADMIN ? "<div class='gfield_admin_icons'><div class='gfield_admin_header_title'>{$field_type_title} : " . __( 'Field ID', 'gravityforms' ) . " {$field['id']}</div>" . $delete_field_link . $duplicate_field_link . "<a class='field_edit_icon edit_icon_collapsed' title='" . __( 'click to edit this field', 'gravityforms' ) . "'>" . __( 'Edit', 'gravityforms' ) . '</a></div>' : '';
 
 			if ( empty( $target_input_id ) ) {
 				$target_input_id = $field_id;
