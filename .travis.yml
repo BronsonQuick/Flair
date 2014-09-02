@@ -13,16 +13,6 @@ php:
     # Current $required_php_version for WordPress: 5.2.4
     - "5.2"
 
-# Use this to prepare the system to install prerequisites or dependencies.
-# e.g. sudo apt-get update.
-# Failures in this section will result in build status 'errored'.
-
-before_install:
-  - npm install -g grunt-cli
-  - npm install -g bower
-  - npm install && bower install
-  - grunt setup
-
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
 env:
@@ -49,6 +39,14 @@ matrix:
     allow_failures:
         - php: 5.6
     fast_finish: true
+
+# Use this to prepare the system to install prerequisites or dependencies.
+# e.g. sudo apt-get update.
+# Failures in this section will result in build status 'errored'.
+
+before_install:
+  - npm install && bower install
+  - grunt setup
 
 # Use this to prepare your build for testing.
 # e.g. copy database configurations, environment variables, etc.
@@ -86,3 +84,20 @@ before_script:
     - cd $theme_dir
     # After CodeSniffer install you should refresh your path.
     - phpenv rehash
+
+# Run test script commands.
+# Default is specific to project language.
+# All commands must exit with code 0 on success. Anything else is considered failure.
+script:
+    # Search for PHP syntax errors.
+    - find . \( -name '*.php' \) -exec php -lf {} \;
+    # WordPress Coding Standards
+    # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
+    # @link http://pear.php.net/package/PHP_CodeSniffer/
+    # -p flag: Show progress of the run.
+    # -s flag: Show sniff codes in all reports.
+    # -v flag: Print verbose output.
+    # -n flag: Do not print warnings (shortcut for --warning-severity=0)
+    # --standard: Use WordPress as the standard.
+    # --extensions: Only sniff PHP files.
+    - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
