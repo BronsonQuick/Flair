@@ -35,7 +35,7 @@ add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 // Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
 function flair_required_active_nav_class( $classes, $item ) {
-	if ( in_array(  'current_page_item', $classes) === true ) {
+	if ( in_array( 'current_page_item', $classes) === true ) {
 		$classes[] = 'active';
 	}
 
@@ -53,7 +53,7 @@ function flair_page_menu() { ?>
 	<?php
 		wp_list_pages( array(
 		    'walker'   => new Flair_Page_Walker,
-			'title_li' => ''
+			'title_li' => '',
 		));
 	?>
 	</ul>
@@ -94,7 +94,7 @@ class Flair_Page_Walker extends Walker_Page {
 		extract( $args, EXTR_SKIP );
 		$css_class = array( 'page_item', 'page-item-'.$page->ID );
 
-		if( isset( $args['pages_with_children'][ $page->ID ] ) )
+		if ( isset( $args['pages_with_children'][ $page->ID ] ) )
 			$css_class[] = 'page_item_has_children has-dropdown';
 
 		if ( ! empty( $current_page ) ) {
@@ -123,7 +123,7 @@ class Flair_Page_Walker extends Walker_Page {
 			else
 				$time = $page->post_date;
 
-			$output .= " " . mysql2date( $date_format, $time );
+			$output .= ' ' . mysql2date( $date_format, $time );
 		}
 	}
 
@@ -135,7 +135,7 @@ class Flair_Page_Walker extends Walker_Page {
  */
 
 function flair_dequeue_gravity_forms_css() {
-	if	( ! get_option ( 'rg_gforms_disable_css' ) ) {
+	if ( ! get_option ( 'rg_gforms_disable_css' ) ) {
 		update_option( 'rg_gforms_disable_css', TRUE );
 	}
 }
@@ -161,11 +161,8 @@ function flair_gform_form_validation_message( $validation_message, $form ) {
 	$form_validation_msg_classes = 'alert-box alert';
 
 	if ( ! empty( $validation_message ) ) {
-
-
 		//Add Zurb foundation alert class to validation error div
-		$validation_message = preg_replace( "/validation_error/", "{$form_validation_msg_classes}", $validation_message );
-
+		$validation_message = preg_replace( '/validation_error/', "{$form_validation_msg_classes}", $validation_message );
 	}
 
 	return $validation_message;
@@ -183,7 +180,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 		//Change html content for text input and address fields
 		if ( ( $field['type'] === 'text' ) || ( $field['type'] === 'address' ) || ( $field['type'] === 'name' ) || ( $field['type'] === 'website' )  || ( $field['type'] === 'email' ) || ( $field['type'] === 'textarea' ) || $field['type'] === 'select' ) {
 
-			$id = $field["id"];
+			$id = $field['id'];
 
 			//Cache validation message html
 			ob_start();
@@ -195,7 +192,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 			$validation_message = ob_get_contents();
 			ob_end_clean();
 
-			$validation_message = ( rgget( "failed_validation", $field ) && ! empty( $field["validation_message"] ) ) ? sprintf( $validation_message, $field["validation_message"] ) : "";
+			$validation_message = ( rgget( 'failed_validation', $field ) && ! empty( $field['validation_message'] ) ) ? sprintf( $validation_message, $field['validation_message'] ) : '';
 
 
 			$field_label = $force_frontend_label ? $field["label"] : GFCommon::get_label( $field );
