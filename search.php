@@ -21,7 +21,7 @@ get_header(); ?>
 			<?php // Let's give a result count for the search. NB: This might course performance issues on heavy content sites ?>
 				<?php $args = array(
 					's'              => $s,
-					'posts_per_page' => -1
+					'posts_per_page' => -1,
 					); ?>
 				<?php $all_results = new WP_Query( $args ); ?>
 				<?php $search_results = $all_results->post_count; ?>
