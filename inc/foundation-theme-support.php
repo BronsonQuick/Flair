@@ -243,9 +243,9 @@ function flair_interchange_post_thumbnail_html( $html, $post_id, $post_thumbnail
 	$html .= '['. $large[0] .', (large)],';
 	$html .= '['. $large[0] .', (retina)]';
 	$html .= '">';
-	$html .= "<noscript>";
+	$html .= '<noscript>';
 	$html .= "<img src='" . $default[0] . "' />";
-	$html .= "</noscript>";
+	$html .= '</noscript>';
 
 	return $html;
 }
