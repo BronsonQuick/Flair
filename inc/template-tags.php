@@ -210,7 +210,7 @@ function get_flair_top_bar( $class = '' ) {
 	}
 
 	if ( ! empty( $class ) ) {
-		if ( !is_array( $class ) )
+		if ( ! is_array( $class ) )
 			$class = preg_split( '#\s+#', $class );
 		$classes = array_merge( $classes, $class );
 	} else {
