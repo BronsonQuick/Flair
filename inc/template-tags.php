@@ -80,10 +80,10 @@ function flair_posted_on() {
 
 	if ( ! post_password_required() && ( '0' != get_comments_number() ) ) {
 		if ( get_comments_number() > '10' ) {
-			echo "<span class='comment-count more-than-10-comments'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . "</a></span>";
+			echo "<span class='comment-count more-than-10-comments'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
 		}
 		else {
-			echo "<span class='comment-count'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . "</a></span>";
+			echo "<span class='comment-count'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
 		}
 	}
 
