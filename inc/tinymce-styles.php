@@ -43,4 +43,4 @@ function flair_mce_before_init( $init_array ) {
 	}
 	return $init_array;
 }
-add_filter ( 'tiny_mce_before_init', 'flair_mce_before_init' );
+add_filter( 'tiny_mce_before_init', 'flair_mce_before_init' );
