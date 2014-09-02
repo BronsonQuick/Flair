@@ -147,7 +147,6 @@ function flair_dequeue_gravity_forms_css() {
 if ( class_exists( 'GFForms' ) ) {
 	add_action( 'init', 'flair_dequeue_gravity_forms_css' );
 	add_filter( 'gform_validation_message', 'flair_gform_form_validation_message', 10, 2 );
-	add_filter( 'gform_field_choices', 'flair_gform_field_choices', 10, 2);
 }
 /**
  * Adds the Zurb Foundation alert classes to the Gravity Forms errors
@@ -246,9 +245,6 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 				$content = str_replace( "{FIELD}", flair_gform_get_website_field( $field, $value, 0, $form_id ), $field_content );
 
-			}
-			else {
-				$content = str_replace( "{FIELD}", GFCommon::get_field_input( $field, $value, 0, $form_id ), $field_content );
 			}
 
 		}
@@ -530,101 +526,6 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 		}
 	}
 
-}
-
-function flair_gform_field_choices( $choices, $field ) {
-
-	//Init vars
-	$type    = 'radio';
-	$choices = null;
-	$disabled_text = ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) ? "disabled='disabled'" : "";
-
-	if ( ! is_admin() ) {
-
-		//Change html content for text input and address fields
-		if ( ( $field['type'] === 'radio' ) || ( $field['type'] === 'checkbox' ) ) {
-
-			if ( $field['type'] === 'checkbox' ) {
-				$type = 'checkbox';
-			}
-
-			if ( is_array( $field["choices"] ) ) {
-				$choice_id = 0;
-
-				// add "other" choice to choices if enabled
-				if ( rgar( $field, 'enableOtherChoice' ) ) {
-					$other_default_value = GFCommon::get_other_choice_value();
-				}
-
-				//$logic_event = GFCommon::get_logic_event($field, "click");
-				$count = 1;
-
-				foreach ( $field["choices"] as $choice ) {
-					$id = $field["id"] . '_' . $choice_id ++;
-
-					$field_value = ! empty( $choice["value"] ) || rgar( $field, "enableChoiceValue" ) ? $choice["value"] : $choice["text"];
-					$value = $field_value;
-
-					if ( rgget( "enablePrice", $field ) ) {
-						$field_value .= "|" . GFCommon::to_number( rgar( $choice, "price" ) );
-					}
-
-					if ( RG_CURRENT_VIEW != "entry" ) {
-						$checked = rgar( $choice, "isSelected" ) ? "checked='checked'" : "";
-					}
-					else {
-						$checked = RGFormsModel::choice_value_match( $field, $choice, $value ) ? "checked='checked'" : "";
-					}
-
-					$tabindex    = GFCommon::get_tabindex();
-					$label       = sprintf( "%s</label>", $choice["text"] );
-					$input_focus = '';
-
-					// handle "other" choice
-					if ( rgar( $choice, 'isOtherChoice' ) ) {
-
-						$onfocus = ! IS_ADMIN ? 'jQuery(this).prev("input").attr("checked", true); if(jQuery(this).val() == "' . $other_default_value . '") { jQuery(this).val(""); }' : '';
-						$onblur  = ! IS_ADMIN ? 'if(jQuery(this).val().replace(" ", "") == "") { jQuery(this).val("' . $other_default_value . '"); }' : '';
-
-						$input_focus  = ! IS_ADMIN ? "onfocus=\"jQuery(this).next('input').focus();\"" : "";
-						$value_exists = RGFormsModel::choices_value_match( $field, $field["choices"], $value );
-
-						if ( $value == 'gf_other_choice' && rgpost( "input_{$field["id"]}_other" ) ) {
-							$other_value = rgpost( "input_{$field["id"]}_other" );
-						}
-						else {
-							if ( ! $value_exists && ! empty( $value ) ) {
-								$other_value = $value;
-								$value       = 'gf_other_choice';
-								$checked     = "checked='checked'";
-							}
-							else {
-								$other_value = $other_default_value;
-							}
-						}
-						$label = "<input name='input_{$field["id"]}_other' type='text' value='" . esc_attr( $other_value ) . "' onfocus='$onfocus' onblur='$onblur' $tabindex $disabled_text />";
-					}
-
-					$choices .= sprintf( "<li class='gchoice_$id'><label for='choice_%s'><input name='input_%d' type='{$type}' value='%s' %s id='choice_%s' $tabindex %s />&nbsp;%s</li>", $field["id"], $field["id"], esc_attr( $field_value ), $checked, $id, $input_focus, $label );
-
-					if ( IS_ADMIN && RG_CURRENT_VIEW != "entry" && $count >= 5 ) {
-						break;
-					}
-
-					$count ++;
-				}
-
-				$total = sizeof( $field["choices"] );
-				if ( $count < $total ) {
-					$choices .= "<li class='gchoice_total'>" . sprintf( __( "%d of %d items shown. Edit field to view all", "gravityforms" ), $count, $total ) . "</li>";
-				}
-			}
-
-		}
-
-	}
-
-	return $choices;
 }
 
 add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3);
