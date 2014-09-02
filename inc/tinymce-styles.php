@@ -15,7 +15,7 @@ function flair_mce_before_init( $init_array ) {
 	$init_array['preview_styles'] = 'font-family font-size font-weight font-style text-decoration text-transform color background-color padding';
 
 	if ( version_compare( $GLOBALS['wp_version'], '3.8', '<' ) ) {
-		$init_array['theme_advanced_styles'] = "One Half Column=small-6 columns;One Third Column=small-12 medium-4 columns;One Quarter Column=small-6 medium-3 columns";
+		$init_array['theme_advanced_styles'] = 'One Half Column=small-6 columns;One Third Column=small-12 medium-4 columns;One Quarter Column=small-6 medium-3 columns';
 	} else {
 		$style_formats = array(
 			// Each array child is a format with it's own settings
