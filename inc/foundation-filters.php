@@ -100,7 +100,7 @@ class Flair_Page_Walker extends Walker_Page {
 			$css_class[] = 'page_item_has_children has-dropdown';
 		}
 
-		if ( !empty( $current_page ) ) {
+		if ( ! empty( $current_page ) ) {
 			$_current_page = get_post( $current_page );
 			if ( in_array( $page->ID, $_current_page->ancestors ) ) {
 				$css_class[] = 'current_page_ancestor';
@@ -123,7 +123,7 @@ class Flair_Page_Walker extends Walker_Page {
 		/** This filter is documented in wp-includes/post-template.php */
 		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink( $page->ID ) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
 
-		if ( !empty( $show_date ) ) {
+		if ( ! empty( $show_date ) ) {
 			if ( 'modified' == $show_date ) {
 				$time = $page->post_modified;
 			} else {
@@ -142,7 +142,7 @@ class Flair_Page_Walker extends Walker_Page {
  */
 
 function flair_dequeue_gravity_forms_css() {
-	if ( !get_option( 'rg_gforms_disable_css' ) ) {
+	if ( ! get_option( 'rg_gforms_disable_css' ) ) {
 		update_option( 'rg_gforms_disable_css', TRUE );
 	}
 }
@@ -167,7 +167,7 @@ function flair_gform_form_validation_message( $validation_message, $form ) {
 
 	$form_validation_msg_classes = 'alert-box alert';
 
-	if ( !empty( $validation_message ) ) {
+	if ( ! empty( $validation_message ) ) {
 		//Add Zurb foundation alert class to validation error div
 		$validation_message = preg_replace( '/validation_error/', "{$form_validation_msg_classes}", $validation_message );
 	}
@@ -182,7 +182,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 	$force_frontend_label = false;
 
-	if ( !is_admin() ) {
+	if ( ! is_admin() ) {
 
 		//Change html content for text input and address fields
 		if ( ( $field['type'] === 'text' ) || ( $field['type'] === 'address' ) || ( $field['type'] === 'name' ) || ( $field['type'] === 'website' ) || ( $field['type'] === 'email' ) || ( $field['type'] === 'textarea' ) || $field['type'] === 'select' ) {
@@ -199,11 +199,11 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 			$validation_message = ob_get_contents();
 			ob_end_clean();
 
-			$validation_message = ( rgget( 'failed_validation', $field ) && !empty( $field['validation_message'] ) ) ? sprintf( $validation_message, $field['validation_message'] ) : '';
+			$validation_message = ( rgget( 'failed_validation', $field ) && ! empty( $field['validation_message'] ) ) ? sprintf( $validation_message, $field['validation_message'] ) : '';
 
 
 			$field_label = $force_frontend_label ? $field['label'] : GFCommon::get_label( $field );
-			if ( rgar( $field, 'inputType' ) == 'singleproduct' && !rgempty( $field['id'] . '.1', $value ) ) {
+			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . '.1', $value ) ) {
 				$field_label = rgar( $value, $field['id'] . ''.1'' );
 			}
 
@@ -211,7 +211,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 			$target_input_id = '';
 
-			$required_div = IS_ADMIN || rgar( $field, 'isRequired' ) ? sprintf( "<span class='gfield_required'>%s</span>", $field['isRequired'] ? "*" : '' ) : '';
+			$required_div = IS_ADMIN || rgar( $field, 'isRequired' ) ? sprintf( "<span class='gfield_required'>%s</span>", $field['isRequired'] ? '*' : '' ) : '';
 
 			$is_description_above = rgar( $field, 'descriptionPlacement' ) == 'above';
 
@@ -236,18 +236,17 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 			//Detect if field type is text or address and call the required function to get field content
 			if ( $field['type'] === 'address' ) {
 
-				$content = str_replace( "{FIELD}", flair_gform_get_address_field( $field, $value, 0, $form_id ), $field_content );
+				$content = str_replace( '{FIELD}', flair_gform_get_address_field( $field, $value, 0, $form_id ), $field_content );
 
 			} elseif ( $field['type'] === 'name' ) {
 
-				$content = str_replace( "{FIELD}", flair_gform_get_name_field( $field, $value, 0, $form_id ), $field_content );
+				$content = str_replace( '{FIELD}', flair_gform_get_name_field( $field, $value, 0, $form_id ), $field_content );
 
 			} elseif ( $field['type'] === 'website' ) {
 
-				$content = str_replace( "{FIELD}", flair_gform_get_website_field( $field, $value, 0, $form_id ), $field_content );
+				$content = str_replace( '{FIELD}', flair_gform_get_website_field( $field, $value, 0, $form_id ), $field_content );
 
 			}
-
 		}
 
 	}
