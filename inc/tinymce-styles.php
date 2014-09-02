@@ -12,7 +12,7 @@ add_filter( 'mce_buttons_2', 'flair_mce_buttons' );
 
 function flair_mce_before_init( $init_array ) {
 	// Add back some more of styles we want to see in TinyMCE
-	$init_array['preview_styles'] = "font-family font-size font-weight font-style text-decoration text-transform color background-color padding";
+	$init_array['preview_styles'] = 'font-family font-size font-weight font-style text-decoration text-transform color background-color padding';
 
 	if ( version_compare( $GLOBALS['wp_version'], '3.8', '<' ) ) {
 		$init_array['theme_advanced_styles'] = "One Half Column=small-6 columns;One Third Column=small-12 medium-4 columns;One Quarter Column=small-6 medium-3 columns";
