@@ -35,7 +35,7 @@ add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 // Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
 function flair_required_active_nav_class( $classes, $item ) {
-	if ( in_array( 'current_page_item', $classes) === true ) {
+	if ( in_array( 'current_page_item', $classes ) === true ) {
 		$classes[] = 'active';
 	}
 
@@ -94,7 +94,7 @@ class Flair_Page_Walker extends Walker_Page {
 		extract( $args, EXTR_SKIP );
 		$css_class = array( 'page_item', 'page-item-'.$page->ID );
 
-		if ( isset( $args['pages_with_children'][ $page->ID ] ) )
+		if ( isset ( $args['pages_with_children'][ $page->ID ] ) )
 			$css_class[] = 'page_item_has_children has-dropdown';
 
 		if ( ! empty( $current_page ) ) {
