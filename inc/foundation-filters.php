@@ -337,8 +337,8 @@ add_filter( 'flair_gforms_name_class', 'flair_name_label', 10, 4 );
 function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	$id = $field['id'];
-	$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : "input_" . $form_id . "_$id";
-	$form_id = IS_ADMIN && empty( $form_id ) ? rgget( "id" ) : $form_id;
+	$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
+	$form_id = IS_ADMIN && empty( $form_id ) ? rgget( 'id' ) : $form_id;
 
 	$size = rgar( $field, 'size' );
 	$disabled_text = ( IS_ADMIN && RG_CURRENT_VIEW != 'entry' ) ? "disabled='disabled'" : '';
@@ -356,7 +356,6 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$currency = $lead['currency'];
 	}
 
-	$street_value = '';
 	$street_value = '';
 	$street2_value = '';
 	$city_value = '';
@@ -376,29 +375,29 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	}
 
 	$address_types = GFCommon::get_address_types( $form_id );
-	$addr_type = empty( $field['addressType'] ) ? "international" : $field['addressType'];
+	$addr_type = empty( $field['addressType'] ) ? 'international' : $field['addressType'];
 	$address_type = $address_types[$addr_type];
 
-	$state_label = empty( $address_type['state_label'] ) ? __( "State", "gravityforms" ) : $address_type['state_label'];
-	$zip_label = empty( $address_type['zip_label'] ) ? __( "Zip Code", "gravityforms" ) : $address_type['zip_label'];
-	$hide_country = !empty( $address_type['country'] ) || rgget( "hideCountry", $field );
+	$state_label = empty( $address_type['state_label'] ) ? __( 'State', 'gravityforms' ) : $address_type['state_label'];
+	$zip_label = empty( $address_type['zip_label'] ) ? __( 'Zip Code', 'gravityforms' ) : $address_type['zip_label'];
+	$hide_country = !empty( $address_type['country'] ) || rgget( 'hideCountry', $field );
 
 	if ( empty( $country_value ) ) {
-		$country_value = rgget( "defaultCountry", $field );
+		$country_value = rgget( 'defaultCountry', $field );
 	}
 
 	if ( empty( $state_value ) ) {
-		$state_value = rgget( "defaultState", $field );
+		$state_value = rgget( 'defaultState', $field );
 	}
 
 	$country_list = GFCommon::get_country_dropdown( $country_value );
 
 	//changing css classes based on field format to ensure proper display
-	$address_display_format = apply_filters( "gform_address_display_format", "default" );
-	$city_location = $address_display_format == "zip_before_city" ? "right" : "left";
-	$zip_location = $address_display_format != "zip_before_city" && rgar( $field, "hideState" ) ? "right" : "left";
-	$state_location = $address_display_format == "zip_before_city" ? "left" : "right";
-	$country_location = rgar( $field, "hideState" ) ? "left" : "right";
+	$address_display_format = apply_filters( 'gform_address_display_format', 'default' );
+	$city_location = $address_display_format == 'zip_before_city' ? 'right' : 'left';
+	$zip_location = $address_display_format != 'zip_before_city' && rgar( $field, 'hideState' ) ? 'right' : 'left';
+	$state_location = $address_display_format == 'zip_before_city' ? 'left' : 'right';
+	$country_location = rgar( $field, 'hideState' ) ? 'left' : 'right';
 
 	//address field
 	$tabindex = GFCommon::get_tabindex();
