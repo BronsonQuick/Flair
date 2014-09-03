@@ -424,7 +424,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$style = ( IS_ADMIN && rgget( 'hideState', $field ) ) ? "style='display:none;'" : '';
 		if ( IS_ADMIN || ! rgget( 'hideState', $field ) ) {
 			$state_field = GFCommon::get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id );
-			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s_4' id='" . $field_id . "_4_label'>" . apply_filters( "gform_address_state_{$form_id}", apply_filters( 'gform_address_state', $state_label, $form_id ), $form_id ) . "</label></span>", $field_id );
+			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s_4' id='" . $field_id . "_4_label'>" . apply_filters( "gform_address_state_{$form_id}", apply_filters( 'gform_address_state', $state_label, $form_id ), $form_id ) . '</label></span>', $field_id );
 		} else {
 			$state = sprintf( "<input type='hidden' class='gform_hidden' name='input_%d.4' id='%s_4' value='%s'/>", $id, $field_id, $state_value );
 		}
@@ -450,10 +450,10 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	}
 
-	if ( IS_ADMIN || !$hide_country ) {
+	if ( IS_ADMIN || ! $hide_country ) {
 		$style = $hide_country ? "style='display:none;'" : '';
 		$tabindex = GFCommon::get_tabindex();
-		$country = sprintf( "<div class='columns large-6'><span class='ginput_{$country_location}$class_suffix' id='" . $field_id . "_6_container' $style><select name='input_%d.6' id='%s_6' $tabindex %s>%s</select><label for='%s_6' id='" . $field_id . "_6_label'>" . apply_filters( "gform_address_country_{$form_id}", apply_filters( "gform_address_country", __( "Country", "gravityforms" ), $form_id ), $form_id ) . "</label></span></div>", $id, $field_id, $disabled_text, $country_list, $field_id );
+		$country = sprintf( "<div class='columns large-6'><span class='ginput_{$country_location}$class_suffix' id='" . $field_id . "_6_container' $style><select name='input_%d.6' id='%s_6' $tabindex %s>%s</select><label for='%s_6' id='" . $field_id . "_6_label'>" . apply_filters( "gform_address_country_{$form_id}", apply_filters( 'gform_address_country', __( 'Country', 'gravityforms' ), $form_id ), $form_id ) . '</label></span></div>', $id, $field_id, $disabled_text, $country_list, $field_id );
 	} else {
 		$country = sprintf( "<input type='hidden' class='gform_hidden' name='input_%d.6' id='%s_6' value='%s'/>", $id, $field_id, $country_value );
 	}
@@ -502,13 +502,13 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	}
 
 	$tabindex = GFCommon::get_tabindex();
-	$states = empty( $address_types[$address_type]["states"] ) ? array() : $address_types[$address_type]["states"];
+	$states = empty( $address_types[$address_type]['states'] ) ? array() : $address_types[$address_type]['states'];
 	$state_dropdown = sprintf( "<select name='input_%d.4' %s $tabindex %s $state_dropdown_class $state_style>%s</select>", $id, $state_field_id, $disabled_text, GFCommon::get_state_dropdown( $states, $state_value ) );
 
 	$tabindex = GFCommon::get_tabindex();
-	$state_text = sprintf( "<input type='text' name='input_%d.4' %s value='%s' $tabindex %s $state_text_class $text_style placeholder='" . apply_filters( "gform_address_state_{$form_id}", apply_filters( "gform_address_state", $state_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_4' id='input_" . $id . "_4_label'>State / Province / Region</label>", $id, $state_field_id, $state_value, $disabled_text );
+	$state_text = sprintf( "<input type='text' name='input_%d.4' %s value='%s' $tabindex %s $state_text_class $text_style placeholder='" . apply_filters( "gform_address_state_{$form_id}", apply_filters( 'gform_address_state', $state_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_4' id='input_" . $id . "_4_label'>State / Province / Region</label>", $id, $state_field_id, $state_value, $disabled_text );
 
-	if ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) {
+	if ( IS_ADMIN && RG_CURRENT_VIEW != 'entry' ) {
 		return $state_dropdown . $state_text;
 	} else {
 		if ( $has_state_drop_down ) {
@@ -528,26 +528,26 @@ function flair_foundation_custom_class( $classes, $field, $form ) {
 		return $classes;
 	}
 
-	if ( $field["type"] == "text" || $field["type"] == "email" || $field["type"] == "select" ) {
-		$classes .= " large-6 columns";
+	if ( $field['type'] == 'text' || $field['type'] == 'email' || $field['type'] == 'select' ) {
+		$classes .= ' large-6 columns';
 	}
-	if ( $field["type"] == "name" ) {
-		$classes .= " name";
+	if ( $field['type'] == 'name' ) {
+		$classes .= ' name';
 	}
-	if ( $field["type"] == "textarea" ) {
-		$classes .= " medium-12 columns";
+	if ( $field['type'] == 'textarea' ) {
+		$classes .= ' medium-12 columns';
 	}
 	return $classes;
 }
 
 function flair_change_first_name( $label, $form_id ) {
-	return "First Name";
+	return 'First Name';
 }
 
 add_filter( 'gform_name_first', 'flair_change_first_name', 10, 2 );
 
 function flair_change_last_name( $label, $form_id ) {
-	return "Last Name";
+	return 'Last Name';
 }
 
 add_filter( 'gform_name_last', 'flair_change_last_name', 10, 2 );
