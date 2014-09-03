@@ -380,7 +380,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	$state_label = empty( $address_type['state_label'] ) ? __( 'State', 'gravityforms' ) : $address_type['state_label'];
 	$zip_label = empty( $address_type['zip_label'] ) ? __( 'Zip Code', 'gravityforms' ) : $address_type['zip_label'];
-	$hide_country = !empty( $address_type['country'] ) || rgget( 'hideCountry', $field );
+	$hide_country = ! empty( $address_type['country'] ) || rgget( 'hideCountry', $field );
 
 	if ( empty( $country_value ) ) {
 		$country_value = rgget( 'defaultCountry', $field );
@@ -401,30 +401,30 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	//address field
 	$tabindex = GFCommon::get_tabindex();
-	$street_address = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_1_container'><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street_{$form_id}", apply_filters( "gform_address_street", __( "Street Address", "gravityforms" ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_1' id='input_" . $id . "_1_label'>Street Address</label></span>", $id, $field_id, $street_value, $disabled_text, $field_id );
+	$street_address = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_1_container'><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street_{$form_id}", apply_filters( 'gform_address_street', __( 'Street Address', 'gravityforms' ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_1' id='input_" . $id . "_1_label'>Street Address</label></span>", $id, $field_id, $street_value, $disabled_text, $field_id );
 
 	//address line 2 field
 	$street_address2 = '';
-	$style = ( IS_ADMIN && rgget( "hideAddress2", $field ) ) ? "style='display:none;'" : '';
-	if ( IS_ADMIN || !rgget( "hideAddress2", $field ) ) {
+	$style = ( IS_ADMIN && rgget( 'hideAddress2', $field ) ) ? "style='display:none;'" : '';
+	if ( IS_ADMIN || ! rgget( 'hideAddress2', $field ) ) {
 		$tabindex = GFCommon::get_tabindex();
-		$street_address2 = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_2_container' $style><input type='text' name='input_%d.2' id='%s_2' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street2_{$form_id}", apply_filters( "gform_address_street2", __( "Address Line 2", "gravityforms" ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_2' id='input_" . $id . "_2_label'>Address Line 2</label></span>", $id, $field_id, $street2_value, $disabled_text, $field_id );
+		$street_address2 = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_2_container' $style><input type='text' name='input_%d.2' id='%s_2' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street2_{$form_id}", apply_filters( 'gform_address_street2', __( 'Address Line 2', 'gravityforms' ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_2' id='input_" . $id . "_2_label'>Address Line 2</label></span>", $id, $field_id, $street2_value, $disabled_text, $field_id );
 	}
 
-	if ( $address_display_format == "zip_before_city" ) {
+	if ( $address_display_format == 'zip_before_city' ) {
 		//zip field
 		$tabindex = GFCommon::get_tabindex();
-		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( "gform_address_zip", $zip_label, $form_id ), $form_id ) . "'/></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
+		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( 'gform_address_zip', $zip_label, $form_id ), $form_id ) . "'/></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
 
 		//city field
 		$tabindex = GFCommon::get_tabindex();
-		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( "gform_address_city", __( "City", "gravityforms" ), $form_id ), $form_id ) . "'/></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
+		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( 'gform_address_city', __( 'City', 'gravityforms' ), $form_id ), $form_id ) . "'/></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
 
 		//state field
-		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : '';
-		if ( IS_ADMIN || !rgget( "hideState", $field ) ) {
+		$style = ( IS_ADMIN && rgget( 'hideState', $field ) ) ? "style='display:none;'" : '';
+		if ( IS_ADMIN || ! rgget( 'hideState', $field ) ) {
 			$state_field = GFCommon::get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id );
-			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s_4' id='" . $field_id . "_4_label'>" . apply_filters( "gform_address_state_{$form_id}", apply_filters( "gform_address_state", $state_label, $form_id ), $form_id ) . "</label></span>", $field_id );
+			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s_4' id='" . $field_id . "_4_label'>" . apply_filters( "gform_address_state_{$form_id}", apply_filters( 'gform_address_state', $state_label, $form_id ), $form_id ) . "</label></span>", $field_id );
 		} else {
 			$state = sprintf( "<input type='hidden' class='gform_hidden' name='input_%d.4' id='%s_4' value='%s'/>", $id, $field_id, $state_value );
 		}
@@ -432,11 +432,11 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 		//city field
 		$tabindex = GFCommon::get_tabindex();
-		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( "gform_address_city", __( "City", "gravityforms" ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_3' id='input_" . $id . "_3_label'>City</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
+		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( 'gform_address_city', __( 'City', 'gravityforms' ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_3' id='input_" . $id . "_3_label'>City</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
 
 		//state field
-		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : '';
-		if ( IS_ADMIN || !rgget( "hideState", $field ) ) {
+		$style = ( IS_ADMIN && rgget( 'hideState', $field ) ) ? "style='display:none;'" : '';
+		if ( IS_ADMIN || ! rgget( 'hideState', $field ) ) {
 			$state_field = flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
 
 			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field</span>", $field_id );
@@ -446,7 +446,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 		//zip field
 		$tabindex = GFCommon::get_tabindex();
-		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( "gform_address_zip", $zip_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_5' id='input_" . $id . "_5_label'>ZIP / Postal Code</label></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
+		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( 'gform_address_zip', $zip_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_5' id='input_" . $id . "_5_label'>ZIP / Postal Code</label></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
 
 	}
 
@@ -467,9 +467,9 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	//Wrap ZIP in foundation divs
 	$zip = "<div class='" . apply_filters( 'flair_gforms_address_zip_class', 'large-6 columns', $field, $form_id ) . "'>{$zip}</div>";
 
-	$inputs = $address_display_format == "zip_before_city" ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
+	$inputs = $address_display_format == 'zip_before_city' ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
 
-	return "<div class='ginput_complex$class_suffix ginput_container' id='$field_id'>" . $inputs . "</div>";
+	return "<div class='ginput_complex$class_suffix ginput_container' id='$field_id'>" . $inputs . '</div>';
 
 }
 
@@ -478,19 +478,19 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	$state_dropdown_class = $state_text_class = $state_style = $text_style = $state_field_id = '';
 
 	if ( empty( $state_value ) ) {
-		$state_value = rgget( "defaultState", $field );
+		$state_value = rgget( 'defaultState', $field );
 
 		//for backwards compatibility (canadian address type used to store the default state into the defaultProvince property)
-		if ( rgget( "addressType", $field ) == "canadian" && !rgempty( "defaultProvince", $field ) ) {
-			$state_value = $field["defaultProvince"];
+		if ( rgget( 'addressType', $field ) == 'canadian' && ! rgempty( 'defaultProvince', $field ) ) {
+			$state_value = $field['defaultProvince'];
 		}
 	}
 
-	$address_type = rgempty( "addressType", $field ) ? "international" : $field['addressType'];
+	$address_type = rgempty( 'addressType', $field ) ? 'international' : $field['addressType'];
 	$address_types = GFCommon::get_address_types( $form_id );
-	$has_state_drop_down = isset( $address_types[$address_type]["states"] ) && is_array( $address_types[$address_type]["states"] );
+	$has_state_drop_down = isset( $address_types[$address_type]['states'] ) && is_array( $address_types[$address_type]['states'] );
 
-	if ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) {
+	if ( IS_ADMIN && RG_CURRENT_VIEW != 'entry' ) {
 		$state_dropdown_class = "class='state_dropdown'";
 		$state_text_class = "class='state_text'";
 		$state_style = !$has_state_drop_down ? "style='display:none;'" : '';
