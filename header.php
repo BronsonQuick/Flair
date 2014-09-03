@@ -42,7 +42,7 @@
 				<?php if ( get_header_image() ) : ?>
 						<h1>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-								<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php bloginfo('name'); ?>">
+								<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php bloginfo( 'name' ); ?>">
 							</a>
 						</h1>
 					<?php endif; ?>
