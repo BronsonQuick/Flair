@@ -203,8 +203,8 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 
 			$field_label = $force_frontend_label ? $field['label'] : GFCommon::get_label( $field );
-			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . ".1", $value ) ) {
-				$field_label = rgar( $value, $field['id'] . ".1" );
+			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . '.1', $value ) ) {
+				$field_label = rgar( $value, $field['id'] . '.1' );
 			}
 
 			$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
@@ -366,12 +366,12 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	$class_suffix = '';
 
 	if ( is_array( $value ) ) {
-		$street_value = esc_attr( rgget( $field['id'] . ".1", $value ) );
-		$street2_value = esc_attr( rgget( $field['id'] . ".2", $value ) );
-		$city_value = esc_attr( rgget( $field['id'] . ".3", $value ) );
-		$state_value = esc_attr( rgget( $field['id'] . ".4", $value ) );
-		$zip_value = esc_attr( rgget( $field['id'] . ".5", $value ) );
-		$country_value = esc_attr( rgget( $field['id'] . ".6", $value ) );
+		$street_value = esc_attr( rgget( $field['id'] . '.1', $value ) );
+		$street2_value = esc_attr( rgget( $field['id'] . '.2', $value ) );
+		$city_value = esc_attr( rgget( $field['id'] . '.3', $value ) );
+		$state_value = esc_attr( rgget( $field['id'] . '.4', $value ) );
+		$zip_value = esc_attr( rgget( $field['id'] . '.5', $value ) );
+		$country_value = esc_attr( rgget( $field['id'] . '.6', $value ) );
 	}
 
 	$address_types = GFCommon::get_address_types( $form_id );
