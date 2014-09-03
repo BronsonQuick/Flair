@@ -248,7 +248,6 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 			}
 		}
-
 	}
 
 	return $content;
@@ -294,7 +293,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			?>
 			<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
 				<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>"
-					<?php if ($input['label'] == "First") { ?>
+					<?php if ( $input['label'] == 'First' ) { ?>
 					   placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 				<?php
 				}
@@ -324,10 +323,10 @@ function flair_name_label( $classes, $field, $form, $input ) {
 	}
 
 	if ( strpos( $input['id'], '.3' ) !== false ) {
-		$classes .= " ginput_left";
+		$classes .= ' ginput_left';
 	}
 	if ( strpos( $input['id'], '.6' ) !== false ) {
-		$classes .= " ginput_right";
+		$classes .= ' ginput_right';
 	}
 
 	return $classes;
@@ -337,52 +336,52 @@ add_filter( 'flair_gforms_name_class', 'flair_name_label', 10, 4 );
 
 function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
-	$id = $field["id"];
+	$id = $field['id'];
 	$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : "input_" . $form_id . "_$id";
 	$form_id = IS_ADMIN && empty( $form_id ) ? rgget( "id" ) : $form_id;
 
-	$size = rgar( $field, "size" );
-	$disabled_text = ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) ? "disabled='disabled'" : "";
-	$class_suffix = RG_CURRENT_VIEW == "entry" ? "_admin" : "";
+	$size = rgar( $field, 'size' );
+	$disabled_text = ( IS_ADMIN && RG_CURRENT_VIEW != 'entry' ) ? "disabled='disabled'" : '';
+	$class_suffix = RG_CURRENT_VIEW == 'entry' ? '_admin' : '';
 	$class = $size . $class_suffix;
 
-	$currency = "";
-	if ( RG_CURRENT_VIEW == "entry" ) {
+	$currency = '';
+	if ( RG_CURRENT_VIEW == 'entry' ) {
 		$lead = RGFormsModel::get_lead( $lead_id );
-		$post_id = $lead["post_id"];
-		$post_link = "";
+		$post_id = $lead['post_id'];
+		$post_link = '';
 		if ( is_numeric( $post_id ) && self::is_post_field( $field ) ) {
 			$post_link = "You can <a href='post.php?action=edit&post=$post_id'>edit this post</a> from the post page.";
 		}
-		$currency = $lead["currency"];
+		$currency = $lead['currency'];
 	}
 
-	$street_value = "";
-	$street_value = "";
-	$street2_value = "";
-	$city_value = "";
-	$state_value = "";
-	$zip_value = "";
-	$country_value = "";
+	$street_value = '';
+	$street_value = '';
+	$street2_value = '';
+	$city_value = '';
+	$state_value = '';
+	$zip_value = '';
+	$country_value = '';
 
 	$class_suffix = '';
 
 	if ( is_array( $value ) ) {
-		$street_value = esc_attr( rgget( $field["id"] . ".1", $value ) );
-		$street2_value = esc_attr( rgget( $field["id"] . ".2", $value ) );
-		$city_value = esc_attr( rgget( $field["id"] . ".3", $value ) );
-		$state_value = esc_attr( rgget( $field["id"] . ".4", $value ) );
-		$zip_value = esc_attr( rgget( $field["id"] . ".5", $value ) );
-		$country_value = esc_attr( rgget( $field["id"] . ".6", $value ) );
+		$street_value = esc_attr( rgget( $field['id'] . ".1", $value ) );
+		$street2_value = esc_attr( rgget( $field['id'] . ".2", $value ) );
+		$city_value = esc_attr( rgget( $field['id'] . ".3", $value ) );
+		$state_value = esc_attr( rgget( $field['id'] . ".4", $value ) );
+		$zip_value = esc_attr( rgget( $field['id'] . ".5", $value ) );
+		$country_value = esc_attr( rgget( $field['id'] . ".6", $value ) );
 	}
 
 	$address_types = GFCommon::get_address_types( $form_id );
-	$addr_type = empty( $field["addressType"] ) ? "international" : $field["addressType"];
+	$addr_type = empty( $field['addressType'] ) ? "international" : $field['addressType'];
 	$address_type = $address_types[$addr_type];
 
-	$state_label = empty( $address_type["state_label"] ) ? __( "State", "gravityforms" ) : $address_type["state_label"];
-	$zip_label = empty( $address_type["zip_label"] ) ? __( "Zip Code", "gravityforms" ) : $address_type["zip_label"];
-	$hide_country = !empty( $address_type["country"] ) || rgget( "hideCountry", $field );
+	$state_label = empty( $address_type['state_label'] ) ? __( "State", "gravityforms" ) : $address_type['state_label'];
+	$zip_label = empty( $address_type['zip_label'] ) ? __( "Zip Code", "gravityforms" ) : $address_type['zip_label'];
+	$hide_country = !empty( $address_type['country'] ) || rgget( "hideCountry", $field );
 
 	if ( empty( $country_value ) ) {
 		$country_value = rgget( "defaultCountry", $field );
@@ -406,8 +405,8 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	$street_address = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_1_container'><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street_{$form_id}", apply_filters( "gform_address_street", __( "Street Address", "gravityforms" ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_1' id='input_" . $id . "_1_label'>Street Address</label></span>", $id, $field_id, $street_value, $disabled_text, $field_id );
 
 	//address line 2 field
-	$street_address2 = "";
-	$style = ( IS_ADMIN && rgget( "hideAddress2", $field ) ) ? "style='display:none;'" : "";
+	$street_address2 = '';
+	$style = ( IS_ADMIN && rgget( "hideAddress2", $field ) ) ? "style='display:none;'" : '';
 	if ( IS_ADMIN || !rgget( "hideAddress2", $field ) ) {
 		$tabindex = GFCommon::get_tabindex();
 		$street_address2 = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_2_container' $style><input type='text' name='input_%d.2' id='%s_2' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street2_{$form_id}", apply_filters( "gform_address_street2", __( "Address Line 2", "gravityforms" ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_2' id='input_" . $id . "_2_label'>Address Line 2</label></span>", $id, $field_id, $street2_value, $disabled_text, $field_id );
@@ -423,7 +422,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( "gform_address_city", __( "City", "gravityforms" ), $form_id ), $form_id ) . "'/></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
 
 		//state field
-		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : "";
+		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : '';
 		if ( IS_ADMIN || !rgget( "hideState", $field ) ) {
 			$state_field = GFCommon::get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id );
 			$state = sprintf( "<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s_4' id='" . $field_id . "_4_label'>" . apply_filters( "gform_address_state_{$form_id}", apply_filters( "gform_address_state", $state_label, $form_id ), $form_id ) . "</label></span>", $field_id );
@@ -437,7 +436,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( "gform_address_city", __( "City", "gravityforms" ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_3' id='input_" . $id . "_3_label'>City</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
 
 		//state field
-		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : "";
+		$style = ( IS_ADMIN && rgget( "hideState", $field ) ) ? "style='display:none;'" : '';
 		if ( IS_ADMIN || !rgget( "hideState", $field ) ) {
 			$state_field = flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
 
@@ -453,7 +452,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	}
 
 	if ( IS_ADMIN || !$hide_country ) {
-		$style = $hide_country ? "style='display:none;'" : "";
+		$style = $hide_country ? "style='display:none;'" : '';
 		$tabindex = GFCommon::get_tabindex();
 		$country = sprintf( "<div class='columns large-6'><span class='ginput_{$country_location}$class_suffix' id='" . $field_id . "_6_container' $style><select name='input_%d.6' id='%s_6' $tabindex %s>%s</select><label for='%s_6' id='" . $field_id . "_6_label'>" . apply_filters( "gform_address_country_{$form_id}", apply_filters( "gform_address_country", __( "Country", "gravityforms" ), $form_id ), $form_id ) . "</label></span></div>", $id, $field_id, $disabled_text, $country_list, $field_id );
 	} else {
@@ -477,7 +476,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label ) {
 
-	$state_dropdown_class = $state_text_class = $state_style = $text_style = $state_field_id = "";
+	$state_dropdown_class = $state_text_class = $state_style = $text_style = $state_field_id = '';
 
 	if ( empty( $state_value ) ) {
 		$state_value = rgget( "defaultState", $field );
@@ -488,16 +487,16 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 		}
 	}
 
-	$address_type = rgempty( "addressType", $field ) ? "international" : $field["addressType"];
+	$address_type = rgempty( "addressType", $field ) ? "international" : $field['addressType'];
 	$address_types = GFCommon::get_address_types( $form_id );
 	$has_state_drop_down = isset( $address_types[$address_type]["states"] ) && is_array( $address_types[$address_type]["states"] );
 
 	if ( IS_ADMIN && RG_CURRENT_VIEW != "entry" ) {
 		$state_dropdown_class = "class='state_dropdown'";
 		$state_text_class = "class='state_text'";
-		$state_style = !$has_state_drop_down ? "style='display:none;'" : "";
-		$text_style = $has_state_drop_down ? "style='display:none;'" : "";
-		$state_field_id = "";
+		$state_style = !$has_state_drop_down ? "style='display:none;'" : '';
+		$text_style = $has_state_drop_down ? "style='display:none;'" : '';
+		$state_field_id = '';
 	} else {
 		//id only displayed on front end
 		$state_field_id = "id='" . $field_id . "_4'";
@@ -595,7 +594,7 @@ function flair_flex_video( $html, $url, $attr ) {
 		// Remove width and height attributes
 		$attr_pattern = '/(width|height)="[0-9]*"/i';
 		$whitespace_pattern = '/\s+/';
-		$embed = preg_replace( $attr_pattern, "", $html );
+		$embed = preg_replace( $attr_pattern, '', $html );
 		$embed = preg_replace( $whitespace_pattern, ' ', $embed ); // Clean-up whitespace
 		$embed = trim( $embed );
 
