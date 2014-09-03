@@ -493,7 +493,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	if ( IS_ADMIN && RG_CURRENT_VIEW != 'entry' ) {
 		$state_dropdown_class = "class='state_dropdown'";
 		$state_text_class = "class='state_text'";
-		$state_style = !$has_state_drop_down ? "style='display:none;'" : '';
+		$state_style = ! $has_state_drop_down ? "style='display:none;'" : '';
 		$text_style = $has_state_drop_down ? "style='display:none;'" : '';
 		$state_field_id = '';
 	} else {
@@ -577,7 +577,7 @@ function flair_flex_video( $html, $url, $attr ) {
 		'funnyordie.com',
 		'soundcloud.com',
 		'slideshare.net',
-		'instagram.com'
+		'instagram.com',
 	);
 
 	// Check each provider
@@ -651,15 +651,15 @@ function flair_pagination( $wp_pagenavi_output ) {
 
 	// Change the wrapping div to a ul
 	$wp_pagenavi_output = str_replace( "<div class='wp-pagenavi'>", "<ul class='pagination'>", $wp_pagenavi_output );
-	$wp_pagenavi_output = str_replace( "</div>", "</ul>", $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( '</div>', '</ul>', $wp_pagenavi_output );
 
 	// Change the spans to li's
-	$wp_pagenavi_output = str_replace( "<span", "<li", $wp_pagenavi_output );
-	$wp_pagenavi_output = str_replace( "</span>", "</li>", $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( '<span', '<li', $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( '</span>', '</li>', $wp_pagenavi_output );
 
 	// Wrap a's in li's
-	$wp_pagenavi_output = str_replace( "<a", "<li><a", $wp_pagenavi_output );
-	$wp_pagenavi_output = str_replace( "</a>", "</a></li>", $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( '<a', '<li><a', $wp_pagenavi_output );
+	$wp_pagenavi_output = str_replace( '</a>', '</a></li>', $wp_pagenavi_output );
 
 	// Wrap the current li in an a
 	$wp_pagenavi_output = preg_replace( "#<li class='current'>(.+)<\/li>#", "<li class='current'><a href=''>$1</a></li>", $wp_pagenavi_output );
