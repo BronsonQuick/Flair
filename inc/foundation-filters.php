@@ -203,8 +203,8 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 
 			$field_label = $force_frontend_label ? $field['label'] : GFCommon::get_label( $field );
-			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . '.1', $value ) ) {
-				$field_label = rgar( $value, $field['id'] . ''.1'' );
+			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . ".1", $value ) ) {
+				$field_label = rgar( $value, $field['id'] . ".1" );
 			}
 
 			$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
