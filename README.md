@@ -30,7 +30,7 @@ While you're working on your project, run:
 
 And you're set!
 
-## Directory Strucutre
+## Directory Structure
   * `assets/`: Any media (SCSS, JS, Images) should be contained in this folder.
   * `assets/scss/_settings.scss`: Foundation configuration settings go in here
   * `assets/scss/app.scss`: Application styles go here
