@@ -6,6 +6,7 @@
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
 		<exclude name="WordPress.XSS.EscapeOutput" />
+		<!-- travis-ci.org is failing on switch/case indentation -->
 		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
 	</rule>
 </ruleset>
