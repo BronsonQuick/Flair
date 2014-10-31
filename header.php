@@ -50,7 +50,7 @@
 			<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 		</ul>
 
-		<section class="top-bar-section right">
+		<section class="top-bar-section">
 		<?php wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
