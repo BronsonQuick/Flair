@@ -1,5 +1,3 @@
-![Travis CI Build Status](https://travis-ci.org/sennza/Flair.svg?branch=master)
-
 # Flair - Sennza's WordPress Foundation Starter theme
 
 This is WordPress starter theme that uses Foundation, Grunt and libsass!
