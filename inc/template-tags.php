@@ -8,115 +8,115 @@
  */
 
 if ( ! function_exists( 'flair_paging_nav' ) ) :
-/**
- * Display navigation to next/previous set of posts when applicable.
- *
- * @return void
- */
-function flair_paging_nav() {
-	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-		return;
+	/**
+	 * Display navigation to next/previous set of posts when applicable.
+	 *
+	 * @return void
+	 */
+	function flair_paging_nav() {
+		// Don't print empty markup if there's only one page.
+		if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+			return;
+		}
+		?>
+		<nav class="navigation paging-navigation row" role="navigation">
+			<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'sennzaversion3' ); ?></h1>
+			<div class="nav-links medium-12 columns">
+
+				<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
+					<?php wp_pagenavi(); ?>
+				<?php } else { ?>
+
+					<?php if ( get_next_posts_link() ) : ?>
+					<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'sennzaversion3' ) ); ?></div>
+					<?php endif; ?>
+
+					<?php if ( get_previous_posts_link() ) : ?>
+					<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'sennzaversion3' ) ); ?></div>
+					<?php endif; ?>
+				<?php } ?>
+
+			</div><!-- .nav-links -->
+		</nav><!-- .navigation -->
+		<?php
 	}
-	?>
-	<nav class="navigation paging-navigation row" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'sennzaversion3' ); ?></h1>
-		<div class="nav-links medium-12 columns">
-
-			<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
-				<?php wp_pagenavi(); ?>
-			<?php } else { ?>
-
-				<?php if ( get_next_posts_link() ) : ?>
-				<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'sennzaversion3' ) ); ?></div>
-				<?php endif; ?>
-
-				<?php if ( get_previous_posts_link() ) : ?>
-				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'sennzaversion3' ) ); ?></div>
-				<?php endif; ?>
-			<?php } ?>
-
-		</div><!-- .nav-links -->
-	</nav><!-- .navigation -->
-	<?php
-}
 endif; // flair_paging_nav
 
 if ( ! function_exists( 'flair_post_nav' ) ) :
-/**
- * Display navigation to next/previous post when applicable.
- *
- * @return void
- */
-function flair_post_nav() {
-	// Don't print empty markup if there's nowhere to navigate.
-	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-	$next     = get_adjacent_post( false, '', false );
+	/**
+	 * Display navigation to next/previous post when applicable.
+	 *
+	 * @return void
+	 */
+	function flair_post_nav() {
+		// Don't print empty markup if there's nowhere to navigate.
+		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+		$next     = get_adjacent_post( false, '', false );
 
-	if ( ! $next && ! $previous ) {
-		return;
+		if ( ! $next && ! $previous ) {
+			return;
+		}
+		?>
+		<nav class="navigation post-navigation row" role="navigation">
+			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'sennzaversion3' ); ?></h1>
+			<div class="nav-links medium-12 columns">
+				<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
+					<?php wp_pagenavi(); ?>
+				<?php } else { ?>
+					<?php previous_post_link( '%link', _x( '<span class="page-left">%title</span>', 'Previous post link', 'sennzaversion3' ) ); ?>
+					<?php next_post_link( '%link', _x( '<span class="page-right">%title</span>', 'Next post link',     'sennzaversion3' ) ); ?>
+				<?php } ?>
+			</div><!-- .nav-links -->
+		</nav><!-- .navigation -->
+		<?php
 	}
-	?>
-	<nav class="navigation post-navigation row" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'sennzaversion3' ); ?></h1>
-		<div class="nav-links medium-12 columns">
-			<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
-				<?php wp_pagenavi(); ?>
-			<?php } else { ?>
-				<?php previous_post_link( '%link', _x( '<span class="page-left">%title</span>', 'Previous post link', 'sennzaversion3' ) ); ?>
-				<?php next_post_link(     '%link', _x( '<span class="page-right">%title</span>', 'Next post link',     'sennzaversion3' ) ); ?>
-			<?php } ?>
-		</div><!-- .nav-links -->
-	</nav><!-- .navigation -->
-	<?php
-}
 endif; // flair_post_nav
 
 if ( ! function_exists( 'flair_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function flair_posted_on() {
+	/**
+	 * Prints HTML with meta information for the current post-date/time and author.
+	 */
+	function flair_posted_on() {
 
-	if ( ! post_password_required() && ( '0' != get_comments_number() ) ) {
-		if ( get_comments_number() > '10' ) {
-			echo "<span class='comment-count more-than-10-comments'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
+		if ( ! post_password_required() && ( '0' != get_comments_number() ) ) {
+			if ( get_comments_number() > '10' ) {
+				echo "<span class='comment-count more-than-10-comments'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
+			}
+			else {
+				echo "<span class='comment-count'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
+			}
 		}
-		else {
-			echo "<span class='comment-count'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
-		}
+
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( get_the_date() ),
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+		);
+
+		printf( __( '<span class="posted-on">This entry was posted in %1$s</span><span class="byline"> by %2$s</span>', 'sennzaversion3' ),
+			sprintf( '%1$s',
+				$time_string
+			),
+			sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+				esc_html( get_the_author() )
+			)
+		);
 	}
-
-	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
-
-	printf( __( '<span class="posted-on">This entry was posted in %1$s</span><span class="byline"> by %2$s</span>', 'sennzaversion3' ),
-		sprintf( '%1$s',
-			$time_string
-		),
-		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_html( get_the_author() )
-		)
-	);
-}
 endif;
 
 if ( ! function_exists( 'flair_read_more_link' ) ) :
-/**
- * Return a "Read More" link for excerpts.
- *
- * @return string "Read More" link.
- */
-function flair_read_more_link() {
-	return '<p><a href="'. get_permalink() . '" class="button small" title="' . esc_attr( get_the_title() ) . '">' . __( 'Read More', 'flair' ) . '</a></p>';
-}
+	/**
+	 * Return a "Read More" link for excerpts.
+	 *
+	 * @return string "Read More" link.
+	 */
+	function flair_read_more_link() {
+		return '<p><a href="'. get_permalink() . '" class="button small" title="' . esc_attr( get_the_title() ) . '">' . __( 'Read More', 'flair' ) . '</a></p>';
+	}
 endif;
 
 /**
@@ -210,8 +210,9 @@ function get_flair_top_bar( $class = '' ) {
 	}
 
 	if ( ! empty( $class ) ) {
-		if ( ! is_array( $class ) )
+		if ( ! is_array( $class ) ) {
 			$class = preg_split( '#\s+#', $class );
+		}
 		$classes = array_merge( $classes, $class );
 	} else {
 		// Ensure that we always coerce class to being an array.
@@ -224,64 +225,64 @@ function get_flair_top_bar( $class = '' ) {
 }
 
 if ( ! function_exists( 'flair_comment' ) ) :
-/**
- * Template for comments and pingbacks.
- *
- * To override this walker in a child theme without modifying the comments template
- * simply create your own flair_comment(), and that function will be used instead.
- *
- * Used as a callback by wp_list_comments() for displaying the comments.
- *
- */
-function flair_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case 'pingback' :
-		case 'trackback' :
-		// Display trackbacks differently than normal comments.
-	?>
-	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<p><?php _e( 'Pingback:', 'flair' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'flair' ), '<span class="edit-link">', '</span>' ); ?></p>
-	<?php
+	/**
+	 * Template for comments and pingbacks.
+	 *
+	 * To override this walker in a child theme without modifying the comments template
+	 * simply create your own flair_comment(), and that function will be used instead.
+	 *
+	 * Used as a callback by wp_list_comments() for displaying the comments.
+	 *
+	 */
+	function flair_comment( $comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment;
+		switch ( $comment->comment_type ) :
+			case 'pingback' :
+			case 'trackback' :
+			// Display trackbacks differently than normal comments.
+		?>
+		<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+			<p><?php _e( 'Pingback:', 'flair' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'flair' ), '<span class="edit-link">', '</span>' ); ?></p>
+		<?php
+				break;
+			default :
+			// Proceed with normal comments.
+			global $post;
+		?>
+		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+			<article id="comment-<?php comment_ID(); ?>" class="comment">
+				<header class="comment-meta comment-author vcard">
+					<?php
+						echo get_avatar( $comment, 44 );
+						printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
+							get_comment_author_link(),
+							// If current post author is also comment author, make it known visually.
+							( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', 'flair' ) . '</span>' : ''
+						);
+						printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
+							esc_url( get_comment_link( $comment->comment_ID ) ),
+							get_comment_time( 'c' ),
+							/* translators: 1: date, 2: time */
+							sprintf( __( '%1$s at %2$s', 'flair' ), get_comment_date(), get_comment_time() )
+						);
+					?>
+				</header><!-- .comment-meta -->
+
+				<?php if ( '0' == $comment->comment_approved ) : ?>
+					<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'flair' ); ?></p>
+				<?php endif; ?>
+
+				<section class="comment-content comment">
+					<?php comment_text(); ?>
+					<?php edit_comment_link( __( 'Edit', 'flair' ), '<p class="edit-link">', '</p>' ); ?>
+				</section><!-- .comment-content -->
+
+				<div class="reply">
+					<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'flair' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				</div><!-- .reply -->
+			</article><!-- #comment-## -->
+		<?php
 			break;
-		default :
-		// Proceed with normal comments.
-		global $post;
-	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<header class="comment-meta comment-author vcard">
-				<?php
-					echo get_avatar( $comment, 44 );
-					printf( '<cite><b class="fn">%1$s</b> %2$s</cite>',
-						get_comment_author_link(),
-						// If current post author is also comment author, make it known visually.
-						( $comment->user_id === $post->post_author ) ? '<span>' . __( 'Post author', 'flair' ) . '</span>' : ''
-					);
-					printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
-						esc_url( get_comment_link( $comment->comment_ID ) ),
-						get_comment_time( 'c' ),
-						/* translators: 1: date, 2: time */
-						sprintf( __( '%1$s at %2$s', 'flair' ), get_comment_date(), get_comment_time() )
-					);
-				?>
-			</header><!-- .comment-meta -->
-
-			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'flair' ); ?></p>
-			<?php endif; ?>
-
-			<section class="comment-content comment">
-				<?php comment_text(); ?>
-				<?php edit_comment_link( __( 'Edit', 'flair' ), '<p class="edit-link">', '</p>' ); ?>
-			</section><!-- .comment-content -->
-
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'flair' ), 'after' => ' <span>&darr;</span>', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
-		</article><!-- #comment-## -->
-	<?php
-		break;
-	endswitch; // end comment_type check
-}
+		endswitch; // end comment_type check
+	}
 endif;
