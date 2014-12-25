@@ -35,7 +35,7 @@ add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 // Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
 function flair_required_active_nav_class( $classes, $item ) {
-	if ( in_array( 'current_page_item', $classes ) === true ) {
+	if ( true === in_array( 'current_page_item', $classes ) ) {
 		$classes[] = 'active';
 	}
 
@@ -143,7 +143,7 @@ class Flair_Page_Walker extends Walker_Page {
 
 function flair_dequeue_gravity_forms_css() {
 	if ( ! get_option( 'rg_gforms_disable_css' ) ) {
-		update_option( 'rg_gforms_disable_css', TRUE );
+		update_option( 'rg_gforms_disable_css', true );
 	}
 }
 
@@ -185,7 +185,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 	if ( ! is_admin() ) {
 
 		//Change html content for text input and address fields
-		if ( ( $field['type'] === 'text' ) || ( $field['type'] === 'address' ) || ( $field['type'] === 'name' ) || ( $field['type'] === 'website' ) || ( $field['type'] === 'email' ) || ( $field['type'] === 'textarea' ) || $field['type'] === 'select' ) {
+		if ( 'text' === ( $field['type'] ) || ( 'address' === $field['type'] ) || ( 'name' === $field['type'] ) || ( 'website' === $field['type'] ) || ( 'email' === $field['type'] ) || ( 'textarea' === $field['type'] ) || 'select' === $field['type'] ) {
 
 			$id = $field['id'];
 
@@ -201,9 +201,8 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 			$validation_message = ( rgget( 'failed_validation', $field ) && ! empty( $field['validation_message'] ) ) ? sprintf( $validation_message, $field['validation_message'] ) : '';
 
-
 			$field_label = $force_frontend_label ? $field['label'] : GFCommon::get_label( $field );
-			if ( rgar( $field, 'inputType' ) == 'singleproduct' && ! rgempty( $field['id'] . '.1', $value ) ) {
+			if ( 'singleproduct' == rgar( $field, 'inputType' ) && ! rgempty( $field['id'] . '.1', $value ) ) {
 				$field_label = rgar( $value, $field['id'] . '.1' );
 			}
 
@@ -215,13 +214,11 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 			$is_description_above = rgar( $field, 'descriptionPlacement' ) == 'above';
 
-
 			$admin_buttons = IS_ADMIN ? "<div class='gfield_admin_icons'><div class='gfield_admin_header_title'>{$field_type_title} : " . __( 'Field ID', 'gravityforms' ) . " {$field['id']}</div>" . $delete_field_link . $duplicate_field_link . "<a class='field_edit_icon edit_icon_collapsed' title='" . __( 'click to edit this field', 'gravityforms' ) . "'>" . __( 'Edit', 'gravityforms' ) . '</a></div>' : '';
 
 			if ( empty( $target_input_id ) ) {
 				$target_input_id = $field_id;
 			}
-
 
 			//Field Description
 			$description = '';
@@ -232,17 +229,16 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 				$field_content = sprintf( "%s<label class='gfield_label' for='%s'>%s%s</label>{FIELD}%s%s", $admin_buttons, $target_input_id, esc_html( $field_label ), $required_div, $description, $validation_message );
 			}
 
-
 			//Detect if field type is text or address and call the required function to get field content
-			if ( $field['type'] === 'address' ) {
+			if ( 'address' === $field['type'] ) {
 
 				$content = str_replace( '{FIELD}', flair_gform_get_address_field( $field, $value, 0, $form_id ), $field_content );
 
-			} elseif ( $field['type'] === 'name' ) {
+			} elseif ( 'name' === $field['type'] ) {
 
 				$content = str_replace( '{FIELD}', flair_gform_get_name_field( $field, $value, 0, $form_id ), $field_content );
 
-			} elseif ( $field['type'] === 'website' ) {
+			} elseif ( 'website' === $field['type'] ) {
 
 				$content = str_replace( '{FIELD}', flair_gform_get_website_field( $field, $value, 0, $form_id ), $field_content );
 
@@ -293,12 +289,11 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			?>
 			<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'flair_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
 				<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>"
-					<?php if ( $input['label'] == 'First' ) { ?>
-					   placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
+				<?php if ( $input['label'] == 'First' ) { ?>
+					placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 				<?php
 				}
-				else {
-					?>
+				else { ?>
 					placeholder="<?php echo apply_filters( 'gform_name_last', __( 'Last', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'flair_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 				<?php
 				} ?>
@@ -318,14 +313,14 @@ function flair_name_label( $classes, $field, $form, $input ) {
 	// We need to get the form info to see how the labels are aligned
 	$form_info = GFFormsModel::get_form_meta( $form );
 
-	if ( $form_info['labelPlacement'] === 'left_label' || $form_info['labelPlacement'] === 'right_label' ) {
+	if ( 'left_label' === $form_info['labelPlacement'] || 'right_label' === $form_info['labelPlacement'] ) {
 		$classes = str_replace( 'large-6 columns', '', $classes );
 	}
 
-	if ( strpos( $input['id'], '.3' ) !== false ) {
+	if ( false !== strpos( $input['id'], '.3' ) ) {
 		$classes .= ' ginput_left';
 	}
-	if ( strpos( $input['id'], '.6' ) !== false ) {
+	if ( false !== strpos( $input['id'], '.6' ) ) {
 		$classes .= ' ginput_right';
 	}
 
@@ -346,7 +341,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	$class = $size . $class_suffix;
 
 	$currency = '';
-	if ( RG_CURRENT_VIEW == 'entry' ) {
+	if ( 'entry' == RG_CURRENT_VIEW ) {
 		$lead = RGFormsModel::get_lead( $lead_id );
 		$post_id = $lead['post_id'];
 		$post_link = '';
@@ -411,7 +406,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$street_address2 = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_2_container' $style><input type='text' name='input_%d.2' id='%s_2' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street2_{$form_id}", apply_filters( 'gform_address_street2', __( 'Address Line 2', 'gravityforms' ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_2' id='input_" . $id . "_2_label'>Address Line 2</label></span>", $id, $field_id, $street2_value, $disabled_text, $field_id );
 	}
 
-	if ( $address_display_format == 'zip_before_city' ) {
+	if ( 'zip_before_city' == $address_display_format ) {
 		//zip field
 		$tabindex = GFCommon::get_tabindex();
 		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( 'gform_address_zip', $zip_label, $form_id ), $form_id ) . "'/></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
@@ -508,7 +503,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	$tabindex = GFCommon::get_tabindex();
 	$state_text = sprintf( "<input type='text' name='input_%d.4' %s value='%s' $tabindex %s $state_text_class $text_style placeholder='" . apply_filters( "gform_address_state_{$form_id}", apply_filters( 'gform_address_state', $state_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_4' id='input_" . $id . "_4_label'>State / Province / Region</label>", $id, $state_field_id, $state_value, $disabled_text );
 
-	if ( IS_ADMIN && RG_CURRENT_VIEW != 'entry' ) {
+	if ( IS_ADMIN && 'entry' != RG_CURRENT_VIEW ) {
 		return $state_dropdown . $state_text;
 	} else {
 		if ( $has_state_drop_down ) {
@@ -524,17 +519,17 @@ add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3 );
 
 function flair_foundation_custom_class( $classes, $field, $form ) {
 
-	if ( $form['labelPlacement'] === 'left_label' || $form['labelPlacement'] === 'right_label' ) {
+	if ( 'left_label' === $form['labelPlacement'] || 'right_label' === $form['labelPlacement'] ) {
 		return $classes;
 	}
 
-	if ( $field['type'] == 'text' || $field['type'] == 'email' || $field['type'] == 'select' ) {
+	if ( 'text' == $field['type'] || 'email' == $field['type'] || 'select' == $field['type'] ) {
 		$classes .= ' large-6 columns';
 	}
-	if ( $field['type'] == 'name' ) {
+	if ( 'name' == $field['type'] ) {
 		$classes .= ' name';
 	}
-	if ( $field['type'] == 'textarea' ) {
+	if ( 'textarea' == $field['type'] ) {
 		$classes .= ' medium-12 columns';
 	}
 	return $classes;
@@ -588,7 +583,7 @@ function flair_flex_video( $html, $url, $attr ) {
 		}
 	}
 
-	if ( $resize === true ) {
+	if ( true === $resize ) {
 
 		// Remove width and height attributes
 		$attr_pattern = '/(width|height)="[0-9]*"/i';
