@@ -27,19 +27,8 @@ get_header(); ?>
 			<header class="page-header">
 				<h1 class="page-title">
 					<?php
-						if ( is_day() ) :
-							printf( __( 'Daily Archives: %s', 'flair' ), get_the_date() );
-
-						elseif ( is_month() ) :
-							printf( __( 'Monthly Archives: %s', 'flair' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'flair' ) ) );
-
-						elseif ( is_year() ) :
-							printf( __( 'Yearly Archives: %s', 'flair' ), get_the_date( _x( 'Y', 'yearly archives date format', 'flair' ) ) );
-
-						else :
-							_e( 'Archives', 'flair' );
-
-						endif;
+					the_archive_title( '<h1 class="page-title">', '</h1>' );
+					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 					?>
 				</h1>
 			</header><!-- .page-header -->
