@@ -58,3 +58,10 @@ object {
 	width: 100%;
 	margin-bottom: rem-calc(45);
 }
+
+/* Required WordPress Styles, replace if required */
+.sticky,
+.gallery-caption,
+.bypostauthor {
+	font-family: inherit;
+}
