@@ -63,6 +63,10 @@ function flair_check_theme_support() {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_tabs', 11 );
 	}
 
+	if ( current_theme_supports( 'foundation-off-canvas' ) ) {
+		add_action( 'wp_enqueue_scripts',  'flair_off_canvas', 11 );
+	}
+
 }
 
 add_action( 'init', 'flair_check_theme_support' );
@@ -205,6 +209,16 @@ function flair_enqueue_accordion() {
 
 function flair_enqueue_tabs() {
 	wp_enqueue_script( 'tabs', get_template_directory_uri() . '/assets/js/foundation/foundation.tab.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
+}
+
+/**
+ * Enqueue Foundation Off Canvas Menus
+ *
+ * http://foundation.zurb.com/docs/components/offcanvas.html
+ */
+
+function flair_off_canvas() {
+	wp_enqueue_script( 'offcanvas', get_template_directory_uri() . '/assets/js/foundation/foundation.offcanvas.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
 
 /**
