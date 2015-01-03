@@ -88,7 +88,6 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	# add_theme_support( 'foundation-accordion' );
 	# add_theme_support( 'foundation-tabs' );
 	# add_theme_support( 'off-canvas' );
-	# add_theme_support( 'remove-comments' );
 
 }
 endif; // flair_setup
