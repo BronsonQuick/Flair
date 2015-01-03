@@ -286,12 +286,12 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 
 	<?php if ( ! $field['inputs'] ) :
 	//Cache css id
-	$input_id = str_replace( '.', '_', $field["id"] ); ?>
+	$input_id = str_replace( '.', '_', $field['id'] ); ?>
 	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'ebisprint_gforms_name_class', 'large-6 columns', $field, $form_id, $input_id ); ?>">
 	<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input_id ); ?>"
-	       placeholder="<?php esc_attr_e( $field["label"] ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder ', $field, $form_id, $input_id ); ?>" />
+	       placeholder="<?php esc_attr_e( $field['label'] ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder ', $field, $form_id, $input_id ); ?>" />
 
-<?php else: ?>
+<?php else : ?>
 	<?php foreach ( $field['inputs'] as $key => $input ) :
 
 		//Cache css id
