@@ -74,6 +74,19 @@ module.exports = function(grunt) {
 				'scss/_settings.scss': 'foundation/scss/foundation/_settings.scss'
 			}
 		}
+	},
+	imagemin: {
+		build: {
+			files: [{
+				expand: true,
+				cwd: './assets/images/',
+				src: ['**/*.{png,jpg,gif}'],
+				dest: './assets/images/'
+			}],
+				options: {
+				optimizationLevel: 7
+			}
+		}
 	}
 
 });
@@ -82,8 +95,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-compress');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 	grunt.registerTask('setup', ['bowercopy','sass']);
 	grunt.registerTask('default', ['sass','watch']);
-	grunt.registerTask('build', ['sass', 'copy', 'compress']);
+	grunt.registerTask('build', ['sass', 'copy', 'compress', 'imagemin']);
 }
