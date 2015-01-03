@@ -43,7 +43,9 @@ module.exports = function(grunt) {
 					'!.gitignore',
 					'!.gitmodules',
 					'!.bowerrc',
-					'!README.md'
+					'!README.md',
+					'!codesniffer.ruleset.xml',
+					'!.travis.yml'
 				],
 				dest: 'releases/<%= pkg.version %>/files/'
 			}
