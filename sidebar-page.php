@@ -7,7 +7,7 @@
 ?>
 <!-- Sidebar -->
 
-<?php if ( ! is_page_template( 'templates/sidebar-left.php' ) ): ?>
+<?php if ( ! is_page_template( 'templates/sidebar-left.php' ) ) : ?>
 	<aside class="medium-3 columns sidebar">
 <?php else : ?>
 	<aside class="medium-3 pull-9 columns sidebar">
