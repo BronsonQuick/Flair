@@ -331,10 +331,6 @@ $warning-bg: #fcf3f3;
 	{
 		width: 100%;
 	}
-	.gfield_error .ginput_complex .ginput_left,
-	.gfield_error .ginput_complex .ginput_right {
-		width: 50%;
-	}
 	.gfield_error .ginput_complex .ginput_left input {
 		width: 90% !important;
 	}
@@ -604,9 +600,6 @@ $warning-bg: #fcf3f3;
 	}
 	.top_label .gfield_error .ginput_container {
 		max-width: 99%;
-	}
-	.top_label .gfield_error {
-		width: 97%;
 	}
 	.top_label .gfield_error input.large,
 	.top_label .gfield_error select.large,
