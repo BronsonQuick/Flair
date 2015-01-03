@@ -62,7 +62,7 @@ function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-tabs' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_enqueue_tabs', 11 );
 	}
-	
+
 	if ( current_theme_supports( 'foundation-off-canvas' ) ) {
 		add_action( 'wp_enqueue_scripts',  'flair_off_canvas', 11 );
 	}
