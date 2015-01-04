@@ -56,6 +56,7 @@ In functions.php there are some commented out `add_theme_support` lines which wh
   * [Equalizer](http://foundation.zurb.com/docs/components/equalizer.html)
   * [Accordion](http://foundation.zurb.com/docs/components/accordion.html)
   * [Tabs](http://foundation.zurb.com/docs/components/tabs.html)
+  * [Off-Canvas](http://foundation.zurb.com/docs/components/offcanvas.html)
 
 ## Package as Zip
 
