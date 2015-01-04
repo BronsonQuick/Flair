@@ -62,16 +62,27 @@ module.exports = function(grunt) {
 		}
 	},
 	bowercopy: {
-		foundation: {
+		new: {
 			options: {
-            	destPrefix: 'assets',
+				destPrefix: 'assets',
 				srcPrefix: 'bower_components'
-        	},
+			},
 			files: {
 				'js/foundation': 'foundation/js/foundation',
 				'js/foundation.min.js': 'foundation/js/foundation.min.js',
 				'js/modernizr.js': 'modernizr/modernizr.js',
 				'scss/_settings.scss': 'foundation/scss/foundation/_settings.scss'
+			}
+		},
+		existing: {
+			options: {
+				destPrefix: 'assets',
+				srcPrefix: 'bower_components'
+			},
+			files: {
+				'js/foundation': 'foundation/js/foundation',
+				'js/foundation.min.js': 'foundation/js/foundation.min.js',
+				'js/modernizr.js': 'modernizr/modernizr.js'
 			}
 		}
 	},
@@ -97,7 +108,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('setup', ['bowercopy','sass']);
+	grunt.registerTask('setup', function(){
+		if ( true == grunt.file.exists('assets/scss/_settings.scss') ) {
+			grunt.task.run(['bowercopy:existing', 'sass']);
+		} else {
+			grunt.task.run(['bowercopy:new', 'sass']);
+		}
+	});
 	grunt.registerTask('default', ['sass','watch']);
 	grunt.registerTask('build', ['sass', 'copy', 'compress', 'imagemin']);
 }
