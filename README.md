@@ -1,8 +1,6 @@
 ![Travis Build Status](https://travis-ci.org/sennza/Flair.svg?branch=master)
 
-# Flair - Sennza's WordPress Foundation Starter theme
-
-This is WordPress starter theme that uses Foundation, Grunt and libsass!
+# "Flair" is Sennza's WordPress [Foundation](http://foundation.zurb.com/) + [_s](https://github.com/Automattic/_s) Starter theme
 
 ## Prerequisites
 
@@ -57,13 +55,13 @@ In functions.php there are some commented out `add_theme_support` lines which wh
   * [Accordion](http://foundation.zurb.com/docs/components/accordion.html)
   * [Tabs](http://foundation.zurb.com/docs/components/tabs.html)
   * [Off-Canvas](http://foundation.zurb.com/docs/components/offcanvas.html)
-
+ 
 ## Package as Zip
 
 If you'd like to package your theme for installing from the [WordPress Administration Panel](http://codex.wordpress.org/Using_Themes) run:
 
 ```bash
-grunt archive
+grunt build
 ```
 
-The grunt task creates a file named 'flair-theme.zip' in the root of the theme directory.
+The grunt task creates a file named `flair-theme.zip` in the `releases` folder root of the theme directory. Your theme files will be inside a version numbered folder. You can alter the version number and the name of the zip by altering the `name` and `version` in [package.json](https://github.com/sennza/Flair/blob/master/package.json#L2-#L3)
