@@ -390,7 +390,14 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$country_value = esc_attr( rgget( $field['id'] . '.6', $value ) );
 	}
 
-	$address_types = GFCommon::get_address_types( $form_id );
+	// Check for older versions of Gravity Forms
+	if ( version_compare( GFForms::$version, '1.9.0', '>' ) ) {
+		$gf_address = new GF_Field_Address();
+		$address_types = $gf_address->get_address_types( $form_id );
+	} else {
+		$address_types = GFCommon::get_address_types( $form_id );
+	}
+
 	$addr_type = empty( $field['addressType'] ) ? 'international' : $field['addressType'];
 	$address_type = $address_types[$addr_type];
 
@@ -406,7 +413,13 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$state_value = rgget( 'defaultState', $field );
 	}
 
-	$country_list = GFCommon::get_country_dropdown( $country_value );
+	// Check for older versions of Gravity Forms
+	if ( version_compare( GFForms::$version, '1.9.0', '>' ) ) {
+		$gf_country = new GF_Field_Address();
+		$country_list = $gf_country->get_country_dropdown( $country_value );
+	} else {
+		$country_list = GFCommon::get_country_dropdown( $country_value );
+	}
 
 	//changing css classes based on field format to ensure proper display
 	$address_display_format = apply_filters( 'gform_address_display_format', 'default' );
