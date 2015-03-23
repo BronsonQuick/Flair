@@ -96,7 +96,7 @@ class Flair_Page_Walker extends Walker_Page {
 		extract( $args, EXTR_SKIP );
 		$css_class = array( 'page_item', 'page-item-' . $page->ID );
 
-		if ( isset ( $args['pages_with_children'][$page->ID] ) ) {
+		if ( isset ( $args['pages_with_children'][ $page->ID ] ) ) {
 			$css_class[] = 'page_item_has_children has-dropdown';
 		}
 
@@ -390,9 +390,16 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$country_value = esc_attr( rgget( $field['id'] . '.6', $value ) );
 	}
 
-	$address_types = GFCommon::get_address_types( $form_id );
+	// Check for older versions of Gravity Forms
+	if ( version_compare( GFForms::$version, '1.9.0', '>' ) ) {
+		$gf_address = new GF_Field_Address();
+		$address_types = $gf_address->get_address_types( $form_id );
+	} else {
+		$address_types = GFCommon::get_address_types( $form_id );
+	}
+
 	$addr_type = empty( $field['addressType'] ) ? 'international' : $field['addressType'];
-	$address_type = $address_types[$addr_type];
+	$address_type = $address_types[ $addr_type ];
 
 	$state_label = empty( $address_type['state_label'] ) ? __( 'State', 'gravityforms' ) : $address_type['state_label'];
 	$zip_label = empty( $address_type['zip_label'] ) ? __( 'Zip Code', 'gravityforms' ) : $address_type['zip_label'];
@@ -406,7 +413,13 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$state_value = rgget( 'defaultState', $field );
 	}
 
-	$country_list = GFCommon::get_country_dropdown( $country_value );
+	// Check for older versions of Gravity Forms
+	if ( version_compare( GFForms::$version, '1.9.0', '>' ) ) {
+		$gf_country = new GF_Field_Address();
+		$country_list = $gf_country->get_country_dropdown( $country_value );
+	} else {
+		$country_list = GFCommon::get_country_dropdown( $country_value );
+	}
 
 	//changing css classes based on field format to ensure proper display
 	$address_display_format = apply_filters( 'gform_address_display_format', 'default' );
@@ -504,7 +517,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 
 	$address_type = rgempty( 'addressType', $field ) ? 'international' : $field['addressType'];
 	$address_types = GFCommon::get_address_types( $form_id );
-	$has_state_drop_down = isset( $address_types[$address_type]['states'] ) && is_array( $address_types[$address_type]['states'] );
+	$has_state_drop_down = isset( $address_types[ $address_type ]['states'] ) && is_array( $address_types[ $address_type ]['states'] );
 
 	if ( IS_ADMIN && 'entry' != RG_CURRENT_VIEW ) {
 		$state_dropdown_class = "class='state_dropdown'";
@@ -518,7 +531,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	}
 
 	$tabindex = GFCommon::get_tabindex();
-	$states = empty( $address_types[$address_type]['states'] ) ? array() : $address_types[$address_type]['states'];
+	$states = empty( $address_types[ $address_type ]['states'] ) ? array() : $address_types[ $address_type ]['states'];
 	$state_dropdown = sprintf( "<select name='input_%d.4' %s $tabindex %s $state_dropdown_class $state_style>%s</select>", $id, $state_field_id, $disabled_text, GFCommon::get_state_dropdown( $states, $state_value ) );
 
 	$tabindex = GFCommon::get_tabindex();
