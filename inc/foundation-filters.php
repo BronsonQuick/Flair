@@ -204,8 +204,16 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 			ob_end_clean();
 
 			$validation_message = ( rgget( 'failed_validation', $field ) && ! empty( $field['validation_message'] ) ) ? sprintf( $validation_message, $field['validation_message'] ) : '';
-
+			$field_type_title = GFCommon::get_field_type_title( $field["type"] );
 			$field_label = $force_frontend_label ? $field['label'] : GFCommon::get_label( $field );
+
+			$duplicate_disabled = array( 'captcha', 'post_title', 'post_content', 'post_excerpt', 'total', 'shipping', 'creditcard' );
+			$duplicate_field_link = ! in_array( $field['type'], $duplicate_disabled ) ? "<a class='field_duplicate_icon' id='gfield_duplicate_$id' title='" . __( "click to duplicate this field", "gravityforms" ) . "' href='#' onclick='StartDuplicateField(this); return false;'><i class='fa fa-files-o fa-lg'></i></a>" : "";
+			$duplicate_field_link = apply_filters( "gform_duplicate_field_link", $duplicate_field_link );
+
+			$delete_field_link = "<a class='field_delete_icon' id='gfield_delete_$id' title='" . __( "click to delete this field", "gravityforms" ) . "' href='#' onclick='StartDeleteField(this); return false;'><i class='fa fa-times fa-lg'></i></a>";
+			$delete_field_link = apply_filters( "gform_delete_field_link", $delete_field_link );
+
 			if ( 'singleproduct' == rgar( $field, 'inputType' ) && ! rgempty( $field['id'] . '.1', $value ) ) {
 				$field_label = rgar( $value, $field['id'] . '.1' );
 			}
