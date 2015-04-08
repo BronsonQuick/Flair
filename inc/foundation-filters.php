@@ -210,7 +210,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 				$field_label = rgar( $value, $field['id'] . '.1' );
 			}
 
-			$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
+			$field_id = IS_ADMIN || 0 == $form_id ? "input_$id" : 'input_' . $form_id . "_$id";
 
 			$target_input_id = '';
 
@@ -357,7 +357,7 @@ add_filter( 'flair_gforms_name_class', 'flair_name_label', 10, 4 );
 function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	$id = $field['id'];
-	$field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
+	$field_id = IS_ADMIN || 0 == $form_id ? "input_$id" : 'input_' . $form_id . "_$id";
 	$form_id = IS_ADMIN && empty( $form_id ) ? rgget( 'id' ) : $form_id;
 
 	$size = rgar( $field, 'size' );
@@ -427,9 +427,9 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	//changing css classes based on field format to ensure proper display
 	$address_display_format = apply_filters( 'gform_address_display_format', 'default' );
-	$city_location = $address_display_format == 'zip_before_city' ? 'right' : 'left';
-	$zip_location = $address_display_format != 'zip_before_city' && rgar( $field, 'hideState' ) ? 'right' : 'left';
-	$state_location = $address_display_format == 'zip_before_city' ? 'left' : 'right';
+	$city_location = 'zip_before_city' == $address_display_format ? 'right' : 'left';
+	$zip_location = 'zip_before_city' != $address_display_format && rgar( $field, 'hideState' ) ? 'right' : 'left';
+	$state_location = 'zip_before_city' == $address_display_format ? 'left' : 'right';
 	$country_location = rgar( $field, 'hideState' ) ? 'left' : 'right';
 
 	//address field
@@ -500,7 +500,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	//Wrap ZIP in foundation divs
 	$zip = "<div class='" . apply_filters( 'flair_gforms_address_zip_class', 'large-6 columns', $field, $form_id ) . "'>{$zip}</div>";
 
-	$inputs = $address_display_format == 'zip_before_city' ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
+	$inputs = 'zip_before_city' == $address_display_format ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
 
 	return "<div class='ginput_complex$class_suffix ginput_container' id='$field_id'>" . $inputs . '</div>';
 
