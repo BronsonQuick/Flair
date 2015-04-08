@@ -5,7 +5,7 @@
  * @package Flair Theme
  */
 
-define( 'FOUNDATION_VERSION', '5.3.0' );
+define( 'FOUNDATION_VERSION', '5.5.1' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
