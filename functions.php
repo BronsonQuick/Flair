@@ -68,6 +68,7 @@ if ( ! function_exists( 'flair_setup' ) ) :
 		'comment-form',
 		'gallery',
 		'caption',
+		'widgets',
 	) );
 
 	/**
