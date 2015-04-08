@@ -120,8 +120,11 @@ class Flair_Page_Walker extends Walker_Page {
 			$page->post_title = sprintf( __( '#%d (no title)', 'flair' ), $page->ID );
 		}
 
+		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+
 		/** This filter is documented in wp-includes/post-template.php */
-		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink( $page->ID ) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
+		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink( $page->ID ) . '">' . $args['link_before'] . apply_filters( 'the_title', $page->post_title, $page->ID ) . $args['link_after'] . '</a>';
 
 		if ( ! empty( $show_date ) ) {
 			if ( 'modified' == $show_date ) {
@@ -130,6 +133,7 @@ class Flair_Page_Walker extends Walker_Page {
 				$time = $page->post_date;
 			}
 
+			$date_format = empty( $args['date_format'] ) ? '' : $args['date_format'];
 			$output .= ' ' . mysql2date( $date_format, $time );
 		}
 	}
