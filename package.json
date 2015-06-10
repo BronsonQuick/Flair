@@ -2,7 +2,7 @@
   "name": "flair-theme",
   "version": "0.0.1",
   "devDependencies": {
-    "node-sass": "~0.7.0",
+    "node-sass": "~3.1.2",
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-sass": "~0.8.1",
