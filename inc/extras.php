@@ -9,6 +9,9 @@
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ * @param $args
+ *
+ * @return mixed
  */
 function flair_page_menu_args( $args ) {
 	$args['show_home'] = true;
