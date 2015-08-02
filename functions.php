@@ -91,7 +91,7 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	// add_theme_support( 'off-canvas' );
 
 }
-endif; // flair_setup
+endif;
 add_action( 'after_setup_theme', 'flair_setup' );
 
 /**
