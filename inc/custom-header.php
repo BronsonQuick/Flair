@@ -3,12 +3,11 @@
  * Implement Custom Header functionality for Flair
  *
  * @since Flair 1.0
+ * @package Flair Theme
  */
 
 /**
  * Set up the WordPress core custom header settings.
- *
- * @package Flair Theme
  *
  * @uses flair_header_style()
  * @uses flair_admin_header_style()
