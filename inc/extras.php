@@ -21,6 +21,9 @@ add_filter( 'wp_page_menu_args', 'flair_page_menu_args' );
 
 /**
  * Adds custom classes to the array of body classes.
+ * @param $classes
+ *
+ * @return array
  */
 function flair_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author
