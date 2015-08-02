@@ -51,7 +51,7 @@ if ( ! function_exists( 'flair_render_title_tag' ) ) :
 
 		global $page, $paged;
 
-		// Add the blog name
+		// Add the blog name.
 		$title .= get_bloginfo( 'name', 'display' );
 
 		// Add the blog description for the home/front page.
@@ -71,7 +71,7 @@ if ( ! function_exists( 'flair_render_title_tag' ) ) :
 endif;
 
 /**
- * Title shiv for blogs older than WordPress 4.1
+ * Title shiv for blogs older than WordPress 4.1.
  */
 if ( ! function_exists( 'flair_render_title_tag' ) ) :
 	function flair_render_title() {
