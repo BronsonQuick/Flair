@@ -84,7 +84,7 @@ if ( ! function_exists( 'flair_header_style' ) ) :
 		</style>
 		<?php
 	}
-endif; // flair_header_style
+endif;
 
 
 if ( ! function_exists( 'flair_admin_header_style' ) ) :
@@ -116,7 +116,7 @@ if ( ! function_exists( 'flair_admin_header_style' ) ) :
 		</style>
 	<?php
 	}
-endif; // flair_admin_header_style
+endif;
 
 if ( ! function_exists( 'flair_admin_header_image' ) ) :
 	/**
@@ -136,4 +136,4 @@ if ( ! function_exists( 'flair_admin_header_image' ) ) :
 		</div>
 	<?php
 }
-endif; // flair_admin_header_image
+endif;
