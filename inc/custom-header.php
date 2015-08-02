@@ -51,7 +51,6 @@ if ( ! function_exists( 'flair_header_style' ) ) :
 	 * Styles the header image and text displayed on the blog
 	 *
 	 * @see flair_custom_header_setup().
-	 *
 	 */
 	function flair_header_style() {
 		$text_color = get_header_textcolor();
