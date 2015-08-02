@@ -40,7 +40,7 @@ if ( ! function_exists( 'flair_paging_nav' ) ) :
 		</nav><!-- .navigation -->
 		<?php
 	}
-endif; // flair_paging_nav
+endif;
 
 if ( ! function_exists( 'flair_post_nav' ) ) :
 	/**
@@ -70,7 +70,7 @@ if ( ! function_exists( 'flair_post_nav' ) ) :
 		</nav><!-- .navigation -->
 		<?php
 	}
-endif; // flair_post_nav
+endif;
 
 if ( ! function_exists( 'flair_posted_on' ) ) :
 	/**
