@@ -6,6 +6,7 @@
  *
  * @package Flair Theme
  */
+
 ?>
 <!-- Footer -->
 
@@ -14,7 +15,7 @@
 
 		<?php if ( ! dynamic_sidebar( 'footer-widget-area' ) ) : ?>
 
-		<?php endif; // end footer widget area ?>
+		<?php endif; // End footer widget area. ?>
 
 	</div>
 </footer>
