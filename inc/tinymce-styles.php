@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file contains any functions that alter the default TinyMCE functions in WordPress.
+ */
 
 /**
  * Add some Foundation 5 styles to TinyMCE
