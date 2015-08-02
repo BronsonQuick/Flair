@@ -4,8 +4,10 @@
  */
 
 /**
- * Add some Foundation 5 styles to TinyMCE
+ * Add some Foundation 5 styles to TinyMCE.
+ * @param $buttons
  *
+ * @return mixed
  */
 function flair_mce_buttons( $buttons ) {
 	array_unshift( $buttons, 'styleselect' );
