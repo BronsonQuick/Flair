@@ -62,5 +62,5 @@
 
 		<?php edit_post_link( __( 'Edit', 'flair' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+</article><!-- #post-<?php the_ID(); ?> -->
 <hr />
