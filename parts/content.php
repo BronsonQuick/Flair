@@ -1,7 +1,9 @@
 <?php
 /**
+ * The default content template.
  * @package Flair Theme
  */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
