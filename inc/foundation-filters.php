@@ -32,7 +32,12 @@ function flair_nav_menu_item_parent_classing( $classes ) {
 
 add_filter( 'nav_menu_css_class', 'flair_nav_menu_item_parent_classing', 10, 2 );
 
-// Deletes empty classes and changes the sub menu class name
+/**
+ * Deletes empty classes and changes the sub menu class name.
+ * @param $menu
+ *
+ * @return mixed
+ */
 function flair_change_submenu_class( $menu ) {
 	$menu = preg_replace( '/ class="sub-menu"/', ' class="dropdown"', $menu );
 
