@@ -15,6 +15,12 @@ function flair_mce_buttons( $buttons ) {
 }
 add_filter( 'mce_buttons_2', 'flair_mce_buttons' );
 
+/**
+ * Add in our custom styles to TinyMCE to help with columns in WordPress.
+ * @param $init_array
+ *
+ * @return mixed
+ */
 function flair_mce_before_init( $init_array ) {
 	// Add back some more of styles we want to see in TinyMCE
 	$init_array['preview_styles'] = 'font-family font-size font-weight font-style text-decoration text-transform color background-color padding';
