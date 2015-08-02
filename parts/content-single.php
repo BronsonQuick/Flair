@@ -1,5 +1,6 @@
 <?php
 /**
+ * The template for displaying the content on single blog posts.
  * @package Flair Theme
  */
 ?>
