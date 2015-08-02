@@ -1,6 +1,9 @@
 <?php
 /**
- * By default WordPress adds the CSS class .sticky to sticky posts. Foundation 5 uses that class name for a Sticky Top Bar so let's rename it
+ * By default WordPress adds the CSS class .sticky to sticky posts. Foundation 5 uses that class name for a Sticky Top Bar so let's rename it.
+ * @param $classes
+ *
+ * @return mixed
  */
 
 function flair_rename_sticky_post_class( $classes ) {
