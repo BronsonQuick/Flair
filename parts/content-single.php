@@ -3,6 +3,7 @@
  * The template for displaying the content on single blog posts.
  * @package Flair Theme
  */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
