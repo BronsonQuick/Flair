@@ -47,7 +47,13 @@ function flair_change_submenu_class( $menu ) {
 add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 
-// Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
+/**
+ * Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php).
+ * @param $classes
+ * @param $item
+ *
+ * @return array
+ */
 function flair_required_active_nav_class( $classes, $item ) {
 	if ( true === in_array( 'current_page_item', $classes ) ) {
 		$classes[] = 'active';
