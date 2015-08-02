@@ -153,7 +153,7 @@ function flair_custom_excerpt_more( $output ) {
 add_filter( 'get_the_excerpt', 'flair_custom_excerpt_more' );
 
 /**
- * Returns true if a blog has more than 1 category
+ * Returns true if a blog has more than 1 category.
  */
 function flair_categorized_blog() {
 	if ( false === ( $all_flair_categories = get_transient( 'flair_cats' ) ) ) {
@@ -178,7 +178,7 @@ function flair_categorized_blog() {
 }
 
 /**
- * Flush out the transients used in flair_categorized_blog
+ * Flush out the transients used in flair_categorized_blog.
  */
 function flair_category_transient_flusher() {
 	// Like, beat it. Dig?
@@ -198,8 +198,10 @@ function flair_top_bar( $class = '' ) {
 }
 
 /**
- * Flair Top Bar Options
+ * Flair Top Bar Options.
+ * @param string $class
  *
+ * @return mixed|void
  */
 function get_flair_top_bar( $class = '' ) {
 
