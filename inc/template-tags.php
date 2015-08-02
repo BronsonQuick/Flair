@@ -188,7 +188,7 @@ add_action( 'edit_category', 'flair_category_transient_flusher' );
 add_action( 'save_post',     'flair_category_transient_flusher' );
 
 /**
- * Echo out our custom classes if there are any
+ * Echo out our custom classes if there are any.
  *
  * @param string $class
  */
