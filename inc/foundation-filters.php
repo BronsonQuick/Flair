@@ -1,12 +1,17 @@
 <?php
 /**
+ * Any WordPress filters we need to filter to add Foundation support are contained in this file.
+ *
+ * @package Flair Theme
+ */
+
+/**
  * By default WordPress adds the CSS class .sticky to sticky posts. Foundation 5 uses that class name for a Sticky Top Bar so let's rename it
  *
- * @param $classes
+ * @param array $classes An array of classes relevant to the post.
  *
  * @return mixed
  */
-
 function flair_rename_sticky_post_class( $classes ) {
 
 	$classes = preg_replace( '/^sticky$/', 'sticky-post', $classes );
@@ -19,7 +24,7 @@ add_filter( 'post_class', 'flair_rename_sticky_post_class' );
 /**
  * Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
  *
- * @param $classes
+ * @param array $classes An array of CSS classes for the menu item.
  *
  * @return mixed
  */
@@ -36,7 +41,7 @@ add_filter( 'nav_menu_css_class', 'flair_nav_menu_item_parent_classing', 10, 2 )
 /**
  * Deletes empty classes and changes the sub menu class name
  *
- * @param $menu
+ * @param array $menu An array of classes for menu items.
  *
  * @return mixed
  */
@@ -52,8 +57,8 @@ add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 /**
  * Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
  *
- * @param $classes
- * @param $item
+ * @param array $classes An array of CSS classes.
+ * @param object $item Nav menu item data object.
  *
  * @return array
  */
@@ -70,7 +75,6 @@ add_filter( 'nav_menu_css_class', 'flair_required_active_nav_class', 10, 2 );
 /**
  * We need to write a custom function and a custom walker to add the dropdown class to the default <ul class='children'> created in WordPress's wp_page_menu function
  */
-
 function flair_page_menu() {
 	?>
 	<ul>
@@ -84,6 +88,9 @@ function flair_page_menu() {
 <?php
 }
 
+/**
+ * Class Flair_Page_Walker
+ */
 class Flair_Page_Walker extends Walker_Page {
 
 	/**
