@@ -198,7 +198,7 @@ function flair_top_bar( $class = '' ) {
 
 /**
  * Flair Top Bar Options
- * 
+ *
  * @param string $class
  *
  * @return mixed|void
