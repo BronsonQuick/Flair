@@ -117,8 +117,8 @@ class Flair_Page_Walker extends Walker_Page {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $page Page data object.
 	 * @param int    $depth Depth of page. Used for padding.
-	 * @param int    $current_page Page ID.
 	 * @param array  $args Any extra args.
+	 * @param int    $current_page Page ID.
 	 */
 	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 		if ( $depth ) {
@@ -129,7 +129,6 @@ class Flair_Page_Walker extends Walker_Page {
 
 		extract( $args, EXTR_SKIP );
 		$css_class = array( 'page_item', 'page-item-' . $page->ID );
-
 		if ( isset ( $args['pages_with_children'][ $page->ID ] ) ) {
 			$css_class[] = 'page_item_has_children has-dropdown';
 		}
@@ -204,7 +203,7 @@ function flair_gform_form_validation_message( $validation_message, $form ) {
 	$form_validation_msg_classes = 'alert-box alert';
 
 	if ( ! empty( $validation_message ) ) {
-		//Add Zurb foundation alert class to validation error div
+		// Add Zurb foundation alert class to validation error div.
 		$validation_message = preg_replace( '/validation_error/', "{$form_validation_msg_classes}", $validation_message );
 	}
 
@@ -219,8 +218,8 @@ add_filter( 'gform_field_content', 'flair_gform_field_content', 10, 5 );
  * @param mixed $content The content of the field.
  * @param mixed $field The type of field.
  * @param mixed $value The value of the field.
- * @param int $lead_id The Gravity Forms lead ID.
- * @param int $form_id The Gravity Forms form ID.
+ * @param int   $lead_id The Gravity Forms lead ID.
+ * @param int   $form_id The Gravity Forms form ID.
  *
  * @return mixed
  */
@@ -230,12 +229,12 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 
 	if ( ! is_admin() ) {
 
-		//Change html content for text input and address fields
+		// Change html content for text input and address fields.
 		if ( 'text' === ( $field['type'] ) || ( 'address' === $field['type'] ) || ( 'name' === $field['type'] ) || ( 'website' === $field['type'] ) || ( 'email' === $field['type'] ) || ( 'textarea' === $field['type'] ) || 'select' === $field['type'] ) {
 
 			$id = $field['id'];
 
-			//Cache validation message html
+			// Cache validation message html.
 			ob_start();
 			?>
 			<div>
@@ -274,7 +273,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 				$target_input_id = $field_id;
 			}
 
-			//Field Description
+			// Field Description.
 			$description = '';
 
 			if ( $is_description_above ) {
@@ -283,7 +282,7 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 				$field_content = sprintf( "%s<label class='gfield_label' for='%s'>%s%s</label>{FIELD}%s%s", $admin_buttons, $target_input_id, esc_html( $field_label ), $required_div, $description, $validation_message );
 			}
 
-			//Detect if field type is text or address and call the required function to get field content
+			// Detect if field type is text or address and call the required function to get field content.
 			if ( 'address' === $field['type'] ) {
 
 				$content = str_replace( '{FIELD}', flair_gform_get_address_field( $field, $value, 0, $form_id ), $field_content );
@@ -303,6 +302,16 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
 	return $content;
 }
 
+/**
+ * Manipulate the output of a website field in Gravity Forms.
+ *
+ * @param mixed $field The type of field.
+ * @param mixed $value The value of the field.
+ * @param int   $lead_id The Gravity Forms lead ID.
+ * @param int   $form_id The Gravity Forms form ID.
+ *
+ * @return null|string
+ */
 function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 	//Init vars
@@ -329,6 +338,16 @@ function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
 }
 
+/**
+ * Manipulate the output of a name field in Gravity Forms.
+ *
+ * @param mixed $field The type of field.
+ * @param mixed $value The value of the field.
+ * @param int   $lead_id The Gravity Forms lead ID.
+ * @param int   $form_id The Gravity Forms form ID.
+ *
+ * @return null|string
+ */
 function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 
 	//Init vars
@@ -383,6 +402,14 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 	return $output;
 }
 
+/**
+ * @param $classes
+ * @param $field
+ * @param $form
+ * @param $input
+ *
+ * @return mixed|string
+ */
 function flair_name_label( $classes, $field, $form, $input ) {
 
 	// We need to get the form info to see how the labels are aligned
@@ -404,6 +431,16 @@ function flair_name_label( $classes, $field, $form, $input ) {
 
 add_filter( 'flair_gforms_name_class', 'flair_name_label', 10, 4 );
 
+/**
+ * Manipulate the output of an address field in Gravity Forms.
+ *
+ * @param mixed $field The type of field.
+ * @param mixed $value The value of the field.
+ * @param int   $lead_id The Gravity Forms lead ID.
+ * @param int   $form_id The Gravity Forms form ID.
+ *
+ * @return null|string
+ */
 function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 	$id = $field['id'];
@@ -556,6 +593,17 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 
 }
 
+/**
+ * @param $field
+ * @param $id
+ * @param $field_id
+ * @param $state_value
+ * @param $disabled_text
+ * @param $form_id
+ * @param $state_label
+ *
+ * @return string
+ */
 function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label ) {
 
 	$state_dropdown_class = $state_text_class = $state_style = $text_style = $state_field_id = '';
@@ -605,6 +653,13 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 
 add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3 );
 
+/**
+ * @param $classes
+ * @param $field
+ * @param $form
+ *
+ * @return string
+ */
 function flair_foundation_custom_class( $classes, $field, $form ) {
 
 	if ( 'left_label' === $form['labelPlacement'] || 'right_label' === $form['labelPlacement'] ) {
@@ -623,12 +678,24 @@ function flair_foundation_custom_class( $classes, $field, $form ) {
 	return $classes;
 }
 
+/**
+ * @param $label
+ * @param $form_id
+ *
+ * @return string
+ */
 function flair_change_first_name( $label, $form_id ) {
 	return 'First Name';
 }
 
 add_filter( 'gform_name_first', 'flair_change_first_name', 10, 2 );
 
+/**
+ * @param $label
+ * @param $form_id
+ *
+ * @return string
+ */
 function flair_change_last_name( $label, $form_id ) {
 	return 'Last Name';
 }
@@ -637,6 +704,13 @@ add_filter( 'gform_name_last', 'flair_change_last_name', 10, 2 );
 
 add_filter( 'gform_confirmation_anchor', create_function( '', 'return true;' ) );
 
+/**
+ * @param $html
+ * @param $url
+ * @param $attr
+ *
+ * @return string
+ */
 function flair_flex_video( $html, $url, $attr ) {
 
 	// Only run this process for embeds that don't required fixed dimensions
