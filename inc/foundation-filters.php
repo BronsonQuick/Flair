@@ -314,10 +314,10 @@ function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id
  */
 function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
 
-	//Init vars
+	// Init vars.
 	$output = null;
 
-	//Cache css id
+	// Cache css id.
 	$input_id = str_replace( '.', '_', $field['id'] );
 
 	ob_start();
@@ -350,7 +350,7 @@ function flair_gform_get_website_field( $field, $value, $lead_id, $form_id ) {
  */
 function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 
-	//Init vars
+	// Init vars.
 	$output = null;
 
 	ob_start(); ?>
@@ -368,7 +368,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 <?php else : ?>
 	<?php foreach ( $field['inputs'] as $key => $input ) :
 
-		//Cache css id
+		// Cache css id.
 		$input_id = str_replace( '.', '_', $input['id'] );
 		?>
 		<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'ebisprint_gforms_name_class', 'large-6 columns', $field, $form_id, $input ); ?>">
@@ -412,7 +412,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
  */
 function flair_name_label( $classes, $field, $form, $input ) {
 
-	// We need to get the form info to see how the labels are aligned
+	// We need to get the form info to see how the labels are aligned.
 	$form_info = GFFormsModel::get_form_meta( $form );
 
 	if ( 'left_label' === $form_info['labelPlacement'] || 'right_label' === $form_info['labelPlacement'] ) {
@@ -481,7 +481,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$country_value = esc_attr( rgget( $field['id'] . '.6', $value ) );
 	}
 
-	// Check for older versions of Gravity Forms
+	// Check for older versions of Gravity Forms.
 	if ( version_compare( GFForms::$version, '1.9.0', '>' ) ) {
 		$gf_address = new GF_Field_Address();
 		$address_types = $gf_address->get_address_types( $form_id );
@@ -504,7 +504,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$state_value = rgget( 'defaultState', $field );
 	}
 
-	// Check for older versions of Gravity Forms
+	// Check for older versions of Gravity Forms.
 	if ( version_compare( GFForms::$version, '1.9.0', '>' ) ) {
 		$gf_country = new GF_Field_Address();
 		$country_list = $gf_country->get_country_dropdown( $country_value );
@@ -512,18 +512,18 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$country_list = GFCommon::get_country_dropdown( $country_value );
 	}
 
-	//changing css classes based on field format to ensure proper display
+	// Changing css classes based on field format to ensure proper display.
 	$address_display_format = apply_filters( 'gform_address_display_format', 'default' );
 	$city_location = 'zip_before_city' == $address_display_format ? 'right' : 'left';
 	$zip_location = 'zip_before_city' != $address_display_format && rgar( $field, 'hideState' ) ? 'right' : 'left';
 	$state_location = 'zip_before_city' == $address_display_format ? 'left' : 'right';
 	$country_location = rgar( $field, 'hideState' ) ? 'left' : 'right';
 
-	//address field
+	// Address field.
 	$tabindex = GFCommon::get_tabindex();
 	$street_address = sprintf( "<span class='ginput_full$class_suffix' id='" . $field_id . "_1_container'><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_street_{$form_id}", apply_filters( 'gform_address_street', __( 'Street Address', 'gravityforms' ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_1' id='input_" . $id . "_1_label'>Street Address</label></span>", $id, $field_id, $street_value, $disabled_text, $field_id );
 
-	//address line 2 field
+	// Address line 2 field.
 	$street_address2 = '';
 	$style = ( IS_ADMIN && rgget( 'hideAddress2', $field ) ) ? "style='display:none;'" : '';
 	if ( IS_ADMIN || ! rgget( 'hideAddress2', $field ) ) {
@@ -532,15 +532,15 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 	}
 
 	if ( 'zip_before_city' == $address_display_format ) {
-		//zip field
+		// Zip field.
 		$tabindex = GFCommon::get_tabindex();
 		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( 'gform_address_zip', $zip_label, $form_id ), $form_id ) . "'/></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
 
-		//city field
+		// City field.
 		$tabindex = GFCommon::get_tabindex();
 		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( 'gform_address_city', __( 'City', 'gravityforms' ), $form_id ), $form_id ) . "'/></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
 
-		//state field
+		// State field.
 		$style = ( IS_ADMIN && rgget( 'hideState', $field ) ) ? "style='display:none;'" : '';
 		if ( IS_ADMIN || ! rgget( 'hideState', $field ) ) {
 			$state_field = GFCommon::get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id );
@@ -550,11 +550,11 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		}
 	} else {
 
-		//city field
+		// City field.
 		$tabindex = GFCommon::get_tabindex();
 		$city = sprintf( "<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_city_{$form_id}", apply_filters( 'gform_address_city', __( 'City', 'gravityforms' ), $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_3' id='input_" . $id . "_3_label'>City</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id );
 
-		//state field
+		// State field.
 		$style = ( IS_ADMIN && rgget( 'hideState', $field ) ) ? "style='display:none;'" : '';
 		if ( IS_ADMIN || ! rgget( 'hideState', $field ) ) {
 			$state_field = flair_gform_get_state_field( $field, $id, $field_id, $state_value, $disabled_text, $form_id, $state_label );
@@ -564,7 +564,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 			$state = sprintf( "<input type='hidden' class='gform_hidden' name='input_%d.4' id='%s_4' value='%s'/>", $id, $field_id, $state_value );
 		}
 
-		//zip field
+		// Zip field.
 		$tabindex = GFCommon::get_tabindex();
 		$zip = sprintf( "<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s placeholder='" . apply_filters( "gform_address_zip_{$form_id}", apply_filters( 'gform_address_zip', $zip_label, $form_id ), $form_id ) . "'/><label for='input_1_" . $id . "_5' id='input_" . $id . "_5_label'>ZIP / Postal Code</label></span>", $id, $field_id, $zip_value, $disabled_text, $field_id );
 
@@ -578,13 +578,13 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$country = sprintf( "<input type='hidden' class='gform_hidden' name='input_%d.6' id='%s_6' value='%s'/>", $id, $field_id, $country_value );
 	}
 
-	//Wrap city in foundation divs
+	// Wrap city in foundation divs.
 	$city = "<div class='" . apply_filters( 'flair_gforms_address_city_class', 'large-6 columns', $field, $form_id ) . "'>{$city}</div>";
 
-	//Wrap state in foundation divs
+	// Wrap state in foundation divs.
 	$state = "<div class='" . apply_filters( 'flair_gforms_address_state_class', 'large-6 columns', $field, $form_id ) . "'>{$state}</div>";
 
-	//Wrap ZIP in foundation divs
+	// Wrap ZIP in foundation divs.
 	$zip = "<div class='" . apply_filters( 'flair_gforms_address_zip_class', 'large-6 columns', $field, $form_id ) . "'>{$zip}</div>";
 
 	$inputs = 'zip_before_city' == $address_display_format ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
@@ -611,7 +611,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	if ( empty( $state_value ) ) {
 		$state_value = rgget( 'defaultState', $field );
 
-		//for backwards compatibility (canadian address type used to store the default state into the defaultProvince property)
+		// for backwards compatibility (canadian address type used to store the default state into the defaultProvince property).
 		if ( 'canadian' == rgget( 'addressType', $field ) && ! rgempty( 'defaultProvince', $field ) ) {
 			$state_value = $field['defaultProvince'];
 		}
@@ -713,7 +713,7 @@ add_filter( 'gform_confirmation_anchor', create_function( '', 'return true;' ) )
  */
 function flair_flex_video( $html, $url, $attr ) {
 
-	// Only run this process for embeds that don't required fixed dimensions
+	// Only run this process for embeds that don't required fixed dimensions.
 	$resize = false;
 	/* The list of providers is in wp-includes/class-oembed.php */
 	$accepted_providers = array(
@@ -737,7 +737,7 @@ function flair_flex_video( $html, $url, $attr ) {
 		'instagram.com',
 	);
 
-	// Check each provider
+	// Check each provider.
 	foreach ( $accepted_providers as $provider ) {
 		if ( strstr( $url, $provider ) ) {
 			$resize = true;
@@ -747,14 +747,14 @@ function flair_flex_video( $html, $url, $attr ) {
 
 	if ( true === $resize ) {
 
-		// Remove width and height attributes
+		// Remove width and height attributes.
 		$attr_pattern = '/(width|height)="[0-9]*"/i';
 		$whitespace_pattern = '/\s+/';
 		$embed = preg_replace( $attr_pattern, '', $html );
-		$embed = preg_replace( $whitespace_pattern, ' ', $embed ); // Clean-up whitespace
+		$embed = preg_replace( $whitespace_pattern, ' ', $embed ); // Clean-up whitespace.
 		$embed = trim( $embed );
 
-		// Add container around the video
+		// Add container around the video.
 		$html = '<div class="flex-video">';
 		$html .= $embed;
 		$html .= '</div>';
@@ -806,22 +806,22 @@ add_filter( 'get_archives_link', 'flair_archive_count_span' );
  */
 function flair_pagination( $wp_pagenavi_output ) {
 
-	// Change the wrapping div to a ul
+	// Change the wrapping div to a ul.
 	$wp_pagenavi_output = str_replace( "<div class='wp-pagenavi'>", "<ul class='pagination'>", $wp_pagenavi_output );
 	$wp_pagenavi_output = str_replace( '</div>', '</ul>', $wp_pagenavi_output );
 
-	// Change the spans to li's
+	// Change the spans to li's.
 	$wp_pagenavi_output = str_replace( '<span', '<li', $wp_pagenavi_output );
 	$wp_pagenavi_output = str_replace( '</span>', '</li>', $wp_pagenavi_output );
 
-	// Wrap a's in li's
+	// Wrap a's in li's.
 	$wp_pagenavi_output = str_replace( '<a', '<li><a', $wp_pagenavi_output );
 	$wp_pagenavi_output = str_replace( '</a>', '</a></li>', $wp_pagenavi_output );
 
-	// Wrap the current li in an a
+	// Wrap the current li in an a.
 	$wp_pagenavi_output = preg_replace( "#<li class='current'>(.+)<\/li>#", "<li class='current'><a href=''>$1</a></li>", $wp_pagenavi_output );
 
-	// Add a filter in case we want to wrap the pagination in a <div class="pagination-centered"> wrapper
+	// Add a filter in case we want to wrap the pagination in a <div class="pagination-centered"> wrapper.
 	$wp_pagenavi_output = apply_filters( 'flair_pagination', $wp_pagenavi_output );
 
 	return $wp_pagenavi_output;
