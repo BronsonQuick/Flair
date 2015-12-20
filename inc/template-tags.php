@@ -156,7 +156,7 @@ add_filter( 'get_the_excerpt', 'flair_custom_excerpt_more' );
  */
 function flair_categorized_blog() {
 	if ( false === ( $all_flair_categories = get_transient( 'flair_cats' ) ) ) {
-		// Create an array of all the categories that are attached to posts
+		// Create an array of all the categories that are attached to posts.
 		$all_flair_categories = get_categories( array(
 			'hide_empty' => 1,
 		) );
@@ -189,7 +189,7 @@ add_action( 'save_post',     'flair_category_transient_flusher' );
 /**
  * Echo out our custom classes if there are any
  *
- * @param string $class
+ * @param string $class Any custom CSS classes you require.
  */
 function flair_top_bar( $class = '' ) {
 	// Separates classes with a single space, collates classes for body element.
@@ -199,7 +199,7 @@ function flair_top_bar( $class = '' ) {
 /**
  * Flair Top Bar Options
  *
- * @param string $class
+ * @param string $class CSS classes that you require.
  *
  * @return mixed|void
  */
@@ -207,7 +207,7 @@ function get_flair_top_bar( $class = '' ) {
 
 	$classes = array();
 
-	if ( current_theme_supports( 'foundation-sticky-top-bar' ) ){
+	if ( current_theme_supports( 'foundation-sticky-top-bar' ) ) {
 		$classes[] = 'sticky';
 	}
 
