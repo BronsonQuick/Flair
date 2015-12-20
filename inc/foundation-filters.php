@@ -100,8 +100,8 @@ class Flair_Page_Walker extends Walker_Page {
 	 * @since 2.1.0
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int $depth Depth of page. Used for padding.
-	 * @param array $args
+	 * @param int    $depth Depth of page. Used for padding.
+	 * @param array  $args Any extra args.
 	 */
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -116,9 +116,9 @@ class Flair_Page_Walker extends Walker_Page {
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $page Page data object.
-	 * @param int $depth Depth of page. Used for padding.
-	 * @param int $current_page Page ID.
-	 * @param array $args
+	 * @param int    $depth Depth of page. Used for padding.
+	 * @param int    $current_page Page ID.
+	 * @param array  $args Any extra args.
 	 */
 	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 		if ( $depth ) {
