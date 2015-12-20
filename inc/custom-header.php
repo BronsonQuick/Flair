@@ -2,6 +2,7 @@
 /**
  * Implement Custom Header functionality for Flair
  *
+ * @package Flair Theme
  * @since Flair 1.0
  */
 
@@ -52,7 +53,6 @@ if ( ! function_exists( 'flair_header_style' ) ) :
 	 * Styles the header image and text displayed on the blog
 	 *
 	 * @see flair_custom_header_setup().
-	 *
 	 */
 	function flair_header_style() {
 		$text_color = get_header_textcolor();
@@ -86,7 +86,7 @@ if ( ! function_exists( 'flair_header_style' ) ) :
 		</style>
 		<?php
 	}
-endif; // flair_header_style
+endif; // End of flair_header_style.
 
 
 if ( ! function_exists( 'flair_admin_header_style' ) ) :
@@ -118,7 +118,7 @@ if ( ! function_exists( 'flair_admin_header_style' ) ) :
 		</style>
 	<?php
 	}
-endif; // flair_admin_header_style
+endif; // End of flair_admin_header_style.
 
 if ( ! function_exists( 'flair_admin_header_image' ) ) :
 	/**
@@ -137,5 +137,5 @@ if ( ! function_exists( 'flair_admin_header_image' ) ) :
 			<h1 class="displaying-header-text"><a id="name"<?php echo sprintf( ' style="color:#%s;"', get_header_textcolor() ); ?> onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 		</div>
 	<?php
-}
-endif; // flair_admin_header_image
+	}
+endif; // End of flair_admin_header_image.
