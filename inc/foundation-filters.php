@@ -398,10 +398,12 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 }
 
 /**
- * @param $classes
- * @param $field
- * @param $form
- * @param $input
+ * Filter the Gravity Forms name class.
+ *
+ * @param string $classes A string of the default classes that GF applies.
+ * @param string $field The type of field.
+ * @param object $form The GF form object
+ * @param array  $input Details of the input field.
  *
  * @return mixed|string
  */
@@ -417,6 +419,7 @@ function flair_name_label( $classes, $field, $form, $input ) {
 	if ( false !== strpos( $input['id'], '.3' ) ) {
 		$classes .= ' ginput_left';
 	}
+
 	if ( false !== strpos( $input['id'], '.6' ) ) {
 		$classes .= ' ginput_right';
 	}
@@ -589,13 +592,15 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 }
 
 /**
- * @param $field
- * @param $id
- * @param $field_id
- * @param $state_value
- * @param $disabled_text
- * @param $form_id
- * @param $state_label
+ * Filter the Gravity Forms State field.
+ *
+ * @param array  $field Details for the field.
+ * @param int    $id The ID of the input.
+ * @param int    $field_id The ID of the field.
+ * @param string $state_value The value of the State.
+ * @param string $disabled_text A string if the field is disabled.
+ * @param int    $form_id The Gravity Forms form ID.
+ * @param string $state_label The label for the state.
  *
  * @return string
  */
@@ -649,9 +654,11 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 add_action( 'gform_field_css_class', 'flair_foundation_custom_class', 10, 3 );
 
 /**
- * @param $classes
- * @param $field
- * @param $form
+ * Add custom classes to the Gravity Forms fields as required.
+ *
+ * @param string $classes A string of CSS classes.
+ * @param array  $field Details of the field.
+ * @param object $form The Gravity Forms form object.
  *
  * @return string
  */
@@ -674,8 +681,10 @@ function flair_foundation_custom_class( $classes, $field, $form ) {
 }
 
 /**
- * @param $label
- * @param $form_id
+ * Filter the First Name value.
+ *
+ * @param string $label The labels current value.
+ * @param int    $form_id The id of the Gravity Fields form.
  *
  * @return string
  */
@@ -686,8 +695,10 @@ function flair_change_first_name( $label, $form_id ) {
 add_filter( 'gform_name_first', 'flair_change_first_name', 10, 2 );
 
 /**
- * @param $label
- * @param $form_id
+ * Filter the Last Name value.
+ *
+ * @param string $label The labels current value.
+ * @param int    $form_id The id of the Gravity Fields form.
  *
  * @return string
  */
