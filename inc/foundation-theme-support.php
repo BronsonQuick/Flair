@@ -81,7 +81,6 @@ add_action( 'init', 'flair_check_theme_support' );
  *
  * Documentation: http://foundation.zurb.com/docs/components/interchange.html
  */
-
 function flair_enqueue_interchange() {
 	wp_enqueue_script( 'interchange', get_template_directory_uri() . '/assets/js/foundation/foundation.interchange.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -91,7 +90,6 @@ function flair_enqueue_interchange() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/topbar.html
  */
-
 function flair_enqueue_top_bar() {
 	wp_enqueue_script( 'top-bar', get_template_directory_uri() . '/assets/js/foundation/foundation.topbar.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -101,7 +99,6 @@ function flair_enqueue_top_bar() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/topbar.html
  */
-
 function flair_enqueue_sticky_top_bar() {
 	wp_enqueue_script( 'top-bar', get_template_directory_uri() . '/assets/js/foundation/foundation.topbar.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -111,7 +108,6 @@ function flair_enqueue_sticky_top_bar() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/magellan.html
  */
-
 function flair_enqueue_magellan() {
 	wp_enqueue_script( 'magellan', get_template_directory_uri() . '/assets/js/foundation/foundation.magellan.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -121,7 +117,6 @@ function flair_enqueue_magellan() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/orbit.html
  */
-
 function flair_enqueue_orbit() {
 	wp_enqueue_script( 'orbit', get_template_directory_uri() . '/assets/js/foundation/foundation.orbit.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -131,7 +126,6 @@ function flair_enqueue_orbit() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/clearing.html
  */
-
 function flair_enqueue_clearing() {
 	wp_enqueue_script( 'clearing', get_template_directory_uri() . '/assets/js/foundation/foundation.clearing.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -141,7 +135,6 @@ function flair_enqueue_clearing() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/abide.html
  */
-
 function flair_enqueue_abide() {
 	wp_enqueue_script( 'abide', get_template_directory_uri() . '/assets/js/foundation/foundation.abide.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -151,7 +144,6 @@ function flair_enqueue_abide() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/reveal.html
  */
-
 function flair_enqueue_reveal() {
 	wp_enqueue_script( 'reveal', get_template_directory_uri() . '/assets/js/foundation/foundation.reveal.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -161,7 +153,6 @@ function flair_enqueue_reveal() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/alert_boxes.html
  */
-
 function flair_enqueue_alert() {
 	wp_enqueue_script( 'alert', get_template_directory_uri() . '/assets/js/foundation/foundation.alert.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -171,7 +162,6 @@ function flair_enqueue_alert() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/tooltips.html
  */
-
 function flair_enqueue_tooltip() {
 	wp_enqueue_script( 'tooltip', get_template_directory_uri() . '/assets/js/foundation/foundation.tooltip.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -181,7 +171,6 @@ function flair_enqueue_tooltip() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/joyride.html
  */
-
 function flair_enqueue_joyride() {
 	wp_enqueue_script( 'joyride', get_template_directory_uri() . '/assets/js/foundation/foundation.joyride.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -191,7 +180,6 @@ function flair_enqueue_joyride() {
  *
  * http://foundation.zurb.com/docs/components/equalizer.html
  */
-
 function flair_enqueue_equalizer() {
 	wp_enqueue_script( 'equalizer', get_template_directory_uri() . '/assets/js/foundation/foundation.equalizer.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -201,7 +189,6 @@ function flair_enqueue_equalizer() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/accordion.html
  */
-
 function flair_enqueue_accordion() {
 	wp_enqueue_script( 'accordion', get_template_directory_uri() . '/assets/js/foundation/foundation.accordion.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -211,7 +198,6 @@ function flair_enqueue_accordion() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/tabs.html
  */
-
 function flair_enqueue_tabs() {
 	wp_enqueue_script( 'tabs', get_template_directory_uri() . '/assets/js/foundation/foundation.tab.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -221,7 +207,6 @@ function flair_enqueue_tabs() {
  *
  * Documentation: http://foundation.zurb.com/docs/components/offcanvas.html
  */
-
 function flair_off_canvas() {
 	wp_enqueue_script( 'offcanvas', get_template_directory_uri() . '/assets/js/foundation/foundation.offcanvas.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
 }
@@ -248,13 +233,12 @@ function flair_interchange_sizes() {
  *
  * @return string
  */
-
 function flair_interchange_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	$default = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
 	$large   = wp_get_attachment_image_src( $post_thumbnail_id, 'interchange-retina' );
 	$small   = wp_get_attachment_image_src( $post_thumbnail_id, 'interchange-small' );
 	$medium  = wp_get_attachment_image_src( $post_thumbnail_id, 'interchange-medium' );
-	// Create out image tag with our media queries in it
+	// Create out image tag with our media queries in it.
 	$html = '<img data-interchange="['. $default[0]. ', (default)],';
 	$html .= '[' .$small[0] .', (small)],';
 	$html .= '['. $medium[0] .', (medium)],';
