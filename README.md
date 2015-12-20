@@ -1,6 +1,6 @@
 ![Travis Build Status](https://travis-ci.org/sennza/Flair.svg?branch=master)
 
-# "Flair" is Sennza's WordPress [Foundation](http://foundation.zurb.com/) + [_s](https://github.com/Automattic/_s) Starter theme
+# "Flair" is Sennza's WordPress [Foundation 5.5.3](http://foundation.zurb.com/) + [_s](https://github.com/Automattic/_s) Starter theme
 
 ## Prerequisites
 
