@@ -35,7 +35,7 @@ if ( post_password_required() ) {
 			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'flair' ) ); ?></div>
 			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'flair' ) ); ?></div>
 		</nav><!-- #comment-nav-above -->
-		<?php endif; // check for comment navigation ?>
+		<?php endif; // Check for comment navigation. ?>
 
 		<ol class="comment-list">
 			<?php
