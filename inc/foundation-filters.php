@@ -402,7 +402,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
  *
  * @param string $classes A string of the default classes that GF applies.
  * @param string $field The type of field.
- * @param object $form The GF form object
+ * @param object $form The GF form object.
  * @param array  $input Details of the input field.
  *
  * @return mixed|string
@@ -611,7 +611,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 	if ( empty( $state_value ) ) {
 		$state_value = rgget( 'defaultState', $field );
 
-		// for backwards compatibility (canadian address type used to store the default state into the defaultProvince property).
+		// For backwards compatibility (canadian address type used to store the default state into the defaultProvince property).
 		if ( 'canadian' == rgget( 'addressType', $field ) && ! rgempty( 'defaultProvince', $field ) ) {
 			$state_value = $field['defaultProvince'];
 		}
@@ -628,7 +628,7 @@ function flair_gform_get_state_field( $field, $id, $field_id, $state_value, $dis
 		$text_style = $has_state_drop_down ? "style='display:none;'" : '';
 		$state_field_id = '';
 	} else {
-		//id only displayed on front end
+		// Id only displayed on front end.
 		$state_field_id = "id='" . $field_id . "_4'";
 	}
 
@@ -711,9 +711,11 @@ add_filter( 'gform_name_last', 'flair_change_last_name', 10, 2 );
 add_filter( 'gform_confirmation_anchor', create_function( '', 'return true;' ) );
 
 /**
- * @param $html
- * @param $url
- * @param $attr
+ * Filter the core generated oEmbed HTML.
+ *
+ * @param string $html The generated HTML.
+ * @param string $url The URL of the oEmbed music.
+ * @param string $attr Any extra attributes that are passed to the oEmbed provider.
  *
  * @return string
  */
@@ -776,7 +778,7 @@ add_filter( 'embed_oembed_html', 'flair_flex_video', 99, 3 );
 /**
  * Filter the Category links that WordPress generate so that the post counter is inside the link
  *
- * @param $links
+ * @param string $links The generated HTML for the link.
  *
  * @return mixed
  */
@@ -791,7 +793,7 @@ add_filter( 'wp_list_categories', 'flair_cat_count_span' );
 /**
  * Filter the Archive links that WordPress generate so that the post counter is inside the link
  *
- * @param $links
+ * @param string $links The generated HTML for the link.
  *
  * @return mixed
  */
@@ -806,7 +808,7 @@ add_filter( 'get_archives_link', 'flair_archive_count_span' );
 /**
  * If WP-PageNavi http://wordpress.org/plugins/wp-pagenavi/ is installed to handle pagination then let's turn it into Foundation 5 pagination http://foundation.zurb.com/docs/components/pagination.html
  *
- * @param $wp_pagenavi_output
+ * @param string $wp_pagenavi_output The html markup that WP Pagenavi generated.
  *
  * @return mixed
  */
