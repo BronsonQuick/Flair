@@ -171,7 +171,6 @@ class Flair_Page_Walker extends Walker_Page {
 			$output .= ' ' . mysql2date( $date_format, $time );
 		}
 	}
-
 }
 
 
@@ -195,8 +194,8 @@ if ( class_exists( 'GFForms' ) ) {
 /**
  * Adds the Zurb Foundation alert classes to the Gravity Forms errors
  *
- * @param $validation_message
- * @param $form
+ * @param string $validation_message The original validation message from gravity forms.
+ * @param object $form The Gravity Forms form object.
  *
  * @return mixed
  */
@@ -214,7 +213,17 @@ function flair_gform_form_validation_message( $validation_message, $form ) {
 
 add_filter( 'gform_field_content', 'flair_gform_field_content', 10, 5 );
 
-
+/**
+ * The Gravity Forms field content.
+ *
+ * @param mixed $content The content of the field.
+ * @param mixed $field The type of field.
+ * @param mixed $value The value of the field.
+ * @param int $lead_id The Gravity Forms lead ID.
+ * @param int $form_id The Gravity Forms form ID.
+ *
+ * @return mixed
+ */
 function flair_gform_field_content( $content, $field, $value, $lead_id, $form_id ) {
 
 	$force_frontend_label = false;
