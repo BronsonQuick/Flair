@@ -18,7 +18,7 @@ get_header(); ?>
 				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'flair' ), get_search_query() ); ?></h1>
 			</header><!-- .page-header -->
 
-			<?php // Let's give a result count for the search. NB: This might course performance issues on heavy content sites ?>
+			<?php // Let's give a result count for the search. NB: This might course performance issues on heavy content sites. ?>
 				<?php $args = array(
 					's'              => $s,
 					'posts_per_page' => 50,
@@ -33,7 +33,7 @@ get_header(); ?>
 				// Start the Loop.
 				while ( have_posts() ) : the_post();
 
-					/*
+					/**
 					 * Include the post format-specific template for the content. If you want to
 					 * use this in a child theme, then include a file called called content-___.php
 					 * (where ___ is the post format) and that will be used instead.

@@ -40,7 +40,7 @@ if ( ! function_exists( 'flair_paging_nav' ) ) :
 		</nav><!-- .navigation -->
 		<?php
 	}
-endif; // flair_paging_nav
+endif; // End of flair_paging_nav.
 
 if ( ! function_exists( 'flair_post_nav' ) ) :
 	/**
@@ -70,7 +70,7 @@ if ( ! function_exists( 'flair_post_nav' ) ) :
 		</nav><!-- .navigation -->
 		<?php
 	}
-endif; // flair_post_nav
+endif; // End of flair_post_nav.
 
 if ( ! function_exists( 'flair_posted_on' ) ) :
 	/**
@@ -81,8 +81,7 @@ if ( ! function_exists( 'flair_posted_on' ) ) :
 		if ( ! post_password_required() && ( '0' != get_comments_number() ) ) {
 			if ( get_comments_number() > '10' ) {
 				echo "<span class='comment-count more-than-10-comments'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
-			}
-			else {
+			} else {
 				echo "<span class='comment-count'><a href='" . get_comments_link() ."' title='Leave a comment'>" . get_comments_number() . '</a></span>';
 			}
 		}
@@ -157,22 +156,22 @@ add_filter( 'get_the_excerpt', 'flair_custom_excerpt_more' );
  */
 function flair_categorized_blog() {
 	if ( false === ( $all_flair_categories = get_transient( 'flair_cats' ) ) ) {
-		// Create an array of all the categories that are attached to posts
+		// Create an array of all the categories that are attached to posts.
 		$all_flair_categories = get_categories( array(
 			'hide_empty' => 1,
 		) );
 
-		// Count the number of categories that are attached to the posts
+		// Count the number of categories that are attached to the posts.
 		$all_flair_categories = count( $all_flair_categories );
 
 		set_transient( 'flair_cats', $all_flair_categories );
 	}
 
 	if ( '1' != $all_flair_categories ) {
-		// This blog has more than 1 category so _s_categorized_blog should return true
+		// This blog has more than 1 category so _s_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so _s_categorized_blog should return false
+		// This blog has only 1 category so _s_categorized_blog should return false.
 		return false;
 	}
 }
@@ -190,22 +189,25 @@ add_action( 'save_post',     'flair_category_transient_flusher' );
 /**
  * Echo out our custom classes if there are any
  *
- * @param string $class
+ * @param string $class Any custom CSS classes you require.
  */
 function flair_top_bar( $class = '' ) {
-	// Separates classes with a single space, collates classes for body element
+	// Separates classes with a single space, collates classes for body element.
 	echo 'class="' . join( ' ', get_flair_top_bar( $class ) ) . '"';
 }
 
 /**
  * Flair Top Bar Options
  *
+ * @param string $class CSS classes that you require.
+ *
+ * @return mixed|void
  */
 function get_flair_top_bar( $class = '' ) {
 
 	$classes = array();
 
-	if ( current_theme_supports( 'foundation-sticky-top-bar' ) ){
+	if ( current_theme_supports( 'foundation-sticky-top-bar' ) ) {
 		$classes[] = 'sticky';
 	}
 
