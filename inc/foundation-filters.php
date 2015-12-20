@@ -1,6 +1,10 @@
 <?php
 /**
  * By default WordPress adds the CSS class .sticky to sticky posts. Foundation 5 uses that class name for a Sticky Top Bar so let's rename it
+ *
+ * @param $classes
+ *
+ * @return mixed
  */
 
 function flair_rename_sticky_post_class( $classes ) {
@@ -12,7 +16,13 @@ function flair_rename_sticky_post_class( $classes ) {
 
 add_filter( 'post_class', 'flair_rename_sticky_post_class' );
 
-// Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
+/**
+ * Add "has-dropdown" CSS class to navigation menu items that have children in a submenu.
+ *
+ * @param $classes
+ *
+ * @return mixed
+ */
 function flair_nav_menu_item_parent_classing( $classes ) {
 
 	$classes = preg_replace( '/^page_item_has_children$/', 'page_item_has_children has-dropdown', $classes );
@@ -23,7 +33,13 @@ function flair_nav_menu_item_parent_classing( $classes ) {
 
 add_filter( 'nav_menu_css_class', 'flair_nav_menu_item_parent_classing', 10, 2 );
 
-// Deletes empty classes and changes the sub menu class name
+/**
+ * Deletes empty classes and changes the sub menu class name
+ *
+ * @param $menu
+ *
+ * @return mixed
+ */
 function flair_change_submenu_class( $menu ) {
 	$menu = preg_replace( '/ class="sub-menu"/', ' class="dropdown"', $menu );
 
@@ -33,7 +49,14 @@ function flair_change_submenu_class( $menu ) {
 add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 
-// Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
+/**
+ * Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
+ * 
+ * @param $classes
+ * @param $item
+ *
+ * @return array
+ */
 function flair_required_active_nav_class( $classes, $item ) {
 	if ( true === in_array( 'current_page_item', $classes ) ) {
 		$classes[] = 'active';

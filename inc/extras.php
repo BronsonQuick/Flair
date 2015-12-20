@@ -9,6 +9,10 @@
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ *
+ * @param $args
+ *
+ * @return mixed
  */
 function flair_page_menu_args( $args ) {
 	$args['show_home'] = true;
@@ -18,9 +22,13 @@ add_filter( 'wp_page_menu_args', 'flair_page_menu_args' );
 
 /**
  * Adds custom classes to the array of body classes.
+ *
+ * @param $classes
+ *
+ * @return array
  */
 function flair_body_classes( $classes ) {
-	// Adds a class of group-blog to blogs with more than 1 published author
+	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
@@ -45,7 +53,7 @@ if ( ! function_exists( 'flair_render_title_tag' ) ) :
 
 		global $page, $paged;
 
-		// Add the blog name
+		// Add the blog name.
 		$title .= get_bloginfo( 'name', 'display' );
 
 		// Add the blog description for the home/front page.
