@@ -54,7 +54,7 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	/**
 	 * Enable support for Post Formats
 	 */
-	# add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
 	/**
 	 * Add our TinyMCE Editor Styles
@@ -74,21 +74,21 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	/**
 	 * Optionally add Foundation utilities
 	 */
-	# add_theme_support( 'foundation-interchange' );
-	# add_theme_support( 'foundation-top-bar' );
-	# add_theme_support( 'foundation-sticky-top-bar' );
-	# add_theme_support( 'foundation-magellan' );
-	# add_theme_support( 'foundation-orbit' );
-	# add_theme_support( 'foundation-clearing' );
-	# add_theme_support( 'foundation-abide' );
-	# add_theme_support( 'foundation-reveal' );
-	# add_theme_support( 'foundation-alert' );
-	# add_theme_support( 'foundation-tooltip' );
-	# add_theme_support( 'foundation-joyride' );
-	# add_theme_support( 'foundation-equalizer' );
-	# add_theme_support( 'foundation-accordion' );
-	# add_theme_support( 'foundation-tabs' );
-	# add_theme_support( 'off-canvas' );
+	// add_theme_support( 'foundation-interchange' );
+	// add_theme_support( 'foundation-top-bar' );
+	// add_theme_support( 'foundation-sticky-top-bar' );
+	// add_theme_support( 'foundation-magellan' );
+	// add_theme_support( 'foundation-orbit' );
+	// add_theme_support( 'foundation-clearing' );
+	// add_theme_support( 'foundation-abide' );
+	// add_theme_support( 'foundation-reveal' );
+	// add_theme_support( 'foundation-alert' );
+	// add_theme_support( 'foundation-tooltip' );
+	// add_theme_support( 'foundation-joyride' );
+	// add_theme_support( 'foundation-equalizer' );
+	// add_theme_support( 'foundation-accordion' );
+	// add_theme_support( 'foundation-tabs' );
+	// add_theme_support( 'off-canvas' );
 
 }
 endif; // flair_setup
