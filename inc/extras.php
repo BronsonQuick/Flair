@@ -10,7 +10,7 @@
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  *
- * @param $args
+ * @param $args Optional. Arguments to generate a page menu. See wp_list_pages() for additional arguments.
  *
  * @return mixed
  */
@@ -23,7 +23,7 @@ add_filter( 'wp_page_menu_args', 'flair_page_menu_args' );
 /**
  * Adds custom classes to the array of body classes.
  *
- * @param $classes
+ * @param $classes One or more classes to add to the class list.
  *
  * @return array
  */
@@ -38,14 +38,14 @@ function flair_body_classes( $classes ) {
 add_filter( 'body_class', 'flair_body_classes' );
 
 
-/**
- * Filters wp_title to print a neat <title> tag based on what is being viewed.
- *
- * @param string $title Default title text for current view.
- * @param string $sep Optional separator.
- * @return string The filtered title.
- */
 if ( ! function_exists( 'flair_render_title_tag' ) ) :
+	/**
+	 * Filters wp_title to print a neat <title> tag based on what is being viewed.
+	 *
+	 * @param string $title Default title text for current view.
+	 * @param string $sep Optional separator.
+	 * @return string The filtered title.
+	 */
 	function flair_wp_title( $title, $sep ) {
 		if ( is_feed() ) {
 			return $title;
@@ -62,7 +62,7 @@ if ( ! function_exists( 'flair_render_title_tag' ) ) :
 			$title .= " $sep $site_description";
 		}
 
-		// Add a page number if necessary:
+		// Add a page number if necessary.
 		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 			$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
 		}
@@ -72,10 +72,10 @@ if ( ! function_exists( 'flair_render_title_tag' ) ) :
 	add_filter( 'wp_title', 'flair_wp_title', 10, 2 );
 endif;
 
-/**
- * Title shiv for blogs older than WordPress 4.1
- */
 if ( ! function_exists( 'flair_render_title_tag' ) ) :
+	/**
+	 * Title shiv for blogs older than WordPress 4.1
+	 */
 	function flair_render_title() {
 		echo '<title>' . wp_title( '|', false, 'right' ) . "</title>\n";
 	}
