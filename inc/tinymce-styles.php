@@ -21,7 +21,7 @@ add_filter( 'mce_buttons_2', 'flair_mce_buttons' );
 /**
  * Add any extra style formats we want to add to TinyMCE.
  *
- * @param array $init_array
+ * @param array $init_array An array of TinyMCE settings.
  *
  * @return mixed
  */
