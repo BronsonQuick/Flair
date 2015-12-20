@@ -4,6 +4,7 @@
  *
  * @package Flair Theme
  */
+
 ?>
 <!-- Sidebar -->
 
@@ -15,7 +16,7 @@
 
 <?php if ( ! dynamic_sidebar( 'blog-widget-area' ) ) : ?>
 
-<?php endif; // end sidebar widget area ?>
+<?php endif; // End sidebar widget area. ?>
 
 	</aside>
 
