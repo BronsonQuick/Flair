@@ -1,8 +1,13 @@
 <?php
 /**
- * Check if the theme has support for any of the additional Foundation utilities
+ * This file enqueues different Foundation helpers as declared in functions.php.
+ *
+ * @package Flair Theme
  */
 
+/**
+ * Check if the theme has support for any of the additional Foundation utilities
+ */
 function flair_check_theme_support() {
 	if ( current_theme_supports( 'foundation-interchange' ) ) {
 		add_filter( 'post_thumbnail_html', 'flair_interchange_post_thumbnail_html', 5, 5 );
@@ -74,7 +79,7 @@ add_action( 'init', 'flair_check_theme_support' );
 /**
  * Enqueue Foundations Interchange
  *
- * http://foundation.zurb.com/docs/components/interchange.html
+ * Documentation: http://foundation.zurb.com/docs/components/interchange.html
  */
 
 function flair_enqueue_interchange() {
@@ -84,7 +89,7 @@ function flair_enqueue_interchange() {
 /**
  * Enqueue Foundations Top Bar
  *
- * http://foundation.zurb.com/docs/components/topbar.html
+ * Documentation: http://foundation.zurb.com/docs/components/topbar.html
  */
 
 function flair_enqueue_top_bar() {
@@ -94,7 +99,7 @@ function flair_enqueue_top_bar() {
 /**
  * Enqueue Foundations Top Bar as Sticky Bar need it too
  *
- * http://foundation.zurb.com/docs/components/topbar.html
+ * Documentation: http://foundation.zurb.com/docs/components/topbar.html
  */
 
 function flair_enqueue_sticky_top_bar() {
@@ -104,7 +109,7 @@ function flair_enqueue_sticky_top_bar() {
 /**
  * Enqueue Foundations Magellan
  *
- * http://foundation.zurb.com/docs/components/magellan.html
+ * Documentation: http://foundation.zurb.com/docs/components/magellan.html
  */
 
 function flair_enqueue_magellan() {
@@ -114,7 +119,7 @@ function flair_enqueue_magellan() {
 /**
  * Enqueue Foundations Orbit
  *
- * http://foundation.zurb.com/docs/components/orbit.html
+ * Documentation: http://foundation.zurb.com/docs/components/orbit.html
  */
 
 function flair_enqueue_orbit() {
@@ -124,7 +129,7 @@ function flair_enqueue_orbit() {
 /**
  * Enqueue Foundations Clearing
  *
- * http://foundation.zurb.com/docs/components/clearing.html
+ * Documentation: http://foundation.zurb.com/docs/components/clearing.html
  */
 
 function flair_enqueue_clearing() {
@@ -134,7 +139,7 @@ function flair_enqueue_clearing() {
 /**
  * Enqueue Foundations Abide
  *
- * http://foundation.zurb.com/docs/components/abide.html
+ * Documentation: http://foundation.zurb.com/docs/components/abide.html
  */
 
 function flair_enqueue_abide() {
@@ -144,7 +149,7 @@ function flair_enqueue_abide() {
 /**
  * Enqueue Foundations Reveal
  *
- * http://foundation.zurb.com/docs/components/reveal.html
+ * Documentation: http://foundation.zurb.com/docs/components/reveal.html
  */
 
 function flair_enqueue_reveal() {
@@ -154,7 +159,7 @@ function flair_enqueue_reveal() {
 /**
  * Enqueue Foundations Alert
  *
- * http://foundation.zurb.com/docs/components/alert_boxes.html
+ * Documentation: http://foundation.zurb.com/docs/components/alert_boxes.html
  */
 
 function flair_enqueue_alert() {
@@ -164,7 +169,7 @@ function flair_enqueue_alert() {
 /**
  * Enqueue Foundations Tooltip
  *
- * http://foundation.zurb.com/docs/components/tooltips.html
+ * Documentation: http://foundation.zurb.com/docs/components/tooltips.html
  */
 
 function flair_enqueue_tooltip() {
@@ -174,7 +179,7 @@ function flair_enqueue_tooltip() {
 /**
  * Enqueue Foundations Joyride
  *
- * http://foundation.zurb.com/docs/components/joyride.html
+ * Documentation: http://foundation.zurb.com/docs/components/joyride.html
  */
 
 function flair_enqueue_joyride() {
@@ -194,7 +199,7 @@ function flair_enqueue_equalizer() {
 /**
  * Enqueue Foundations Accordion
  *
- * http://foundation.zurb.com/docs/components/accordion.html
+ * Documentation: http://foundation.zurb.com/docs/components/accordion.html
  */
 
 function flair_enqueue_accordion() {
@@ -204,7 +209,7 @@ function flair_enqueue_accordion() {
 /**
  * Enqueue Foundations Tabs
  *
- * http://foundation.zurb.com/docs/components/tabs.html
+ * Documentation: http://foundation.zurb.com/docs/components/tabs.html
  */
 
 function flair_enqueue_tabs() {
@@ -214,7 +219,7 @@ function flair_enqueue_tabs() {
 /**
  * Enqueue Foundation Off Canvas Menus
  *
- * http://foundation.zurb.com/docs/components/offcanvas.html
+ * Documentation: http://foundation.zurb.com/docs/components/offcanvas.html
  */
 
 function flair_off_canvas() {
@@ -224,7 +229,6 @@ function flair_off_canvas() {
 /**
  * Add some default image sizes to assist with interchange images
  */
-
 function flair_interchange_sizes() {
 	add_image_size( 'interchange-small', 480, 99999 );
 	add_image_size( 'interchange-medium', 768, 99999 );
@@ -236,11 +240,11 @@ function flair_interchange_sizes() {
  * We need to filter our post thumbnails so we can output them in a format that Foundations Interchange needs.
  * We also need a fallback for no JavaScript
  *
- * @param $html
- * @param $post_id
- * @param $post_thumbnail_id
- * @param $size
- * @param $attr
+ * @param string $html The generated html.
+ * @param int    $post_id The ID of the post.
+ * @param int    $post_thumbnail_id The ID of the attachment.
+ * @param string $size The size of the attachment.
+ * @param array  $attr Any extra attributes that apply to the attachment.
  *
  * @return string
  */
