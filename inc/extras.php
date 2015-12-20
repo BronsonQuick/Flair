@@ -10,7 +10,7 @@
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  *
- * @param $args Optional. Arguments to generate a page menu. See wp_list_pages() for additional arguments.
+ * @param array $args Optional Arguments to generate a page menu. See wp_list_pages() for additional arguments.
  *
  * @return mixed
  */
@@ -23,7 +23,7 @@ add_filter( 'wp_page_menu_args', 'flair_page_menu_args' );
 /**
  * Adds custom classes to the array of body classes.
  *
- * @param $classes One or more classes to add to the class list.
+ * @param array $classes One or more classes to add to the class list.
  *
  * @return array
  */
