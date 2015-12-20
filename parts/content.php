@@ -4,6 +4,7 @@
  *
  * @package Flair Theme
  */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -43,7 +44,7 @@
 			<span class="cat-links">
 				<?php printf( __( 'Posted in %1$s', 'flair' ), $categories_list ); ?>
 			</span>
-			<?php endif; // End if categories ?>
+			<?php endif; // End if categories. ?>
 
 			<?php
 			/* translators: used between list items, there is a space after the comma */
@@ -54,7 +55,7 @@
 				<?php printf( __( 'Tagged %1$s', 'flair' ), $tags_list ); ?>
 			</span>
 			<?php endif; // End if $tags_list. ?>
-		<?php endif; // End if 'post' == get_post_type() ?>
+		<?php endif; // End if 'post' == get_post_type(). ?>
 
 		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
 		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'flair' ), __( '1 Comment', 'flair' ), __( '% Comments', 'flair' ) ); ?></span>

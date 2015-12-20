@@ -6,6 +6,7 @@
  *
  * @package Flair Theme
  */
+
 ?>
 
 <section class="no-results not-found">
