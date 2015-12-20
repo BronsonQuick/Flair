@@ -178,7 +178,7 @@ function flair_enqueue_joyride() {
 /**
  * Enqueue Foundations Equalizer
  *
- * http://foundation.zurb.com/docs/components/equalizer.html
+ * Documentation: http://foundation.zurb.com/docs/components/equalizer.html
  */
 function flair_enqueue_equalizer() {
 	wp_enqueue_script( 'equalizer', get_template_directory_uri() . '/assets/js/foundation/foundation.equalizer.js', array( 'jquery', 'foundation' ), FOUNDATION_VERSION, true );
