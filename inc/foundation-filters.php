@@ -57,7 +57,7 @@ add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 /**
  * Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
  *
- * @param array $classes An array of CSS classes.
+ * @param array  $classes An array of CSS classes.
  * @param object $item Nav menu item data object.
  *
  * @return array
@@ -94,6 +94,8 @@ function flair_page_menu() {
 class Flair_Page_Walker extends Walker_Page {
 
 	/**
+	 * The parent level of the walker.
+	 *
 	 * @see Walker::end_lvl()
 	 * @since 2.1.0
 	 *
@@ -107,6 +109,8 @@ class Flair_Page_Walker extends Walker_Page {
 	}
 
 	/**
+	 * The child element of the walker.
+	 *
 	 * @see Walker::start_el()
 	 * @since 2.1.0
 	 *
@@ -174,7 +178,6 @@ class Flair_Page_Walker extends Walker_Page {
 /**
  * Don't let the users enable Gravity Forms CSS as we have the correct CSS loaded in our theme
  */
-
 function flair_dequeue_gravity_forms_css() {
 	if ( ! get_option( 'rg_gforms_disable_css' ) ) {
 		update_option( 'rg_gforms_disable_css', true );
@@ -184,11 +187,11 @@ function flair_dequeue_gravity_forms_css() {
 /**
  * We only want to add the Gravity Forms helpers for Foundation if Gravity Forms is loaded and activated.
  */
-
 if ( class_exists( 'GFForms' ) ) {
 	add_action( 'init', 'flair_dequeue_gravity_forms_css' );
 	add_filter( 'gform_validation_message', 'flair_gform_form_validation_message', 10, 2 );
 }
+
 /**
  * Adds the Zurb Foundation alert classes to the Gravity Forms errors
  *
