@@ -51,7 +51,7 @@ add_filter( 'wp_nav_menu', 'flair_change_submenu_class' );
 
 /**
  * Use the active class of the ZURB Foundation for the current menu item. (From: https://github.com/milohuang/reverie/blob/master/functions.php)
- * 
+ *
  * @param $classes
  * @param $item
  *
