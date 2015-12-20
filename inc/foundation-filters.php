@@ -358,7 +358,7 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 	<div class="ginput_complex ginput_container">
 
 	<?php if ( ! $field['inputs'] ) :
-	//Cache css id
+	// Cache css id.
 	$input_id = str_replace( '.', '_', $field['id'] ); ?>
 	<div id="input_<?php esc_attr_e( $input_id ); ?>_container" class="<?php echo apply_filters( 'ebisprint_gforms_name_class', 'large-6 columns', $field, $form_id, $input_id ); ?>">
 	<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input_id ); ?>"
@@ -375,20 +375,15 @@ function flair_gform_get_name_field( $field, $value, $lead_id, $form_id ) {
 			<input id="input_<?php esc_attr_e( $input_id ); ?>" type="text" tabindex="<?php esc_attr_e( $field['id'] ); ?>" name="input_<?php esc_attr_e( $input['id'] ); ?>"
 				<?php if ( 'First' == $input['label'] ) { ?>
 				   placeholder="<?php echo apply_filters( 'gform_name_first', __( 'First', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder ', $field, $form_id, $input ); ?>" />
-				<?php }
-					elseif ( 'Last' == $input['label'] ) { ?>
+				<?php } elseif ( 'Last' == $input['label'] ) { ?>
 					placeholder="<?php echo apply_filters( 'gform_name_last',__( 'Last', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
-				<?php }
-					elseif ( 'Prefix' == $input['label'] ) { ?>
+				<?php } elseif ( 'Prefix' == $input['label'] ) { ?>
 					placeholder="<?php echo apply_filters( 'gform_name_prefix',__( 'Prefix', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
-				<?php }
-					elseif ( 'First Name' == $input['label'] ) { ?>
+				<?php } elseif ( 'First Name' == $input['label'] ) { ?>
 					placeholder="<?php echo apply_filters( 'gform_name_first_name',__( 'First Name', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
-				<?php }
-					elseif ( 'Last Name' == $input['label'] ) { ?>
+				<?php } elseif ( 'Last Name' == $input['label'] ) { ?>
 					placeholder="<?php echo apply_filters( 'gform_name_last_name',__( 'Last Name', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
-				<?php }
-					elseif ( 'Suffix' == $input['label'] ) { ?>
+				<?php } elseif ( 'Suffix' == $input['label'] ) { ?>
 					placeholder="<?php echo apply_filters( 'gform_name_lsuffix',__( 'Suffix', 'gravityforms' ), $form_id ); ?>" class="<?php echo apply_filters( 'ebisprint_gforms_name_field_class', 'placeholder', $field, $form_id, $input ); ?>" />
 				<?php } ?>
 			<label for="input_<?php esc_attr_e( $input_id ); ?>"><?php echo $input['label']; ?></label>
