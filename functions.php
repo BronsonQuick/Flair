@@ -54,6 +54,7 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	/**
 	 * Enable support for Post Formats
 	 */
+	// @codingStandardsIgnoreLine - Stop PHP Codesniffer Errors. Remove this line.
 	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
 	/**
@@ -74,6 +75,7 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	/**
 	 * Optionally add Foundation utilities
 	 */
+	// @codingStandardsIgnoreStart - Stop PHP Codesniffer Errors. Remove this line.
 	// add_theme_support( 'foundation-interchange' );
 	// add_theme_support( 'foundation-top-bar' );
 	// add_theme_support( 'foundation-sticky-top-bar' );
@@ -89,6 +91,7 @@ if ( ! function_exists( 'flair_setup' ) ) :
 	// add_theme_support( 'foundation-accordion' );
 	// add_theme_support( 'foundation-tabs' );
 	// add_theme_support( 'off-canvas' );
+	// @codingStandardsIgnoreStart - Stop PHP Codesniffer Errors. Remove this line.
 
 }
 endif; // End of flair_setup.
