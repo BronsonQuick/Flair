@@ -1,19 +1,30 @@
 <?php
+/**
+ * Any TinyMCE filters are included in this file.
+ *
+ * @package Flair Theme
+ */
 
 /**
  * Add some Foundation 5 styles to TinyMCE
  *
- * @param $buttons
+ * @param array $buttons An array of TinyMCE buttons.
  *
  * @return mixed
  */
-
 function flair_mce_buttons( $buttons ) {
 	array_unshift( $buttons, 'styleselect' );
 	return $buttons;
 }
 add_filter( 'mce_buttons_2', 'flair_mce_buttons' );
 
+/**
+ * Add any extra style formats we want to add to TinyMCE.
+ *
+ * @param array $init_array
+ *
+ * @return mixed
+ */
 function flair_mce_before_init( $init_array ) {
 	// Add back some more of styles we want to see in TinyMCE.
 	$init_array['preview_styles'] = 'font-family font-size font-weight font-style text-decoration text-transform color background-color padding';
