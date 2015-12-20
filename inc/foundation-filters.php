@@ -378,7 +378,7 @@ function flair_gform_get_address_field( $field, $value, $lead_id, $form_id ) {
 		$lead = RGFormsModel::get_lead( $lead_id );
 		$post_id = $lead['post_id'];
 		$post_link = '';
-		if ( is_numeric( $post_id ) && self::is_post_field( $field ) ) {
+		if ( is_numeric( $post_id ) && GFCommon::is_post_field( $field ) ) {
 			$post_link = "You can <a href='post.php?action=edit&post=$post_id'>edit this post</a> from the post page.";
 		}
 		$currency = $lead['currency'];
