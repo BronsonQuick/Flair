@@ -2,14 +2,14 @@
   "name": "flair-theme",
   "version": "0.0.1",
   "devDependencies": {
-    "node-sass": "~3.1.2",
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "^1.0.3",
+    "grunt-bowercopy": "~1.2.4",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-imagemin": "^3.1.0",
     "grunt-contrib-sass": "~0.8.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-compress": "~0.9.1",
-    "grunt-bowercopy": "1.0.0",
-    "grunt-contrib-imagemin": "~0.5.0"
+    "grunt-contrib-watch": "^1.1.0",
+    "node-sass": "~4.11.0"
   },
   "repository": {
     "type": "git",
