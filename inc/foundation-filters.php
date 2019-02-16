@@ -709,7 +709,7 @@ function flair_change_last_name( $label, $form_id ) {
 
 add_filter( 'gform_name_last', 'flair_change_last_name', 10, 2 );
 
-add_filter( 'gform_confirmation_anchor', create_function( '', 'return true;' ) );
+add_filter( 'gform_confirmation_anchor', '__return_true' );
 
 /**
  * Filter the core generated oEmbed HTML.
